@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全选，反选，不选</title>
+	</head>
+	<body>
+		<input type="checkbox" value="all" id="checkedAll"/>全选
+		<input type="checkbox" value="no" id="checkedNo" />不选
+		<input type="checkbox" value="opposite" id="checkedOpposite" />反选
+		<div id="everyoneDIV">
+			<input type="checkbox" value="1" />111<br />
+			<input type="checkbox" value="2" />222<br />
+			<input type="checkbox" value="3" />333<br />
+			<input type="checkbox" value="4" />444<br />
+		</div>
+		<script type="text/javascript">
+			window.onload=function(){
+				var checkedAll=document.getElementById("checkedAll");
+				var checkedNo=document.getElementById("checkedNo");
+				var checkedOpposite=document.getElementById("checkedOpposite");
+				var checkedDiv=document.getElementById("everyoneDIV");
+				var everyone=checkedDiv.getElementsByTagName("input");
+				checkedAll.onclick=function(){
+					for(var i=0;i<everyone.length;i++){
+						everyone[i].checked=true;
+					};
+				};
+				checkedNo.onclick=function(){
+					for(var i=0;i<everyone.length;i++){
+						everyone[i].checked=false;
+					};
+				};
+				checkedOpposite.onclick=function(){
+					for(var i=0;i<everyone.length;i++){
+						if(everyone[i].checked==true){
+							everyone[i].checked=false;
+						}else{
+							everyone[i].checked=true;
+						};
+					};
+				};
+			}
+		</script>
+	</body>
+</html>

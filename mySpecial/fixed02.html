@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>内容与标题头同时左右滚动</title>
+		<style>
+		*{margin: 0;padding: 0;}
+		.fixedDIV{ position:absolute;top:0;left:0;width:3000px;background: #f00; font-size: 30px;height: 50px;}
+		#bt{background: #00f;width:3000px;height: 5000px;font-size: 30px;color: #fff;}
+		</style>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js" ></script>
+	<script>
+		 var pre_scrollTop = 0;  // 滚动条事件之前文档滚动高度
+		 var obj_topic ;//标题头
+		 window.onload = function(){
+		 	pre_scrollTop = (document.documentElement.scrollTop || document.body.scrollTop);
+		 	obj_topic = document.getElementById("fed");
+		 }
+		 window.onscroll = function(){
+		 	if(pre_scrollTop != (document.documentElement.scrollTop || document.body.scrollTop)){
+		 		pre_scrollTop = (document.documentElement.scrollTop || document.body.scrollTop);
+		 		obj_topic.style.top = pre_scrollTop+"px";
+		 	}
+		 }
+	</script>
+	</head>
+	<body>
+<div style="position:relative">
+	<div class="fixedDIV"id="fed">测试测试测试测试测试测试sjdha大数据开发节食减肥市司法局考核方式及防腐剂看风景时刻手机端苦上加苦水电费金风科技反馈看似简单番窠倒臼</div>
+	<div style="width: 2000px;height: 50px;"></div>
+	<div id="bt">
+		测试测试测试测试测试测试sjdha大数据开发节食减肥市司法局考核方式及防腐剂看风景时刻手机端苦上加苦水电费金风科技反馈看似简单番窠倒臼
+	</div>
+</div>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>奇数行偶数行样式不同</title>
+	</head>
+	<style type="text/css">
+		.odd{text-align: center;background: #FF00FF;}
+		.even{text-align: center;background: #EFEFEF;}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		//思路：先获取tr,然后判断tr为偶数行还是奇数行
+		var tbod=document.getElementById("tbod");
+		var tContent=tbod.getElementsByTagName("tr");
+		for(var i=0;i<tContent.length;i++){
+			//if(i%2==0){
+			//	tContent[i].className="even";
+			//}else{
+			//	tContent[i].className="odd";
+			//}
+			tContent[i].className=(i%2==0)?"even":"odd";
+		}
+	}	
+	</script>
+	<body>
+	<table style="width:500px;height:auto;">
+		<thead style="background: #FFFF00;text-align: center;">
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>手机号码</td>
+			</tr>
+		</thead>
+		<tbody id="tbod">
+			<tr>
+				<td>张三</td>
+				<td>22</td>
+				<td>男</td>
+				<td>13659542021</td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>20</td>
+				<td>男</td>
+				<td>15688420036</td>
+			</tr>
+			<tr>
+				<td>王丽</td>
+				<td>30</td>
+				<td>女</td>
+				<td>13963211458</td>
+			</tr>
+			<tr>
+				<td>丽娟</td>
+				<td>28</td>
+				<td>女</td>
+				<td>13963211458</td>
+			</tr>
+		</tbody>
+	</table>
+	</body>
+</html>

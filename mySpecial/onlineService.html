@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>右侧在线客服</title>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<style type="text/css">
+		body{background: #fff;color: #000;font-size: 14px;font-family: "微软雅黑";font-weight: normal;}
+		*{margin: 0;padding: 0;}
+		ul,ol{list-style: none;}
+		img{border: 0px;}
+			#kf{background: #29a7e2;position:fixed;_position:absolute;z-index: 333;top:200px;right: 0;border-radius: 5px 0 0 5px;}
+			#kfLeft{width: 40px;height: 260px;float: left;overflow: hidden;}
+			#kfLeft a{position: relative;display: block;top: 50px;}
+			.btnOpen{left: -410px;display: block;}
+			.btnClose{left: -450px;display: none;}
+			#kfRight{width: 210px;height: 260px;float: left;display: none;}
+			.content{width: 190px;height: 240px;margin: 10px;background: #fff;border-radius: 5px;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$(".btnOpen").click(function(){
+					$("#kfRight").animate({
+						width:"show"
+					},200,function(){
+						$('.kfRight').show();
+					});
+					$(".btnOpen").hide();
+					$(".btnClose").show();
+				});
+				$(".btnClose").click(function(){
+					$("#kfRight").animate({
+						width:"hide"
+					},200,function(){
+						$(".kfRight").hide();
+					})
+					$(".btnOpen").show();
+					$(".btnClose").hide();
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="kf">
+			<div id="kfLeft">
+				<a href="javascript:;" class="btnOpen"><img src="shopnc.png" title="点击打开客服列表"/></a>
+				<a href="javascript:;" class="btnClose"><img src="shopnc.png" title="点击关闭客服列表"/></a>
+			</div>
+			<div id="kfRight">
+				<ul class="content">
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
