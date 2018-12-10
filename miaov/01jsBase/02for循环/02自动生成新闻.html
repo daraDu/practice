@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02自动生成新闻</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			div{width:50px;height:50px;text-align:center;line-height:50px;position:absolute;}
+			.green{background:green;color:#fff;font-size:20px;}
+			.yellow{background:yellow;}
+		</style>
+		<script>
+		window.onload=function(){
+		//找按钮（禁用按钮、按钮消失）
+		//点击一次按钮，清空一次内容
+		//if判断
+			var oBtn=document.getElementById("btn");
+			var oList=document.getElementById("list");
+			var onoff=true;
+			var arr=[
+				'关于这些问题十九大报告都给出答案',
+				'太空到深海 一图看懂啥叫“厉害了中国”',
+				'广电总局副局长回应“中韩文化”问题',
+				'10月这些东西免费！不知道你就亏大了'
+			]
+			var arrLth=arr.length;
+			oBtn.onclick=function(){
+				for(var i=0;i<arrLth;i++){
+					if(onoff){
+						oList.innerHTML+='<li>'+arr[i]+'</li>'
+					}
+				}
+				onoff=false;
+			}
+		}
+		
+		</script>
+	</head>
+	<body>
+		<ul id="list"></ul>
+		<button id="btn">点击生成4条新闻</button>
+	</body>
+</html>

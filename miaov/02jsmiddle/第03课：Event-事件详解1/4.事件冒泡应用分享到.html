@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>事件冒泡</title>
+<style>
+*{
+	margin:0px;
+	padding:0;
+}
+	#div1{width:130px;height:300px;position:relative;top:240px;left:-130px;background:#f00;}
+	#div1 div{width:30px;height:80px;background:#000;color:#fff;position:absolute;top:100px;right:-30px;text-align:center;padding-top:10px;}
+</style>
+<script>
+window.onload = function() {
+/*
+	事件冒泡：当一个元素接收到事件的时候，会把他接收到的事件传送给父级直到顶层window
+
+*/
+	var oDiv = document.getElementById("div1");
+	oDiv.onmouseover=function(){
+		oDiv.style.left=0+'px'
+	};
+	oDiv.onmouseout=function(){
+		oDiv.style.left=-130+'px'
+	}
+}
+</script>
+</head>
+
+<body>
+	<div id='div1'>
+		<div>分享到</div>
+	</div>
+</body>
+</html>
+

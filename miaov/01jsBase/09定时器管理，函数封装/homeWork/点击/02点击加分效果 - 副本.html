@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>点击加分效果</title>
+<script src="miaov.js"></script>
+<style>
+	.box{height:60px;width:0px;margin:200px 500px;width:500px;border:1px solid #000;position:relative;}
+	.box div{position:absolute;top:0;left:0;background:#0f0;width:0px;height:60px;}
+	ul{height:60px; padding:0;margin:0;position:absolute;top:0;left:0;}
+	li{list-style:none;width:83px;font-size:24px;text-align:center;line-height:60px;float:left;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oBox=document.getElementsByTagName('div')[0];
+		var oUl=oBox.getElementsByTagName("ul")[0];
+		var olist=oBox.getElementsByTagName("li");
+		var aDiv=oBox.getElementsByTagName("div")[0];
+		
+		oBox.onclick=function(){
+			opacityFn(aDiv,'width','opacity',parseInt(getStyle(oBox,'width')))
+		}
+		function opacityFn(obj,attr1,attr2,origin){
+			var num=0;
+			var len=0;
+		//	var originLen=parseInt(getStyle(oBox,attr));
+			clearInterval(obj.timer)
+			obj.timer=setInterval(function(){
+				obj.style.attr1=len+'px';
+				obj.style.attr2=num;
+				if(len<origin/2){
+					num+=0.2;
+				}else{
+					num-=0.15
+				}
+				if(len>origin){
+					len=origin;
+				}
+				
+				if(len===origin){
+					clearInterval(obj.timer);
+				//	obj.style.attr2=0;
+				}
+				
+				console.log('1 :'+obj.style.attr1)
+				console.log('2 :'+obj.style.attr2)
+				len+=50;
+			},500)
+		}
+	}
+</script>
+<body>
+	<div class='box'>
+		<div></div>
+		<ul>
+			<li>+1</li>
+			<li>+2</li>
+			<li>+3</li>
+			<li>+4</li>
+			<li>+5</li>
+			<li>+6</li>
+		</ul>
+	</div>
+</body>
+</html>

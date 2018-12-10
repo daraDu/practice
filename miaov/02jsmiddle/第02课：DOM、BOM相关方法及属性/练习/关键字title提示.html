@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>关键字title提示</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	p{
+		width:400px;
+		padding:20px;
+		margin:50px;
+		border:1px solid #999
+	}
+	p span{
+		color:green;
+		cursor:pointer;
+		position:relative;
+	}
+	.tipBox{
+		padding:5px;
+		background:yellow;
+		border:1px solid #999;
+		white-space: nowrap;
+		top: 20px;
+		left: 0;
+		position: absolute;
+		z-index:111;
+		display:none;
+		color:#000;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var oSection = document.getElementsByTagName("p")[0];
+		var oTit = oSection.getElementsByTagName("span");
+		for(var i=0;i<oTit.length;i++){
+			if(oTit[i].getAttribute('dataTip')){
+				var aTip = document.createElement("span");
+				aTip.innerHTML = oTit[i].getAttribute('dataTip');
+				aTip.className = 'tipBox';
+				oTit[i].appendChild(aTip);
+				oTit[i].onmouseover=function(){
+					this.children[0].style.display='block';
+				}
+				oTit[i].onmouseout=function(){
+					this.children[0].style.display='none';
+				}
+			}
+		}
+		
+		function getPos(obj){
+			var pos={left:0,top:0}
+			while(obj){
+				pos.left = obj.offsetLeft;
+				pos.top = obj.offsetTop;
+				obj=obj.offsetParent;
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+	<p>
+		<span dataTip='JavaScript是一门很热门的语言'>JavaScript</span>是面向Web的编程语言，绝大多数现代网站都使用了
+		<span dataTip='JavaScript是一门很热门的语言'>JavaScript</span>，并且所有的现代
+		<span dataTip='浏览器——基于桌面系统、游戏机、平板电脑和智能手机的浏览器——均包含了'>Web</span>浏览器——基于桌面系统、游戏机、平板电脑和智能手机的浏览器——均包含了
+		<span dataTip='JavaScript'>JavaScript</span>解释器。这使得
+		<span dataTip='JavaScript是一门很热门的语言'>JavaScript</span>能够称得上史上最广泛的编程语言。
+		<span dataTip='能够称得上史上最广泛的编程语言。'>JavaScript</span>也是前端开发工程师必须掌握的三种技能之一，描述网页内容的
+		<span dataTip='HTML'>HTML</span>、描述网页样式的
+		<span dataTip='CSS'>CSS</span>以及描述网页行为的
+		<span dataTip='JavaScript'>JavaScript</span>。
+	</p>
+</body>
+</html>
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>无标题文档</title>
+		<style>
+			a {
+				margin: 5px;
+			}
+		</style>
+
+	</head>
+	<script src="carFenYei.js"></script>
+	<script type="text/javascript" language="javascript">
+		window.onload = function() {
+			page = new Page(3, 'table1', 'group_one');//table1 id="table1"   3是每一页显示的条数  group_one tbody的id
+		};
+	</script>
+
+	<body>
+
+		<table id="table1" border="0" width="486">
+			<thead>
+				<tr style="background-color:#CCCCCC;">
+					<th style="cursor:pointer;">Last Name</th>
+					<th style="cursor:pointer;">First Name</th>
+					<th style="cursor:pointer;">Birthday</th>
+					<th style="cursor:pointer;">Siblings</th>
+				</tr>
+			</thead>
+			<tbody id="group_one">
+				<tr style="background-color:#f3f3f3">
+					<td>Smith</td>
+					<td>John</td>
+					<td>7/12/1978</td>
+					<td>1</td>
+				</tr>
+				<tr style="background-color:#B4D6FC">
+					<td>Johnson</td>
+					<td>Betty</td>
+					<td>10/15/1977</td>
+					<td>2</td>
+				</tr>
+				<tr style="background-color:#f3f3f3">
+					<td>Henderson</td>
+					<td>Nathan</td>
+					<td>2/25/1949</td>
+					<td>3</td>
+				</tr>
+				<tr style="background-color:#B4D6FC">
+					<td>Williams</td>
+					<td>James</td>
+					<td>7/8/1980</td>
+					<td>4</td>
+				</tr>
+				<tr style="background-color:#f3f3f3">
+					<td>Gilliam</td>
+					<td>Micheal</td>
+					<td>7/22/1949</td>
+					<td>5</td>
+				</tr>
+				<tr style="background-color:#f3f3f3">
+					<td>Smith</td>
+					<td>John</td>
+					<td>7/12/1978</td>
+					<td>6</td>
+				</tr>
+				<tr style="background-color:#B4D6FC">
+					<td>Johnson</td>
+					<td>Betty</td>
+					<td>10/15/1977</td>
+					<td>7</td>
+				</tr>
+				<tr style="background-color:#f3f3f3">
+					<td>Henderson</td>
+					<td>Nathan</td>
+					<td>2/25/1949</td>
+					<td>8</td>
+				</tr>
+				<tr style="background-color:#B4D6FC">
+					<td>Williams</td>
+					<td>James</td>
+					<td>7/8/1980</td>
+					<td>9</td>
+				</tr>
+				<tr style="background-color:#f3f3f3">
+					<td>Gilliam</td>
+					<td>Micheal</td>
+					<td>7/22/1949</td>
+					<td>10</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<a href="#" onclick="page.firstPage();">首 页</a>/
+			<a href="#" onclick="page.prePage();">上一页</a>/
+			<a href="#" onclick="page.nextPage();">下一页</a>/
+			<a href="#" onclick="page.lastPage();">末 页</a>
+			<span id="divFood"></span> /第
+			<input id="pageno" value="1" style="width:20px" />页/<a href="#" onclick="page.aimPage();">跳转</a></div>
+	</body>
+
+</html>

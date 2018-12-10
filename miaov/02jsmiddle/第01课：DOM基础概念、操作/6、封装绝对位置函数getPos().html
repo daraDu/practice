@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>封装绝对位置函数getPos()</title>
+		<style>
+			div{
+				padding:50px;
+			}
+			#div1{
+				background:#f00;
+				position:relative;
+			}
+			#div2{
+				background:#0ff;
+				position:relative;
+			}
+			#div3{
+				background:#00f;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oDiv3 = document.getElementById("div3");
+				var oL1 = oDiv3.offsetLeft;
+				var oL2 = oDiv3.offsetParent.offsetLeft
+				//alert(oL2)
+				console.log(getPos(oDiv3).left)
+				function getPos(obj){
+					var pos={left:0,top:0};
+					while(obj){
+						pos.left += Number(obj.offsetLeft);
+						pos.top += obj.offsetTop;
+						obj = obj.offsetParent
+					}
+					
+					return pos;
+				}
+			
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+	</body>
+</html>

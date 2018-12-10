@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正负值的处理、添加回调函数</title>
+		<style>
+			.box{padding:0;margin:0;position:absolute;top:50px;left:50px;background:#f00;width:100px;height:100px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oBtn=document.getElementsByTagName("input");
+				var oBox=document.getElementsByTagName("div")[0];
+				//var timer=null;
+				
+				function moveFn(obj,attr,dir,endPoint,endFn){
+					dir = parseInt(getStyle(obj,attr)) > endPoint ? -dir : dir;
+					clearInterval(obj.timer);//null未定义
+					obj.timer=setInterval(function(){
+						var	step = parseInt(getStyle(obj,attr))+dir;
+						if( step > endPoint && dir > 0 || step < endPoint && dir < 0 ){
+							step = endPoint;
+						};
+						obj.style[attr]=step+'px';
+						if(step==endPoint){
+							clearInterval(obj.timer);
+							if( endFn ){
+								endFn();
+							}
+						};
+					},50);	
+				};
+				
+				
+				oBtn[0].onclick=function(){//向后
+					moveFn(oBox,'left',13,50);
+				}
+				oBtn[1].onclick=function(){//向前
+					moveFn(oBox,'left',13,400,function(){
+						moveFn(oBox,'top',13,400);
+					});
+				}
+				function getStyle(obj,attr){
+					if(obj.currentStyle){
+						return obj.current[attr];
+					}else{
+						return getComputedStyle(obj)[attr];
+					}
+				};
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type='button' value='向后'/>
+		<input type='button' value='向前'/>
+		<div class='box'></div>
+	</body>
+</html>
+

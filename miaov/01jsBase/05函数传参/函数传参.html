@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数传参</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			li{width:115px;height:130px;background:url(images/normal.png) no-repeat; float:left;margin-left:10px;}
+		</style>
+		<script>
+			window.onload=function(){//传什么要一一对应
+				f1(f2);
+				function f2(a){
+					alert(a)
+				}
+				function f1(fn){
+					fn(10)
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+

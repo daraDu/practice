@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>焦点事件</title>
+<script>
+window.onload = function() {
+	/*
+		焦点事件：
+			焦点：是浏览器区分用户输入对象，当一个元素有焦点的时候，就可以接收用户输入
+			tab  click  js
+			能够响应用户输入的元素才有焦点
+			
+			onfocus获取焦点时执行
+			onblur 失去焦点时执行
+	*/
+	var oText = document.getElementsByTagName("input");
+	var oBtn = document.getElementsByTagName("button")[0];
+	oText[0].onfocus=function(){
+		//alert(oText.value)
+		oText[0].value='';
+	}
+	oText[0].onblur=function(){
+		oText[0].value='请输入内容';
+	}
+	
+	/*
+		obj.focus(); 给指定的元素设置焦点
+		obj.blur(); 取消指定元素的焦点
+		obj.select();选择指定元素里的文本
+	*/
+	oBtn.onclick=function(){
+		oText[1].focus()
+		console.log(oText[0].value)
+	}
+	
+}
+</script>
+</head>
+
+<body>
+	<input type='text' id='text1' value='请输入内容'/>
+	<input type='text' id='text2' value='请输入内容222'/>
+	<button>按钮</button>
+</body>
+</html>
+

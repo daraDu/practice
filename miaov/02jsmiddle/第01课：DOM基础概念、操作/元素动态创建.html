@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>元素动态创建</title>
+		<style>
+			.box{margin:50px;}
+		
+		</style>
+		<script>
+			window.onload=function(){
+				var oInput = document.getElementsByTagName("input")[0];
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oCont = document.getElementById("cont");
+				oBtn.onclick=function(){
+					if(oInput.value){
+						var oLi = document.createElement("li");
+						oLi.innerHTML=oInput.value+'<a href="javascript:;" id="delBtn">删除</a>';
+					//	oCont.appendChild(oLi);
+						oCont.insertBefore(oLi,oCont.children[0]);
+						oInput.value="";
+						var delBtn = document.getElementById("delBtn");
+						delBtn.onclick=function(){
+							oCont.removeChild(this.parentNode)
+						}
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body id='body'>
+		<div class='box'>
+			<input type='text'/>
+			<button>留言</button>
+			<ul id='cont'></ul>
+		</div>
+	</body>
+</html>

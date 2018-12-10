@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04作业选择卡里套选择卡</title>
+		<style>
+			body{font-size:14px;}
+			*{padding:0;margin:0;}
+			ul,li{list-style:none;}
+			#box{margin:50px 300px;height:415px;width:800px;position:relative;background:yellow url("../../images/loader_ico.gif") no-repeat center center;}
+			#box #leftList {float:left;}
+			#box #leftList li{width:100px;height:100px;background:#CC99CC;margin-bottom:5px;text-align:center;line-height:100px;cursor:pointer}
+			#box #leftList .active{background:#CCCCFF}
+			
+			#box div{width:699px;height:415px;float:left;margin-left:1px;display:none;}
+			#box .show{display:block;}
+			#box div img{width:700px;height:415px;}
+			#box div ul{position:absolute;bottom:0;left:100px;width:705px;z-index:1;}
+			#box div ul li{float:left;margin-right:2px;height:30px;background:rgba(0,0,0,0.6);text-align:center;line-height:30px;color:#fff;cursor:pointer;}
+			#box div ul .on{background:rgba(160,0,0,0.6)}
+		</style>
+		<script>
+			
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var oLeft=document.getElementById("leftList");
+				var oLi=oLeft.getElementsByTagName("li");
+				var oLis=oLi.length;
+				var oDiv=oBox.getElementsByTagName("div");
+				var imgArry01=['../../images/tab11.jpeg','../../images/tab09.jpeg','../../images/tab12.jpg','../../images/tab13.jpg'];
+				var imgArry02=['../../images/tab01.png','../../images/tab03.jpeg','../../images/tab02.jpeg'];
+				var imgArry03=['../../images/tab08.jpg','../../images/tab07.jpg'];
+				var imgArry04=['../../images/tab04.jpeg','../../images/tab05.png','../../images/two01.jpg','../../images/tab09.jpeg','../../images/two02.jpg'];
+				for(var i=0;i<oLis;i++){
+					oLi[i].index=i;
+					oLi[i].onclick=function(){
+						for(var i=0;i<oLis;i++){
+							oDiv[i].className='';
+							oLi[i].className='';
+						};
+						oDiv[this.index].className='show';
+						this.className='active';
+					}
+				};
+				tab(oDiv[0],imgArry01);
+				tab(oDiv[1],imgArry02);
+				tab(oDiv[2],imgArry03);
+				tab(oDiv[3],imgArry04);
+				function tab(aDiv,imgArry){
+					var oImg=aDiv.getElementsByTagName("img")[0];
+					var oUl=aDiv.getElementsByTagName("ul")[0];
+					var ali=oUl.getElementsByTagName("li");
+					var alis=ali.length;
+					for(var i=0;i<alis;i++){
+						ali[i].style.width=98.5/alis+'%';
+						ali[i].index=i;
+						ali[i].onclick=function(){
+							for(var i=0;i<oLis;i++){
+								ali[i].className='';
+							};
+							this.className='on';
+							oImg.src=imgArry[this.index]
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="leftList">
+				<li class="active">111</li>
+				<li>222</li>
+				<li>333</li>
+				<li>444</li>
+			</ul>
+			<div class="show">
+				<img src="../../images/tab11.jpeg"/>
+				<ul>
+					<li class="on">1-11</li>
+					<li>1-22</li>
+					<li>1-33</li>
+					<li>1-44</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab01.png"/>
+				<ul>
+					<li class="on">2-11</li>
+					<li>2-22</li>
+					<li>2-33</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab08.jpg"/>
+				<ul>
+					<li class="on">3-11</li>
+					<li>3-22</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab04.jpeg"/>
+				<ul>
+					<li class="on">4-11</li>
+					<li>4-22</li>
+					<li>4-33</li>
+					<li>4-44</li>
+					<li>4-55</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+

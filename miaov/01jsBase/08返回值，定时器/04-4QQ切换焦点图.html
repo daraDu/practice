@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04setInterva详解定时器管理</title>
+		<style>
+			#box{width: 260px;height: 400px;background:#0ff;cursor:pointer;}
+			#panel{width:200px;height:240px;background:#ff0;position:absolute;top:6px;left:280px;display:none;cursor:pointer;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id='panel'></div>
+		<script>
+			window.onload=function(){
+				var oBox=document.getElementById('box');
+				var oPanel=document.getElementById('panel');
+				var timer=null;
+				function show(){
+					clearTimeout(timer)
+					oPanel.style.display='block';
+				}
+				function hide(){
+					timer=setTimeout(function(){
+						oPanel.style.display='none';
+					},1000);
+				}
+				oBox.onmouseover=show;
+				oBox.onmouseout=hide;
+				oPanel.onmouseover=show;
+				oPanel.onmouseout=hide;
+			}
+			
+		</script>
+	</body>
+</html>
+

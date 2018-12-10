@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js作用域妙味课堂</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+		</style>
+		<script>
+			window.onload=function(){
+				function fn1(){
+					/*
+						预解析
+						f=...
+						函数块
+						
+						逐行解析代码
+						f=1
+						遇到函数执行再预解析函数里面的代码
+						遇到f() 这时函数m里就储存
+							f=function f(){
+								f = 5;
+								alert("f");
+							}
+						
+						继续预解析 f()
+						f=...--->这时就把上面储存的函数替换了，是局部变量
+						
+					*/
+					var f = 1;
+					function m(){
+						f();
+						return;
+						function f(){
+							f = 5;
+							alert("f");
+						}
+					}
+					m();         
+					alert(f);
+				}
+				//fn2();
+				function fn2(){//函数里面的内容是看函数定义的地方，并不是函数调用的地方，
+
+					var name = 'laruence';     
+					function echo(){         
+					  alert(name);   //eve   ---->正确laruence
+					}      
+					function env(){
+						var name = 'eve';         
+						echo();   
+					}      
+					env()
+				
+				
+					function a2 () {
+						var a ='dsdfsdafsa';
+						a3(a);
+					}
+					a2();
+					function a3(a){
+						alert(a);//dsdfsdafsa
+					}
+				
+				}
+				//fn3();
+				function fn3(){
+					alert(a());//4  undefined
+					var a=1;
+					alert(a);
+					function a(){alert(2);};
+					alert(a);
+					var a=3;
+					alert(a);
+					function a(){alert(4);};
+					alert(a);
+				}
+				//fn4();
+				function fn4(){
+					  var a;
+				    function aaa(){
+                        var a=b=10;  //var a=b        b=10   
+					}                               
+					aaa();
+					alert(a);//undefined
+					alert(b);//10
+					function aaa(){
+						var a=b=10;
+					}
+					aaa();
+					alert(a);
+					alert(b)
+				}
+				//fn5();
+				function fn5(){
+					/*var a = 1;
+					function b(){
+						alert(a)
+					}
+					b()//1
+					a = 2;*/
+					var a;
+					function b(){
+						alert(a)
+					}
+					b()//2
+					a =1
+					a = 2
+					/*function b(){
+						alert(a)
+					}
+					b()//2
+					var a=1*/
+				}
+				//fn6();
+				function fn6(){
+					/*function box(obj){
+						obj.name='Lee';
+					}
+					var obj=Object();
+					box(obj);
+					alert(obj.name);*/
+					
+					function box(obj){
+						obj.name='Lee';
+						var obj=new Object();
+						obj.name='Mr.';
+					}
+					var obj=Object();
+					box(obj);
+					alert(obj.name);
+				}
+			//	f7();
+				function f7(){
+					var a = 1;
+					function fn1(a){               
+						alert(a);  //1                              
+						a = 2;
+					}
+					fn1(a);
+					alert(a); //1
+				}
+			//	f8();
+				function f8(){
+					var a = 1;
+					function fn1(){
+						alert(a);    //1                           
+						a = 2;
+					}
+					fn1(a);
+					alert(a); //2	
+				}
+				
+				f9();
+				function f9(){
+					function Foo(){ 
+						getName=function(){console.log(1);}; 
+						return this;
+					}
+					Foo.getName=function(){console.log(2);};
+					var getName=function(){console.log(4);};
+					function getName(){console.log(5);}
+					Foo.getName();//2
+					getName();//
+					Foo();
+					getName();//1
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+		
+	</body>
+</html>
+

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>淘宝商品广告效果</title>
+<style>
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	a{text-decoration:none;color:#215A94}
+	#box{margin:50px auto;width:600px;position:relative;}
+	#cont img{width:240px;height:300px;}
+	.clearFloat:after{content:" ";display:block;clear:both}
+	#title li{float:left;width:119px;height:40px;line-height:40px;text-align:center;background:#eee;margin-left:1px;cursor:pointer;}
+	
+	.titleCont{float:left;}
+	.titleCont ul{display:none;}
+	.titleCont li{width:80px;height:50px;line-height:50px;text-align:center;cursor:pointer;background:#eee;margin-bottom:1px;}
+	
+	#cont{float:left;border:1px solid #000;}
+	
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oTitle=document.getElementById("title");
+		var aTitleList=oTitle.getElementsByTagName("li");//标题li
+		var oCont=document.getElementById("cont");
+		var aImg=oCont.getElementsByTagName("img")[0];//图片
+		var oTitleCont=document.getElementsByClassName("titleCont")[0];
+		var aContUl=oTitleCont.getElementsByTagName("ul");//下面ul
+		var aContList=oTitleCont.getElementsByTagName("li");//下面全部li
+
+		var timer=null;
+		var num=0;
+		var tNum=0;
+		var imgArr=['../images/1.jpg','../images/2.jpg','../images/3.jpg','../images/4.jpg','../images/3.jpg','../images/4.jpg'];
+		var listLength=imgArr.length;
+		function clearStyle(){//清除样式
+			for(var i=0;i<listLength;i++){
+				aContList[i].style.cssText='';
+			}
+			for(var j=0;j<aTitleList.length;j++){
+				aTitleList[j].style.cssText='';
+			}
+		}
+		addStyle();
+		function addStyle(){
+			aImg.src=imgArr[num];	
+			aTitleList[tNum].style.cssText='background:#639CC6;color:#fff;';
+			aContList[num].style.cssText='background:#f00;color:#fff;';
+		}
+		function autoPlay(){
+			if(num==listLength/2){
+				tNum++;
+				aContUl[0].style.display='none';
+				aContUl[1].style.display='block';
+			}else if(num==listLength){
+				tNum--;
+				num=0;
+				aContUl[0].style.display='block';
+				aContUl[1].style.display='none';
+			}
+			clearStyle();
+			addStyle();
+			num++;
+		} 
+		timer=setInterval(function(){	
+				autoPlay()
+			},1000)
+		}
+	
+</script>
+<body>
+	<div id='box'>
+		<ul id='title' class='clearFloat'>
+			<li class='on'>菜单一</li>
+			<li>菜单二</li>
+		</ul>
+		<div id='cont'>
+			<img src='../images/1.jpg'/>
+		</div>
+		<div class='titleCont'>
+			<ul style='display:block'>
+				<li class='active'>图片1</li>
+				<li>图片2</li>
+				<li>图片3</li>
+			</ul>
+			<ul>
+				<li>图片4</li>
+				<li>图片5</li>
+				<li>图片6</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> 2,fromCharCode</title>
+		<script>
+			window.onload=function(){
+				//str.charAt(index)某个字符串取得具体的字符
+				//str.charCodeAt(index)可返回指定位置的字符的 Unicode 编码
+				//String.fromCharCode(numX,numX,...,numX)可接受一个指定的 Unicode 值，然后返回一个字符串
+				
+				var oInp = document.getElementsByTagName('input');
+				var oBox = document.getElementsByTagName('div')[0];
+				var str = "";
+				oInp[1].onclick=function(){
+					str="";
+					var aVal = oInp[0].value;
+					for(var i = 0; i<aVal.length; i++){
+						str +=String.fromCharCode(aVal.charCodeAt(i)-1000);
+					}
+					oBox.innerHTML=str;
+				}
+			};
+		</script>	
+	</head>
+	<body>
+		<input type='text' value=''/>
+		<input type='button' value='检测'/>
+		<div>检测...</div>
+	</body>
+</html>
+

@@ -1,0 +1,28 @@
+字符串的操作    （join() substring(),slice(),substr() split()）
+var str = '百度-www.baidu.com'
+
+1、indexof()//查找字符串所在位置
+	str.indexOf('b') //7
+	
+2、charAt(index) //查找指定位置的字符串
+	str.charAt(7) //b
+3、charCodeAt(index)//查找指定位置的Unicode编码
+	str.charCodeAt(7) //98
+4、String.fromCharCode(Unicode1 ， Unicode2，....)//根据Unicode编码返回值
+	String.fromCharCode(30334,24230)//百度
+
+5、substring(start,end) //截取字符串 包括star,不包括end
+    str.substring(0,4)//百度-w
+6、slice(start,end)  //返回一个新的数组，包含从 start 到 end （不包括该元素）	
+	str.slice(0,4)//百度-w
+7、substr(start,length)	//截取字符串 包括star
+	str.substr(0,4)//百度-w
+
+8、split() //把字符串拆分成数组
+	str.split(".")//百度-www,baidu,com    ['百度-www','baidu','com']
+9、join(separator) //把数组变为字符串 括号里的为分隔符，默认为，
+
+
+
+		
+	

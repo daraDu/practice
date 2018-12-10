@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>键盘事件 - 键盘控制div移动</title>
+<style>
+div{width:100px;height:100px;background:#f00;position:absolute;}
+</style>
+<script>
+window.onload = function() {
+	var oDiv = document.getElementsByTagName("div")[0];
+	var dir="";
+	document.onkeydown = function(ev){
+		var ev = ev || event;
+		switch (ev.keyCode){
+			case 37:
+				dir = 'left';
+			break;
+			case 38:
+				dir = 'top';
+			break;
+			case 39:
+				dir = 'right';
+			break;
+			case 40:
+				dir = 'bottom';
+			break;
+		}
+	}
+	function moveFn(){
+		//左37  上38  右39    下40
+		switch (dir){
+			case 'left':
+				oDiv.style.left = oDiv.offsetLeft - 10 +'px';
+			break;
+			case 'top':
+				oDiv.style.top = oDiv.offsetTop - 10 +'px';
+			break;
+			case 'right':
+				oDiv.style.left = oDiv.offsetLeft + 10 +'px';
+			break;
+			case 'bottom':
+				oDiv.style.top = oDiv.offsetTop + 10 +'px';
+			break;
+		}
+	};
+	setInterval(moveFn,10)
+	document.onkeyup=function(){
+		dir="";
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+	<div></div>
+</body>
+</html>
+

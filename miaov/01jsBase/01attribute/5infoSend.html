@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟短信发送</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			body{font-size:14px;font-weight:normal;color:#000;background:#fff;}
+			ul{list-style: none;}
+			.clearfix:after{content:"";display:block;clear:both;}
+			.box{width:240px;height:480px;background:url(images/phone.jpg) no-repeat;margin:10px auto;position:relative;}
+			.content{width:189px;height:335px;position:absolute;top:70px;left:24px;overflow: auto;}
+			#top{height:300px;border-bottom:1px solid #c7cbca;}
+			#top li{margin-bottom:5px;}
+			#leftBox img,#leftBox p{float:left;}
+			#leftBox p,#rightBox p{max-width:160px;padding:0 2px;}
+			#leftBox p{background:#f00;color:#fff;}
+			#rightBox p{background:yellow;}
+			#rightBox img,#rightBox p{float:right;}
+			.bottom{padding:4px 0 0 5px;position:fixed;bottom:379px;width:183px;height:25px;background:#fff;left:705px;}
+			#imgBox{height:24px;width:24px;border:1px solid #c7cbca;display:inline-block;float:left;cursor:pointer;}
+			.textBox{width:110px;height:24px;margin-left:5px;}
+			
+		</style>
+		<script>
+			window.onload=function(){
+				var oTop=document.getElementById("top");
+				var oImgBox=document.getElementById("imgBox");
+				var oSendBox=document.getElementById("sendBox");
+				var oTextBox=document.getElementsByClassName("textBox")[0];
+				var onoff = true;
+				oImgBox.onclick=function(){
+					if(onoff){
+						oImgBox.src="images/2.png";
+					}else{
+						oImgBox.src="images/1.png";
+					}
+					onoff = !onoff;
+				}
+				sendBox.onclick=function(){
+					if(onoff){
+						oTop.innerHTML='<li id="leftBox" class="clearfix"><img src="images/1.png"/><p>'+oTextBox.value+'</p></li>'+oTop.innerHTML
+					}else{
+						oTop.innerHTML='<li id="rightBox" class="clearfix"><img src="images/2.png"/><p>'+oTextBox.value+'</p></li>'+oTop.innerHTML
+					};
+					oTextBox.value="";
+				};
+				
+				
+		
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<div class="content">
+				<ul id="top">
+					<!--<li id="leftBox" class="clearfix">
+						<img src="images/1.png"/>
+						<p>你好呀，交个朋友吧</p>
+					</li>
+					<li id="rightBox" class="clearfix">
+						<img src="images/2.png"/>
+						<p>好的呀</p>
+					</li>--->
+				</ul>
+				<div class="bottom">
+					<img src="images/1.png" id="imgBox"/>
+					<input type="text" class="textBox"/>
+					<input type="button" value="发送" id="sendBox"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

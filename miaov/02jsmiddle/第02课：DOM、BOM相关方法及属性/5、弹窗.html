@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>5、弹窗</title>
+<style>
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	.pop-up-box{
+		width:300px;
+		height:200px;
+		border:6px solid #666;
+		padding:10px;
+		position:relative;
+		display:none;
+		z-index:111;
+		background:#fff;
+	}
+	.closeBtn{
+		position:absolute;
+		top:10px;
+		right:10px;
+		color:#f0f;
+		cursor:pointer;
+	}
+	.shade{
+		position:absolute;
+		top:0;
+		left:0;
+		background:rgba(0,0,0,0.5);
+		z-index:10;
+		display:none;
+	}
+</style>
+<script>
+	window.onload = function(){	
+		var oBtn = document.getElementsByTagName("button")[0];
+		var oBox = document.getElementsByClassName("pop-up-box")[0];
+		var closeBtn = document.getElementsByClassName("closeBtn")[0];
+		var shade = document.getElementsByClassName("shade")[0];
+	
+		oBtn.onclick=function(){
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+			var screenH = Math.max(document.documentElement.clientHeight,document.body.offsetHeight);
+			var screenW = Math.max(document.documentElement.clientWidth,document.body.offsetWidth);
+			shade.style.display='block';
+			shade.style.height = screenH+'px';
+			shade.style.width = screenW+'px';
+			
+			oBox.style.display='block';
+			oBox.style.top = (document.documentElement.clientHeight-oBox.offsetHeight)/2 + scrollTop + 'px';
+			oBox.style.left = (document.documentElement.clientWidth-oBox.offsetWidth)/2 + scrollLeft +'px';
+		};
+		closeBtn.onclick=function(){
+			oBox.style.display='none';
+			shade.style.display='none';
+		};
+		window.onscroll=function(){			
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+			if (oBox.style.display == 'none') return;
+			oBox.style.top = (document.documentElement.clientHeight-oBox.offsetHeight)/2 + scrollTop + 'px';
+			oBox.style.left = (document.documentElement.clientWidth-oBox.offsetWidth)/2 + scrollLeft +'px';
+		}
+		window.onresize = function(){
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+			
+			if (oBox.style.display == 'none') return;
+			oBox.style.top = (document.documentElement.clientHeight-oBox.offsetHeight)/2 + scrollTop + 'px';
+			oBox.style.left = (document.documentElement.clientWidth-oBox.offsetWidth)/2 + scrollLeft +'px';
+			
+			var screenH = Math.max(document.documentElement.clientHeight,document.body.offsetHeight);
+			var screenW = Math.max(document.documentElement.clientWidth,document.body.offsetWidth);
+			shade.style.height = screenH+'px';
+			shade.style.width = screenW+'px';
+		}
+	}
+</script>
+</head>  	
+<body style='height:3200px;'>
+	<button>登录</button>
+	
+	<div class='pop-up-box'>
+		这里是登录的表单内容
+		<span class='closeBtn'>X</span>	
+	</div>
+	<div class='shade'></div>
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>04小球依次落下</title>
+	<style>
+		#box{width:500px;height:500px;position:relative;}
+		#box img{height:90px;width:90px;border-radius:60px;border:10px solid #aaa;margin-left:10px;position:absolute;}
+	</style>
+	
+	<script>
+		window.onload=function(){
+			var oBox=document.getElementById("box"),
+			    oImg=document.getElementsByTagName("img"),
+				imgArray=['../images/1.jpg','../images/3.jpg','../images/4.jpg','../images/pic1.jpg',
+						  '../images/2.jpg','../images/pic2.jpg','../images/pic4.jpg','../images/3.jpg',
+						  '../images/4.jpg','../images/2.jpg','../images/pic3.jpg','../images/pic2.jpg'],
+				n=0,
+				num=0,
+				a=0,
+				b=0;
+			for(var i=0;i<5;i++){
+				for(var j=0;j<4;j++){
+					n++;
+					oBox.innerHTML +='<img src="'+imgArray[n%imgArray.length]+'" style="left:'+(i*110+20)+'px;top:'+(j*110+20)+'px"/>';
+					
+				}
+			};
+			for(var k=0;k<oImg.length;k++){
+				oImg[k].index=k;
+				oImg[k].onclick=function(){
+					// 先生成一个小球运动顺序组成的数组runArr
+					var runAyy=[];
+					runAyy.push(this.index);
+					alert(n)
+					if(this.index<oImg.length/2){
+						for(var i=1;i<=this.index;i++){
+							runAyy.push(this.index-i,this.index+i);
+						}
+						for(var j=2*this.index-oImg.length;j>=0;j--){
+							runAyy.push(j);
+						}
+					}else{
+						for(var i=1; i<=this.index; i++){
+							runAyy.push(this.index - i, this.index + i);
+						}
+						for(var j=2*this.index+1; j<oImg.length; j++){
+							runAyy.push(j);
+						}
+					};
+					
+					var timer = setInterval(function(){
+						doShake(oImg[runAyy[b]], 'left',100, function(){
+							doMove(oImg[runAyy[a]], 'top', 390, 30, 50);
+							a++;
+							
+						});
+						b ++;
+						if(b == runAyy.length){
+							clearInterval(timer);
+						}
+					}, 50);
+					
+				}
+			}
+			
+			
+			
+			var runAyy=[];
+			/*doShake(oImg[num],'left',100,function(){
+						doMove(oImg[num],'top',10,500,100);
+					});*/
+			
+		}
+		function doMove(obj,attr,step,targets,intervalTime,nextFn){
+			step = parseInt(getStyle(obj,attr)) < targets ? step : -step;
+			clearInterval(obj.doMove);
+			obj.doMove=setInterval(function(){
+				var nowStyle=parseInt(getStyle(obj,attr))+step;
+				if(nowStyle>targets && step>0 || nowStyle<targets && step<0){
+					nowStyle=targets;
+				}
+				obj.style[attr]=nowStyle+'px';
+				if(nowStyle===targets){
+					clearInterval(obj.doMove);
+				}
+			},intervalTime)
+		};
+		function doShake(obj,attr,intervalTime,nextFn){
+			if(obj.onOff){return};
+			obj.onOff=true;
+			var num=0,
+				sharkArray=[],
+				origin=parseInt(getStyle(obj,attr));
+			for(var i=20;i>0;i-=2){
+				sharkArray.push(i,-i);
+			};
+			sharkArray.push(0);
+			clearInterval(obj.doShake);
+			obj.doShake=setInterval(function(){
+				obj.style[attr]=origin+sharkArray[num] +'px';
+				num++;
+				if(num==sharkArray.length){
+					clearInterval(obj.doShake);
+					nextFn&&nextFn();
+					obj.onOff=false;
+				}
+			},intervalTime)
+		};
+		function getStyle(obj,attr){
+			return obj.curentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+		}
+	</script>
+</head>
+<body>
+	<div id='box'></div>
+</body>
+</html>

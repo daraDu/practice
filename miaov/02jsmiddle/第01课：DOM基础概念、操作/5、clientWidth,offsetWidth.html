@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>clientWidth,offsetWidth</title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				border:1px solid #f00;
+				padding:5px;
+				margin:5px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oDiv = document.getElementsByTagName("div");
+				/*
+					获取元素css样式里的宽高
+						ie：元素.currentStyle['width'];
+						火狐、谷歌：getComputedStyle(元素)['width']
+				*/
+				alert(getComputedStyle(oDiv[0])['width'])//100px
+				alert(oDiv[0].clientWidth)
+				alert(oDiv[0].offsetWidth) //112
+			}
+		</script>
+	</head>
+	<body id='body'>
+		<div></div>
+	</body>
+</html>

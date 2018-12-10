@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>按钮控制商品上下滚动</title>
+<style>
+	*{margin:0;padding:0;}
+	li{list-style:none}
+	#box{width:200px;height:450px;margin:50px auto;border:1px solid #000;position:relative;overflow:hidden;}
+	#box button{width:100%;position:absolute;left:0px;height:35px;}
+	#box button:nth-of-type(1){top:0;}
+	#box button:nth-of-type(2){bottom:0px;}
+	#cont{position:absolute;top:35px;left:0;width:200px;z-index:-1}
+	#cont li{width:100%;height:100px;border-bottom:2px solid #000;font-size:36px;text-align:center;line-height:70px;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oBox=document.getElementById("box");
+		var aBtn=oBox.getElementsByTagName("button");
+		var aCont=document.getElementById("cont");
+		var bList=aCont.getElementsByTagName("li");
+		var num=0;
+		var timerUp=null;
+		var timerDown=null;
+		aBtn[0].onmousedown=function(){//鼠标点击向上
+			timerUp=setInterval(function(){
+				if(num >-580){	
+					aCont.style.top =num+'px';
+					num--;
+				}
+			},10);
+			
+		}
+		aBtn[1].onmousedown=function(){
+			timerDown=setInterval(function(){
+				if(num <40){	
+					aCont.style.top =num+'px';
+					num++;
+				}
+			},10);
+		}
+		aBtn[0].onmouseup= function(){
+			clearInterval(timerUp)
+		};
+		aBtn[1].onmouseup= function(){
+			clearInterval(timerDown)
+		};
+		
+	}
+</script>
+<body>
+<div id='box'>
+	<button>向上</button>
+	<ul id='cont'>
+		<li style='background:#0ff'>1111</li>
+		<li style='background:#0f0;'>22222</li>
+		<li style='background:#f0f'>3333</li>
+		<li style='background:#ff0;'>44444</li>
+		<li style='background:#00f'>55555</li>
+		<li style='background:#0ff'>6666</li>
+		<li style='background:#0f0;'>7777</li>
+		<li style='background:#f0f'>88888</li>
+		<li style='background:#ff0;'>99999</li>
+		<li style='background:#00f'>00000</li>
+	</ul>
+	<button>向下</button>
+</div>
+
+</body>
+</html>

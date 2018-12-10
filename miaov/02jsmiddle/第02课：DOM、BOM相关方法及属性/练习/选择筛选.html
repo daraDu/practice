@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>选择筛选</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	.box li{
+		list-style:none;
+		padding:20px 0 0 20px;
+	}
+	.box h3{
+		padding-bottom:5px;
+	}
+	.box div{
+		cursor:pointer;
+		padding:0 0 5px 25px;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var oCheckBox = document.getElementById("checkBox");
+		var oBox = document.getElementsByClassName("box")[0];
+		var oLi = oBox.getElementsByTagName("li");
+		var location='',position='',salary='';
+		for(var i=0; i<oLi.length; i++){
+			tabFn(i)
+		}
+		function tabFn(n){
+			var oDiv = oLi[n].getElementsByTagName("div");
+			
+			for(var j = 0; j<oDiv.length; j++){
+				oDiv[j].onclick=function(){
+					switch(n){
+						case 0:
+							location=this.innerHTML + ' ';
+							break;
+						case 1:
+							position=this.innerHTML+ ' ';
+							break;
+						case 2:
+							salary = this.innerHTML+' ';
+							break;
+					}
+					oCheckBox.innerHTML = location + position + salary;
+				}	
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+	<ul class='box'>
+		<li>
+			<h3>地区</h3>
+			<div>北京</div>
+			<div>上海</div>
+			<div>天津</div>
+		</li>
+		<li>
+			<h3>职位</h3>
+			<div>网页设计</div>
+			<div>前端开发</div>
+			<div>后端开发</div>
+		</li>
+		<li>
+			<h3>薪资</h3>
+			<div>1000</div>
+			<div>2000</div>
+			<div>3000</div>
+		</li>
+	</ul>
+	<div id='checkBox'>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>nextSibling</title>
+		<style>
+			
+		</style>
+		<script>
+			window.onload=function(){
+				
+				/*
+				
+					标准下：火狐，谷歌，ie9,10
+					非标准下：只包含元素节点(ie8/7....)
+					
+					firstElementChild,lastElementChild,nextElementSibling,previousElementSibling     只有在标准浏览器下才有此属性，非标准浏览器无
+					firstChild,lastChild,nextSibling,previousSibling   在非标准和标准都有，但是在标准浏览器下，会包含文本类型的节点
+				
+					解决bug
+					firstElementChild  || firstChild      //如果是标准浏览器执行前面的，非标准浏览器执行后面的
+				*/
+				
+				
+				var oUl = document.getElementById("oUl");
+				var oFirst = oUl.firstElementChild || oUl.firstChild;
+				var oLast = oUl.lastElementChild || oUl.lastChild;
+				var oNext = oFirst.nextElementSibling|| oFirst.nextSibling;
+				var oPrevious = oLast.previousElementSibling || oLast.previousSibling;
+				oNext.style.background="#f0f";
+				oPrevious.style.background="#0ff"
+				if( oUl.children[0] && oUl.children.length>1 ){
+					oFirst.style.background = "#f00";
+					oLast.style.background = "#ff0";
+				}else{
+					alert("暂无子元素")
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id='oUl'>
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+			<li>444444</li>
+		</ul>
+	</body>
+</html>

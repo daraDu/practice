@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>父节点</title>
+		<style>
+			*{
+				margin:0;
+				padding:0
+			}
+			div {padding: 40px 50px;}
+			#div1{
+				background:#f00;
+				
+			}
+			#div2{
+				background:#0ff;
+				position:relative;
+			}
+			#div3{
+				background:#00f;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oDiv = document.getElementsByTagName("div");
+				alert(oDiv[2].offsetTop)//80
+				alert(oDiv[2].offsetLeft)//100
+			}
+		</script>
+	</head>
+	<body id='body'>
+		<div id='div1'>
+			
+			<div id='div2'>
+				
+				<div id='div3'>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>01for循环</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			div{width:50px;height:50px;text-align:center;line-height:50px;background:green;}
+			.green{background:green;}
+			.yellow{background:yellow;}
+			div{width:100px;height:100px;background:#f00;display:none;}
+			li{width:100px;background:#999;height:50px;float:left;margin:10px;}
+			li:hover div{display:block}
+		</style>
+		<script>
+			//this指的是调用当前方法或者函数的对象  类似像这样调用  f1()this都是指定的是window
+		/*	window.onload=function(){
+				var oBtn=document.getElementById("btn");
+				var oBtn2=document.getElementById("btn2");
+				//f1()  window
+				oBtn.onclick=function(){
+				
+					//f1() //fn1()--->this 指的是window
+				}
+				oBtn2.onclick=f1// this指的是input
+			}
+			function f1(){
+				alert(this)
+			}*/
+		</script>
+	</head>
+	<body>
+		<!-- <input type="button" value="按钮" id="btn"/>
+		<input type="button" value="按钮2" id="btn2"/> -->
+		
+		<ul>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+		</ul>
+	</body>
+</html>

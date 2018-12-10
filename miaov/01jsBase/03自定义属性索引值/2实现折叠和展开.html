@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现折叠和展开</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style:none;}
+			#box{width:150px;border:1px solid #000;margin:50px auto;}
+			.list h4{background:url(../images/linkR.png) pink no-repeat 5px center;padding-left:17px;cursor:pointer;height:30px;line-height:30px;}
+			.list ul{display:none;}
+			.list ul li{text-indent:22px;border-bottom:1px dotted #000;cursor:pointer;height:30px;line-height:30px;}
+			.list .active{background:url(../images/linkB.png) yellow no-repeat 2px center;height:30px;line-height:30px;padding-left:20px;}
+			.on{background:#63F7FF;}
+		</style>
+		<script>
+		//思路：1、点击标题，标题样式改表，标题下面的ul展开。再点击收回
+		//2、点击标题下面内容li里的背景颜色改变
+		//其中：将获取的列表中各个内容放入一个数组中，这样延展性比较好
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var oTit=oBox.getElementsByTagName("h4");
+				var oList=oBox.getElementsByTagName("ul");
+				var aLis=null;
+				var liArry=[];
+				for(var i=0;i<oTit.length;i++){
+					oTit[i].index=i;
+					oTit[i].onclick=function(){
+						for(var i=0;i<oList.length;i++){
+							if(i!=this.index){
+								oList[i].style.display="none";
+								oTit[i].className='';
+							}
+						}
+						if(this.className==""){
+							this.className="active";
+							oList[this.index].style.display="block";
+						}else{
+							oList[this.index].style.display="none";
+							this.className='';
+						}
+					}
+				}
+				for(var i=0;i<oList.length;i++){
+					aLis=oList[i].getElementsByTagName("li");
+					for(var j=0;j<aLis.length;j++){
+						liArry.push(aLis[j]);
+					}
+				};
+				for(var i=0;i<liArry.length;i++){
+					liArry[i].onclick=function(){
+						for(var i=0;i<liArry.length;i++){
+							liArry[i].className='';
+						}
+						this.className='on';
+					}
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="box">
+			<li class="list">
+				<h4>我的好友</h4>
+				<ul>
+					<li>张三1</li>
+					<li>张三2</li>
+					<li>张三3</li>
+					<li>张三4</li>
+					<li>张三5</li>
+					<li>张三6</li>
+				</ul>
+			</li>
+			<li class="list">
+				<h4>企业好友</h4>
+				<ul>
+					<li>王二7</li>
+					<li>王二8</li>
+				</ul>
+			</li>
+			<li class="list">
+				<h4>黑名单</h4>
+				<ul>
+					<li>李四9</li>
+					<li>李四10</li>
+					<li>李四11</li>
+				</ul>
+			</li>
+		</ul>	
+	</body>
+</html>

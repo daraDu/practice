@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>键盘事件</title>
+<style>
+</style>
+<script>
+window.onload = function() {
+	/* 
+		只有具有焦点事件的元素才有键盘事件
+		onkeyup  当键盘抬起的时候触发
+		onkeydown 当键盘按下时触发
+		
+		event.keyCode : 数字类型，键盘按键的值 ASCII码值
+			ctrlKey , shiftKey , altKey 为布尔值
+	
+	*/
+	/*document.onkeydown=function(ev){
+		var ev = ev || event;
+		alert(ev.keyCode)
+	}*/
+	
+	
+	/*
+		按住enter发送留言
+	*/
+	var oBox = document.getElementById("box");
+	var oInput = document.getElementsByTagName("input")[0];
+	oInput.onkeyup = function(ev){
+		var ev = ev || event;
+		if(oInput.value != ""){
+			var aLi = document.createElement("li");
+			aLi.innerHTML = this.value;
+			if(ev.keyCode == 13){
+				if(oBox.children[0]){
+					oBox.insertBefore(aLi,oBox.children[0]);
+				}else{
+					oBox.appendChild(aLi)
+				}
+			}
+			
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type='text' value=""/>
+	<ul id='box'></ul>
+</body>
+</html>
+

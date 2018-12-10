@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义属性应用01</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			li{width:115px;height:130px;background:url(images/normal.png) no-repeat; float:left;margin-left:10px;}
+			input{width:50px;height:50px;}
+		</style>
+		<script>
+			//想建立匹配 对应 关系，就用索引值
+		
+			window.onload=function(){
+				var oBtn=document.getElementsByTagName("input");
+				var oP=document.getElementsByTagName("p");
+				var oBtnLis=oBtn.length;
+				var arr=['张三','李四','王二']
+				for(var i=0;i<oBtnLis;i++){
+					oBtn[i].index=i;//添加的自定义属性（索引值）
+					oBtn[i].onclick=function(){
+						oP[this.index].innerHTML=arr[this.index]
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="0"/>
+		<input type="button" value="0"/>
+		<input type="button" value="0"/>
+		<p>11</p>
+		<p>22</p>
+		<p>33</p>
+	</body>
+</html>

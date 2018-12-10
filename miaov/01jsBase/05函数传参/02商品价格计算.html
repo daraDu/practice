@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02商品价格计算</title>
+		<style>
+			body{font-size:18px;}
+			button{width:50px;height:30px;font-size:20px;}
+			li{margin-top:10px;}
+			strong{margin:0 4px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oList=document.getElementById("list");
+				var oLi=oList.getElementsByTagName("li");
+				var oLis=oLi.length;
+				var oBotAll=document.getElementById("botAll");
+				var aBotNum=oBotAll.getElementsByTagName("span")[0];
+				var aBotPrice=oBotAll.getElementsByTagName("i")[0];
+				var aBotMax=oBotAll.getElementsByTagName("em")[0];
+				var num=0;//每次点击让m加减
+				for(var i=0;i<oLis;i++){
+						fnTab(oLi[i])
+				}
+				function fnTab(aLi){
+					var oBtn=aLi.getElementsByTagName("button");
+					var oStro=aLi.getElementsByTagName("strong")[0];
+					var aOne=aLi.getElementsByTagName("em")[0];
+					var aAll=aLi.getElementsByTagName("span")[0];
+					var price=parseFloat(oStro.innerHTML);
+					
+					oBtn[0].onclick=function(){
+						price-=1;
+						num--;
+						if(price<0){
+							price=0;
+							num=0;
+						}
+						
+						oStro.innerHTML=price;
+						aAll.innerHTML=price*parseFloat(aOne.innerHTML)+'元';
+						aBotNum.innerHTML=parseFloat(num)+'件';
+					}
+					oBtn[1].onclick=function(){
+						price+=1;
+						num++;
+						oStro.innerHTML=price;
+						aAll.innerHTML=price*parseFloat(aOne.innerHTML)+'元';
+						aBotNum.innerHTML=parseFloat(num)+'件';
+						f2();
+						f3();
+					}
+				}
+				function f2(){
+					var allPrice=0;
+					for(var i=0;i<oLis;i++){
+						var allSpan=oList.getElementsByTagName("span");
+						allPrice+=parseFloat(allSpan[i].innerHTML);
+					}
+					aBotPrice.innerHTML=parseFloat(allPrice)+'元'
+				}
+				function f3(){
+					var maxPrice=0;
+					var arr2=[];
+					for(var i=0;i<oLis;i++){
+						var allEm=oList.getElementsByTagName("em");
+						var allSpan=oList.getElementsByTagName("span");
+						if(parseFloat(allSpan[i].innerHTML)>0){
+							arr2.push(parseFloat(allEm[i].innerHTML));
+						}
+						for(var j=0;j<arr2.length;j++){
+							if(arr2[j]>maxPrice){
+								maxPrice=arr2[j];
+							}else{
+								maxPrice=maxPrice
+							}
+						}
+					}
+					
+						
+					aBotMax.innerHTML=parseFloat(maxPrice)+'元'
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>10元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>8元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>12.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>7.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>52.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>70.5元</em>，
+				小计：<span>0元</span>
+			</li>
+		</ul>
+		<div id="botAll">
+			商品合计共：<span>0件</span>，共花费了：<i>0元</i><br/>
+			其中最贵的商品单价是：<em>0元 </em>
+		</div>
+	</body>
+</html>
+

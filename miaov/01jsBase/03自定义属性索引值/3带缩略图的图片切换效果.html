@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>带缩略图的图片切换</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			.clearfix:after{content:"";clear:both;}
+			.box{width:300px;height:400px;background:#dfdfdf;position:relative;float:box;margin:50px 0 0 500px;}
+			.box img{width:300px;height:400px;}
+			.topContent,.bottomContent{width:100%;height:30px;position:absolute;box:0;color:#fff;line-height:30px;text-align:center;background-color: rgba(0,0,0,0.7)}
+			.topContent{top:0;}
+			.bottomContent{bottom:0;}
+			#circle{position:absolute;top:85%;left:30%;}
+			#circle li{width:15px;height:15px;border-radius:50%;background:#000;float:left;margin-right:10px;cursor:pointer;position:relative}
+			#circle li img{width:50px;height:50px;border:1px solid #f00;position:absolute;top: -55px;left: -20px;display:none;}
+			#circle .active{background:#f00;}
+			
+			#prve,#next{width:30px;height:30px;background:rgba(0,0,0,0.2);position:absolute;top:48%;text-align:center;line-height:30px;font-size:22px;color:#fff;cursor:pointer;}
+			#next{right:0;}
+			#prve:hover,#next:hover{background:rgba(0,0,0,0.6);}
+		</style>
+		<script>
+			window.onload=function(){
+				//要求：鼠标经过会有圆点，相应位置的缩略图会显现 ，点击圆点，上面大图也会相应改变
+				var oTopCont=document.getElementsByClassName("topContent")[0];
+				var oBotCont=document.getElementsByClassName("bottomContent")[0];
+				var oImgCont=document.getElementById("imgCont");
+				var oCircle=document.getElementById("circle");
+				var oPrve=document.getElementById("prve");
+				var oNext=document.getElementById("next");
+				var oLi=oCircle.getElementsByTagName("li");
+				var imgArry=['../images/yellow01.jpg','../images/yellow02.jpg','../images/yellow03.jpg','../images/yellow04.jpg']
+				var textArry=['图片1','图片2','图片3','图片4'];
+				var lis=imgArry.length;
+				var num=0;
+				for(var i=0;i<lis;i++){
+					oCircle.innerHTML+='<li><img/></li>'
+				}
+				//初始化
+				function tabFn(){
+					oTopCont.innerHTML=1+num+'/'+lis;
+					oImgCont.src=imgArry[num];
+					oBotCont.innerHTML=textArry[num];
+					oLi[num].className='active';
+				};
+				tabFn();
+				oPrve.onclick=function(){//上一张
+					num--;
+					for(var i=0;i<lis;i++){
+						oLi[i].className='';
+					}
+					if(num==-1){
+						num=lis-1;
+					}
+					tabFn()
+				}
+				oNext.onclick=function(){//下一张
+					num++;
+					for(var i=0;i<lis;i++){
+						oLi[i].className='';
+					}
+					if(num==lis){
+						num=0;
+					}
+					tabFn()
+				};
+				for(var i=0;i<lis;i++){
+					oLi[i].index=i;
+					oLi[i].onmouseover=function(){//鼠标移入
+						oSmallImg=this.getElementsByTagName("img")[0];
+						oSmallImg.src=imgArry[this.index];
+						oSmallImg.style.display='block';
+					};
+					oLi[i].onmouseout=function(){//鼠标移出
+						oSmallImg.style.display='none';
+					};
+					oLi[i].onclick=function(){//鼠标点击圆点
+						for(var i=0;i<lis;i++){
+							oLi[i].className='';
+						};
+						num=this.index;
+						tabFn();
+					};
+				};
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+			<div class="box">
+				<div class="topContent"></div>
+				<img id="imgCont"/>
+				<div class="bottomContent"></div>
+				<div id='prve'><</div>
+				<div id="next">></div>
+				<ul id="circle">
+				</ul>
+			</div>
+	</body>
+</html>

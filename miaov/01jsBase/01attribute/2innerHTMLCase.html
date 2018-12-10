@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>innerHtml案例</title>
+		<script  src="js/jquery-2.1.1.min.js" ></script>
+		<style>
+			body{background:#fff;color:#000;font-size:14px;font-weight:normal;font-family: "Times New Roman", Times, serif,Arial;}
+			*{padding:0;margin:0;}
+			ul,ol{list-style:none;}
+			#box{width:200px;height:150px;border:1px solid #000;margin-bottom:10px}
+			#textBox{height:30px;border:1px solid #000;}
+			ul{margin:200px;}
+			li{width:100px;height:50px;border:1px solid #000;margin-bottom:5px;}
+		</style>
+		<script>
+			window.onload=function(){
+				/*var oBox=document.getElementById("box");
+				var oTextBox=document.getElementById("textBox");
+				var oSendBox=document.getElementById("sendBox");
+				sendBox.onclick=function(){send(oTextBox.value)};
+				
+				function send(q){
+					oBox.innerHTML='<p>'+q+'</p>'+oBox.innerHTML
+					oTextBox.value=""
+				}*/
+				
+				var oli=document.getElementsByTagName("li");
+				for(var i=0;i<oli.length;i++){
+					oli[i].onclick=function(){
+						alert(0)
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+			<li>444444</li> 
+		</ul>
+	</body>
+</html>

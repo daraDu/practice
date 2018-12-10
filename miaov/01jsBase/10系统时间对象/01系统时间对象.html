@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>系统时间对象</title>
+		<script>
+			window.onload=function(){
+				/*
+					时间对象
+					new Data()
+						getFullYear();
+						getMonth()+1;//月份
+						getDate();
+						getDay();//星期
+						getHours();
+						getMinutes();
+						getSeconds();
+				*/
+				var oBox=document.getElementById("box");
+				getTime(oBox);
+				setInterval(function(){
+					getTime(oBox);
+				},1000);
+				
+			}		
+			function firNum(fir){
+				return fir<10 ? '0'+fir : ''+fir;
+			}
+			function getTime(obj){
+				var myTime=new Date();
+				var myYear=myTime.getFullYear();
+				var myMonth=myTime.getMonth()+1;
+				var myData=myTime.getDate();
+				var myDay=myTime.getDay();
+				var myHours=myTime.getHours();
+				var myMin=myTime.getMinutes();
+				var mySec=myTime.getSeconds();
+				if(myDay==0)myDay='周日';
+				if(myDay==1)myDay='周一';
+				if(myDay==2)myDay='周二';
+				if(myDay==3)myDay='周三';
+				if(myDay==4)myDay='周四';
+				if(myDay==5)myDay='周五';
+				if(myDay==6)myDay='周六';
+				
+				var str=myYear+'年'+myMonth+'月'+myData+'日 '+myDay+' '+firNum(myHours)+'：'+
+						firNum(myMin)+'：'+firNum(mySec);
+				obj.innerHTML=str;
+			};
+		</script>	
+	</head>
+	<body>
+		<div id='box' style='background:#f00;font-size:30px;color:#fff;'></div>
+	</body>
+</html>
+

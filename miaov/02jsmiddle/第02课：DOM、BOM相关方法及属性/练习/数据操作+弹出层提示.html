@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>数据操作+弹出层提示</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	ul,li{
+		list-style:none;
+	}
+	.box{
+		margin:50px auto;
+		width:500px;
+		display:flex;
+		position:relative;
+	}
+	.box .listBox{
+		width:70px;
+	}
+	.box .listBox h3{
+		width:50px;
+		padding:5px;
+		text-align:center;
+		cursor:pointer;
+		font-weight:normal;
+	}
+	.box .listBox .active{
+		background:#ee7510;
+		color:#fff;
+		font-weight:bold;
+	}
+	.box ul{
+		width:500px;
+		border-top:2px solid #ee7510;
+		padding:5px;
+		display:none;
+		position:absolute;
+		left:0;
+	}
+	.box li{
+		height:50px;
+		line-height:50px;
+		cursor:pointer;
+		color:blue;
+		width:100px;
+		text-decoration:underline;
+		position:relative;
+	}
+	.box .on{
+		display:block;
+	}
+	.tipBox{
+		background:#fff;
+		border:2px solid #ee7510;
+		padding:10px;
+		position:absolute;
+		left:50px;
+		top:-84px;
+		z-index:999;
+		margin-bottom:20px;
+		width:200px;
+		display:none;
+		border-radius:5px;
+		height:200px;
+	}
+
+.tipBox:after, .tipBox:before {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  left: -26px;
+  position: absolute;
+  width: 0;
+}
+
+.tipBox:after {
+  border-width: 16px;
+  border-right-color: #fff;
+  top: 90px;
+}
+
+.tipBox:before {
+  border-width: 13px;
+  border-right-color: #ee7510;
+  top: 93px;
+}
+</style>
+<script>
+	window.onload = function() {
+	
+		var oBox = document.getElementsByClassName("box")[0];
+		var oTit = document.getElementsByTagName("h3");
+		var oUL = document.getElementsByTagName("ul");
+		for(var i=0;i<oTit.length;i++){
+			oTit[i].index=i;
+			oTit[i].onclick=function(){
+				var thisParent = this.parentNode;
+				for(var i=0;i<oTit.length;i++){
+					thisParent.parentNode.children[i].firstElementChild.className='';
+					thisParent.parentNode.children[i].lastElementChild.className='';
+				}	
+				this.className = 'active';
+				this.nextElementSibling.className='on';
+			}
+			showTip(i);
+		};
+		function showTip(n){
+			var aLi = oUL[n].getElementsByTagName('li');
+			
+			for(var i=0;i<aLi.length;i++){
+				var tipBox = document.createElement("div");
+				tipBox.innerHTML='<span>222222</span>';
+				tipBox.className='tipBox';
+				aLi[i].appendChild(tipBox)
+				aLi[i].onmouseover=function(){
+					this.children[0].style.display='block';
+				//	this.children[0].style.left=
+				}
+				aLi[i].onmouseout=function(){
+					this.children[0].style.display='none';
+				}
+			}
+		};
+		function getPos(obj){
+			var pos = {left:0,top:0};
+			while(obj){
+				pos.left = obj.offsetLeft;
+				pos.top = obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return pos;
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div class='box'>
+		<div class='listBox'>
+			<h3 class='active'>前端</h3>
+			<ul class='on'>
+				<li>1111</li>
+				<li>2222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+				<li>1111</li>
+				<li>2222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+				<li>1111</li>
+				<li>222222222222222222222222222222222222222222222222222222222222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+			</ul>
+		</div>
+		<div class='listBox'>
+			<h3>后端</h3>
+			<ul>
+				<li>php</li>
+				<li>python</li>
+				<li>java</li>
+				<li>c++</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class='tipBox'><span>222222</span></div>
+</body>
+</html>
+

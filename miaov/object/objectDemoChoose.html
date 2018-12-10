@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象案例：选项卡</title>
+		<style>
+			#div1 input {background:#CCC;}
+			#div1 .active {background:yellow;}
+			#div1 div {width:200px; height:200px; background:#CCC; display:none;}
+		</style>
+	</head>
+	<body>
+	<script>
+		//面向方法
+		/*window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			var aBtn=oDiv.getElementsByTagName('input');
+			var aDiv=oDiv.getElementsByTagName('div');
+			for(var i=0;i<aBtn.length;i++){
+				aBtn[i].index=i;//模拟下标
+				aBtn[i].onclick=function(){
+					for(var i=0;i<aBtn.length;i++){
+						aBtn[i].className='';
+						aDiv[i].style.display='none';
+					};
+					this.className='active';
+					aDiv[this.index].style.display='block'
+				}
+			}
+		}*/
+		//面向对象
+		//前提：所有的东西都在window。onload里面
+		//2. 改写面向过程的选项卡
+		//①、前提：所有的代码都要在window.onload
+		/*
+			var aBtn=null;
+		var aDiv=null;
+		window.onload=function(){
+			 var oDiv=document.getElementById('div1');
+			 aBtn=oDiv.getElementsByTagName('input');
+			 aDiv=oDiv.getElementsByTagName('div');
+			for(var i=0;i<aBtn.length;i++){
+				aBtn[i].index=i;//模拟下标
+				aBtn[i].onclick=tab;
+			};
+		}
+		function tab(){
+			for(var i=0;i<aBtn.length;i++){
+				aBtn[i].className='';
+				aDiv[i].style.display='none';
+			};
+			this.className='active';
+			aDiv[this.index].style.display='block'
+		};
+		*/
+		//②、改写：不要有函数嵌套，可以有全局变量
+		//③、onload（初始化函数）-->构造函数（初始化对象）
+		//	全局变量——》属性
+		//	函数——》方法
+	
+		window.onload=function(){//构造函数
+			var oTab=new TabSwitch('div1');
+		}
+		function TabSwitch(id){//属性
+			 var oDiv=document.getElementById(id);
+			 this.aBut=oDiv.getElementsByTagName("input");
+			 this.aDiv=oDiv.getElementsByTagName('div');
+			 var oTabThis=this;
+			for(var i=0;i<this.aBut.length;i++){
+				this.aBtn[i].index=i;//模拟下标
+				//this.aBtn[i].onclick=this.tab;//this.tab属于这个按钮了
+				this.aBtn[i].onclick=function(){
+				//这里面的this是那个被点击的按钮
+					oTabThis.tab(this);
+				}
+			};
+		}
+			TabSwitch.prototype.tab=function(oBut){//方法
+			for(var i=0;i<this.aBtn.length;i++){
+				this.aBut[i].className='';
+				this.aDiv[i].style.display='none';
+			};
+			oBut.className='active';//这个this本意是要求要那个被点击的按钮，但是这里面的this是一个对象tabSwitch;
+			this[oBut.index].style.display='block';
+		};	
+		
+		/*window.onload=function(){
+			var oTab=new TabSwitch('div1');
+		};
+		function TabSwitch(id){
+			var oDiv=document.getElementById(id);
+			this.aBtn=oDiv.getElementsByTagName("input");
+			this.aDiv=oDiv.getElementsByTagName("div");
+			var oTabThis=this;
+			for(var i=0;i<this.aBtn.length;i++){
+				this.aBtn[i].index=i;
+				this.aBtn[i].onclick=function(){
+					oTabThis.tab(this);
+				};
+			};
+		};
+		TabSwitch.prototype.tab=function(oBut){
+			for(var i=0;i<this.aBtn.length;i++){
+				this.aBtn[i].className='';
+				this.aDiv[i].style.display='none';
+			}
+			oBut.className='active';
+			this[oBut.index].style.display='block';
+		}*/
+	</script>
+	<div id="div1">
+		<input class="active" type="button" value="教育" />
+		<input type="button" value="财经" />
+		<input type="button" value="aaa" />
+		<div style="display:block;">1asdfasdfds</div>
+		<div>2xzcvxzcv</div>
+		<div>5332342345</div>
+	</div>
+	</body>
+</html>

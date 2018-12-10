@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片时钟实例滚动</title>
+		<style>
+			ul,li{list-style:none;}
+			*{margin:0;padding:0}
+			#imgBox{margin:50px;}
+			#imgBox li{display:inline-block;width:60px;height:80px;position:relative;overflow:hidden;}
+			#imgBox li div{position:absolute;top:0;}
+			#imgBox img{width:60px;height:80px;}
+			#test{position:absolute;left:400px;top:200px;width:100px;height:100px;background:#f00;}
+		</style>
+		<script>
+			window.onload=function(){
+				/*var oBox=document.getElementById("box");
+				getTime(oBox);*/
+				setInterval(function(){
+					getTime();
+				},1000);
+			}
+			function doMove(obj,attr,step,target,intervalTime,nextFn){
+				step = parseInt(getStyle(obj,attr)) > target ? -step : step;
+				clearInterval(doMove.timer);
+				doMove.timer=setInterval(function(){
+					var origin=parseInt(getStyle(obj,attr))+step;
+					if(origin>target && step>0 || origin<target && step<0){
+						origin=target;
+					}
+					obj.style[attr]=origin+'px';
+					if(origin==target){
+						clearInterval(doMove.timer);
+						nextFn && nextFn();
+					}
+				},intervalTime);
+			}
+			function getStyle(obj,attr){
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+			}
+			function firNum(fir){
+				return fir<10 ? '0'+fir : ''+fir;
+			}
+			
+			function getTime(obj){
+				var oImgBox=document.getElementById("imgBox");
+				var oLi=oImgBox.getElementsByTagName('li');
+				var myTime=new Date();
+				var myHours=myTime.getHours();
+				var myMin=myTime.getMinutes();
+				var mySec=myTime.getSeconds();
+				var str=firNum(myHours)+'：'+firNum(myMin)+'：'+firNum(mySec);
+				//obj.innerHTML=str;
+				for(var i=0;i<oLi.length;i++){
+					fnLi(oLi[i],i)
+				}
+				function fnLi(ali,this_index){
+					var oDiv=ali.getElementsByTagName('div')[0];
+					var oImg=ali.getElementsByTagName('img');
+					 
+					if (str.charAt(this_index) == '：'){
+						oImg[0].src = 'img/colon.jpg';
+						setTimeout(function(){
+							oImg[0].src = 'img/colon.jpg';
+						}, 500)
+					} else {
+						oImg[1].src=' img/' + str.charAt(this_index) +'.jpg';
+						if(oImg[0].src != oImg[1].src){ 
+							doMove(oDiv,'top',30,-85,100,function(){
+								oImg[0].src = oImg[1].src;
+								oDiv.style.top = 0 + 'px';
+							})
+						}
+					}
+				}
+			};
+		</script>	
+	</head>
+	<body>
+		<div id='box' style='background:#f00;font-size:30px;color:#fff;margin:20px;'></div>
+		<ul id='imgBox'>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/colon.jpg' alt=''/>
+					<img src='img/colon.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/colon.jpg' alt=''/>
+					<img src='img/colon.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+		</ul>
+	<!--	<div id='test'></div>-->
+	</body>
+</html>
+

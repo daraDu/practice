@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒计时</title>
+		<style>
+			#imgBox img{width:60px;}
+		</style>
+		<script>
+			window.onload=function(){
+				//现在的时间（不确定）
+				//未来确定的时间
+				// 天：Math.floor(t/86400)
+				// 时：Math.floor(t%86400/3600)
+				// 分：Math.floor(t%86400%3600/60)
+				// 秒：t%60
+				function tCounts(){
+					var	tNow = new Date(),
+						tFix = new Date(2018,4,9,15,21,0),//年，月，日，时，分，秒
+						t = Math.floor((tFix -tNow)/1000),//毫秒----秒
+						tDay=0,tHours=0,tMin=0,tSec=0;
+					if(t > 0){
+						tDay = Math.floor(t/86400)
+						tHours = Math.floor(t%86400/3600)
+						tMin = Math.floor(t%86400%3600/60)
+						tSec = t%60
+					}else{
+						alert('已超过所设时间')
+					}
+					var tCount = tDay+'天'+tHours+'小时'+tMin+'分'+tSec+'秒';
+					var oBody = document.body;
+					oBody.innerHTML=tCount;
+				};
+				tCounts();
+				setInterval(tCounts,1000)
+			}		
+		
+		</script>	
+	</head>
+	<body>
+		
+	</body>
+</html>
+

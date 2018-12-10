@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>点击往下掉，再点击飘回来</title>
+<script src="miaov.js"></script>
+</head>
+<script>
+	window.onload=function(){
+		var html ="";
+		for(var i=0; i < 20; i++){
+			html += '<div style="width:50px;height:50px;background:#f00;position:absolute;top:10px;left:'+60*i+'px">'+i+'</div>'
+		}
+		document.body.innerHTML=html;
+		var oDiv=document.getElementsByTagName("div");
+		var lists=oDiv.length;
+		var num=0;
+		var nowP=true;
+		document.onclick=function(){
+			if(nowP){
+				upOn(300)
+				nowP=false;
+			}else{
+				upOn(30);
+				nowP=true;
+			}	
+		};
+		
+		function upOn(endPoint){
+			var flag;
+			if(flag){return}
+			flag=true;
+			clearInterval( timer );
+			var timer = setInterval( function (){
+				doMove( oDiv[num], 'top', 23, endPoint);
+				num ++;
+				if ( num === lists ) {
+					clearInterval( timer );
+					num =0;
+					flag=false;
+				}
+			}, 100 );
+			
+		}
+	}
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02商品价格计算</title>
+		<style>
+			body{font-size:18px;}
+			button{width:50px;height:30px;font-size:20px;}
+			li{margin-top:10px;}
+			strong{margin:0 4px;}
+		</style>
+		<script>
+			window.onload=function(){
+			/*
+				思路：1、先用函数传参将+、-效果做出来
+				2、共计多少件，计算鼠标点击次数，先定义一个变量为0，点击+，就++，点击-就--
+				3、共花费多少钱，把所有商品的小计加在一起
+				4、最贵的商品，将买的商品放在一个数组中，比较出这个数组的最大值
+			*/
+				var oList=document.getElementById("list");
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>10元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>8元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>12.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>7.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>52.5元</em>，
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong>0</strong>
+				<button>+</button>
+				单价：<em>70.5元</em>，
+				小计：<span>0元</span>
+			</li>
+		</ul>
+		<div id="botAll">
+			商品合计共：<span>0件</span>，共花费了：<i>0元</i><br/>
+			其中最贵的商品单价是：<em>0元 </em>
+		</div>
+	</body>
+</html>
+

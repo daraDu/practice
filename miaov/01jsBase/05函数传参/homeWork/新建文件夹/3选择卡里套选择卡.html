@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04作业选择卡里套选择卡</title>
+		<style>
+			body{font-size:14px;}
+			*{padding:0;margin:0;}
+			ul,li{list-style:none;}
+			#box{margin:50px 300px;height:415px;width:800px;position:relative;background:yellow url("../../images/loader_ico.gif") no-repeat center center;}
+			#box #leftList {float:left;}
+			#box #leftList li{width:100px;height:100px;background:#CC99CC;margin-bottom:5px;text-align:center;line-height:100px;}
+			#box #leftList .active{background:#CCCCFF}
+			
+			#box div{background:#f00;width:699px;height:415px;float:left;margin-left:1px;display:none;}
+			#box .show{display:block;}
+			#box div img{width:700px;height:415px;}
+			#box div ul{position:absolute;bottom:0;left:100px;width:705px;z-index:1;}
+			#box div ul li{float:left;margin-right:2px;height:30px;background:rgba(0,0,0,0.6);text-align:center;line-height:30px;color:#fff;}
+			#box div ul .on{background:rgba(160,0,0,0.6)}
+		</style>
+		<script>
+			/*','','','
+				思路：点击左边，将右边对应位置的div显示，其他隐藏
+					  点击下边，图片进行切换
+			*/
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				//var oUlLeft=oBox.getElementsByTagName("ul")[0];
+				var oLeftList=document.getElementById("leftList");
+				var oLiL=oLeftList.getElementsByTagName("li");
+				var oLiLs=oLiL.length;
+				var oDiv=oBox.getElementsByTagName("div");
+				var imgArry01=['../../images/tab11.jpeg','../../images/tab09.jpeg','../../images/tab12.jpg','../../images/tab13.jpg'];
+				var imgArry02=['../../images/tab01.png','../../images/tab03.jpeg','../../images/tab02.jpeg'];
+				var imgArry03=['../../images/tab08.jpg','../../images/tab07.jpg'];
+				var imgArry04=['../../images/tab04.jpeg','../../images/tab05.png','../../images/two01.jpg','../../images/tab09.jpeg','../../images/two02.jpg'];
+				
+				for(var i=0;i<oLiLs;i++){//左侧
+					oLiL[i].index=i;
+					oLiL[i].onclick=function(){
+						for(var i=0;i<oLiLs;i++){
+							oDiv[i].className="";
+							oLiL[i].className="";
+						}
+						oDiv[this.index].className='show';
+						this.className='active';
+					}
+				}
+				tabFn(imgArry01,0);
+				tabFn(imgArry02,1);
+				tabFn(imgArry03,2);
+				tabFn(imgArry04,3);
+				function tabFn(imgArry,num){
+					var oUlRight=oDiv[num].getElementsByTagName("ul")[0];
+					var oLiR=oUlRight.getElementsByTagName("li");
+					var oImg=oBox.getElementsByTagName("img")[num];
+					for(var j=0;j<oLiR.length;j++){//下边
+						oLiR[j].index=j;
+						oLiR[j].onmouseover=function(){
+							for(var j=0;j<oLiR.length;j++){
+								oLiR[j].className="";
+							}
+							this.className='on';
+							oImg.src=imgArry[this.index]
+						}
+						oLiR[j].style.width=98/oLiR.length+'%';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="leftList">
+				<li class="active">皮卡丘啾啾啾</li>
+				<li>小龙马萌萌哒</li>
+				<li>小女孩美美哒</li>
+				<li>杂牌军蠢蠢哒</li>
+			</ul>
+			<div class="show">
+				<img src="../../images/tab11.jpeg" />
+				<ul>
+					<li class="on">皮卡丘111</li>
+					<li>皮卡丘222</li>
+					<li>皮卡丘333</li>
+					<li>皮卡丘444</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab01.png"/>
+				<ul>
+					<li class="on">龙马1</li>
+					<li>龙马2</li>
+					<li>龙马3</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab08.jpg"/>
+				<ul>
+					<li class="on">小女孩001</li>
+					<li>小女孩002</li>
+				</ul>
+			</div>
+			<div>
+				<img src="../../images/tab04.jpeg"/>
+				<ul>
+					<li class="on">蠢蠢哒001</li>
+					<li>蠢蠢哒002</li>
+					<li>蠢蠢哒003</li>
+					<li>蠢蠢哒004</li>
+					<li>蠢蠢哒005</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+

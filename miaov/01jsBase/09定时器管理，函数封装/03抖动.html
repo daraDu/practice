@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抖动</title>
+		<style>
+			.box{padding:0;margin:0;position:relative;background:#f00;width:100px;height:100px;}
+			img:nth-of-type(1){width:150px;position:absolute;top:50px;left:50px;}
+			img:nth-of-type(2){width:180px;position:absolute;top:50px;left:300px;}
+		</style>
+		<script src='miaov.js'></script>
+		<script>
+			window.onload=function(){
+				var oImg=document.getElementsByTagName("img");
+				
+				oImg[0].onclick=fnShake;
+				oImg[1].onclick=fnShake;
+				function fnShake(){
+					var _this=this;
+					doShake(_this,'left',function(){
+						doShake(_this,'top');
+					});
+				};
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<img src='images/1.jpg'/>
+		<div style='width:100px;height:100px;background:#f00;position:relative;top:50px;left:192px;'></div>
+		<img src='images/2.jpg'/>
+	</body>
+</html>
+

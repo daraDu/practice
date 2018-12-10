@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>事件取消</title>
+<style>
+</style>
+<script>
+window.onload = function() {
+	/*
+		事件绑定
+			ie7/8  attachEvent
+		   标准浏览器 addEventListener(事件名称，事件函数，是否捕获)
+			
+		事件取消：
+		1、document.onclick=null
+		2、ie7/8   detachEvent
+		   标准浏览器 removeEventListener
+		   
+	*/
+	/*function fn1(){
+		alert(1)
+	}
+	document.onclick=fn1;
+	document.onclick=null;*/
+	
+	function fn1(){
+		alert(1)
+	}
+	function fn2(){
+		alert(2)
+	}
+	/*document.attachEvent("onclick",fn1)
+	document.attachEvent("onclick",fn2)
+	document.detachEvent("onclick",fn1)*/
+	
+	document.addEventListener("click",fn1,false)
+	document.addEventListener("click",fn1,true)
+	document.addEventListener("click",fn2,false)
+	document.removeEventListener("click",fn1,false)
+}
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+

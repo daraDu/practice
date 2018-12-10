@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>属性操作注意事项</title>
+		<script  src="js/jquery-2.1.1.min.js" ></script>
+		<style>
+			body{background:#fff;color:#000;font-size:14px;font-weight:normal;font-family: "Times New Roman", Times, serif,Arial;}
+			*{padding:0;margin:0;}
+			ul,ol{list-style:none;}
+			#red,#yellow{width:50px;height:50px;margin:5px;border:5px solid #000;}
+			#red{background:#f00;}
+			#yellow{background:yellow;}
+		</style>
+		<script>
+			window.onload=function(){
+				fonts()
+				//ifThing()
+				//exchange()
+			}
+			
+			function fonts(){//点击按钮，改变字体大小
+				var ofont=document.getElementById("font");
+				var oBtn=document.getElementsByTagName("input");
+				var num=14;
+				oBtn[0].onclick=function(){
+					if(num>=22){
+						num=22;
+					}else{
+						num+=2;
+					}
+					ofont.style.fontSize=num+'px';
+				}
+				oBtn[1].onclick=function(){
+					if(num<=12){
+						num=12;
+					}else{
+						num-=2;
+					}
+					ofont.style.fontSize=num+'px';
+				}
+				
+			}
+			function ifThing(){//不能拿来做if判断条件
+				//所有相对路径 本地地址
+				//src 相对路径  本地地址    （http://www.baidu.com/1.png   这个地址可以）
+				
+				//颜色值 ：color：#f00  red  rgb(250,0,0)  不可以
+				var oifJude=document.getElementById("ifJude");
+				if(oifJude.innerHTML=="if条件判断"){
+					alert("我是红色")
+				}
+			}
+			function exchange(){
+				var oE1=document.getElementById("exchange1");
+				var oE2=document.getElementById("exchange2");
+				oE1.onclick=function(){
+					oE1.style.display='none';
+					oE2.style.display='block';
+				}
+				var oBtn=document.getElementById("btn");
+				var oRed=document.getElementById("red");
+				var oYellow=document.getElementById("yellow");
+				oBtn.onclick=function(){
+					oRed.style.float="left";
+					oYellow.style.float="left";
+				}
+			}
+			
+		//	function(){
+				//[]的使用
+				//.后面的值不可以改变
+				//[]里的内容可以改
+				//.可以换成[]
+				
+		//	}
+			
+		</script>
+	</head>
+	<body>
+		<div style="margin:20px 50px;">
+			<p id="font">如果世界曾经给我们留下了些什么，那就是数不尽的知识。人脑的潜能是无穷无尽的，一个正常人的大脑大约只开发了百分之五到百分之十，剩下的一大部分都处于休眠状态。人的一生是有限的，我们要在有限的生命中，通过多读书去创造无限的价值，实现自己的人生价值，为社会发展出一份力。</p>
+			<input type="button" value="增大"/>
+			<input type="button" value="缩小"/>
+			
+			<!--<p style="color:#f00" id="ifJude">if条件判断</p>
+			<input type="button" style="width:50px;height:50px;"id="exchange1"/>
+			<input type="checkBox" style="width:50px;height:50px;display:none;"id="exchange2"/>
+			
+			<button id="btn">点击</button>
+			<div id="red"></div>
+			<div id="yellow"></div>-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片时钟实例滚动</title>
+		<style>
+			ul,li{list-style:none;}
+			*{margin:0;padding:0}
+			#imgBox{margin:50px;}
+			#imgBox li{display:inline-block;width:60px;height:80px;position:relative;}
+			#imgBox li div{position:absolute;top:0;left:0;}
+			#imgBox img{width:60px;height:80px;border:0;}
+			
+		</style>
+		<script>
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var oImgBox = document.getElementById("imgBox");
+				var aLi=oImgBox.getElementsByTagName("li");
+				
+				var otest = document.getElementById("test");
+				setInterval(getTime,1000);
+				
+				function getTime(){
+					var myTime = new Date(),
+					    myYear = myTime.getFullYear(),
+					    myMonth = myTime.getMonth()+1,
+					    myDate = myTime.getDate(),
+					    myDay = myTime.getDay(),
+					    myHour = myTime.getHours(),
+						myMin = myTime.getMinutes(),
+						mySec = myTime.getSeconds();
+					if(myDay=='0') myDay='周日';
+					if(myDay=='1') myDay='周一';
+					if(myDay=='2') myDay='周二';
+					if(myDay=='3') myDay='周三';
+					if(myDay=='4') myDay='周四';
+					if(myDay=='5') myDay='周五';
+					if(myDay=='6') myDay='周六';
+					var str = myYear +'年'+myMonth+'月'+myDate+'日 '+myDay+' '+stNum(myHour)+' : '
+							  +stNum(myMin)+' : '+stNum(mySec);
+					var str2 = stNum(myHour)+':'+stNum(myMin)+':'+stNum(mySec);
+				//	oBox.innerHTML = str;
+					
+					for(var i=0;i<aLi.length;i++){
+						liList(aLi[i],i)
+					};
+				
+					function liList(lis,this_index){
+						var aDiv = lis.getElementsByTagName('div')[0],
+						aImg = lis.getElementsByTagName('img');
+						
+						if(str2.charAt(this_index) == ':'){
+							aImg[0].src = 'img/colon.JPG';
+						}else{
+							aImg[1].src='img/'+str2.charAt(this_index)+'.jpg';
+							if(aImg[0].src!=aImg[1].src){
+								doMove(aDiv,'top',20,-84,180,function(){
+									aImg[0].src=aImg[1].src;
+									aDiv.style.top=0+'px';
+								})
+							}
+						};	
+					
+					}
+					
+				};
+				
+				function stNum(st){
+					return st<10 ? '0'+st : ''+st;
+				};
+				function doMove(obj,attr,step,target,intervalTime,nextFn){
+					step = parseInt(getStyle(obj,attr)) > target ? -step : step;
+					clearInterval(doMove.timer);
+					doMove.timer=setInterval(function(){
+						var origin = parseInt(getStyle(obj,attr)) + step;
+						if(origin > target && step>0 || origin < target && step<0){
+							origin=target;
+						};
+						obj.style[attr]=origin+'px';
+						if(origin==target){
+							clearInterval(doMove.timer);
+							nextFn && nextFn();
+						};
+					},intervalTime)
+				};
+				function getStyle(obj,attr){
+					return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+				};
+			}
+		</script>	
+	</head>
+	<body>
+		<div id='box' style='background:#f00;font-size:30px;color:#fff;margin:20px;'></div>
+		<div id='test'></div>
+		<ul id='imgBox'>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src='img/0.jpg' alt=''/>
+					<img src='img/0.jpg' alt=''/>
+				</div>
+			</li>
+		</ul>
+	<!--	<div id='test'></div>-->
+	</body>
+</html>
+

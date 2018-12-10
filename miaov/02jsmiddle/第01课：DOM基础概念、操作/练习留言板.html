@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>留言板</title>
+		<style>
+			
+		</style>
+		<script>
+			window.onload=function(){
+				var oText = document.getElementsByTagName("input")[0];
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oUl = document.getElementById("oUl");
+				oBtn.onclick=function(){
+					var oLi = document.createElement("li");
+					oLi.innerHTML=oText.value+'<a href="javascript:;" id="oDel">删除</a>';
+					oUl.insertBefore(oLi,oUl.children[0]);
+					oText.value="";
+					var oDel = document.getElementById("oDel");
+					oDel.onclick=function(){
+						oUl.removeChild(this.parentNode)
+					}
+					if(oUl.children.length>5){
+						oUl.removeChild(oUl.children[5])
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type='text'/>
+		<button>留言</button>
+		<ul id='oUl'>
+		</ul>
+	</body>
+</html>

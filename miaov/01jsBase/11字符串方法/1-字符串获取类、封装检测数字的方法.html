@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> 1-字符串获取类、封装检测数字的方法</title>
+		<script>
+			window.onload=function(){
+				//str.charAt(index)某个字符串取得具体的字符
+				//str.charCodeAt(index)可返回指定位置的字符的 Unicode 编码
+				var str = "0123456789";// 0~9  (48~57)
+				console.log('0:'+str.charCodeAt(0)+'--1:'+str.charCodeAt(1)+'--2:'+str.charCodeAt(2)+'--3:'+str.charCodeAt(3)+'--4:'
+					+str.charCodeAt(4)+'--5:'+str.charCodeAt(5)+'--6:'+str.charCodeAt(6)+'--7:'+str.charCodeAt(7)+'--8:'
+					+str.charCodeAt(8)+'--9:'+str.charCodeAt(9));
+					
+				var str3 = "ABCDEFGHIGKLMNOPQRSTUVWXYZ";//A~Z	(65~90)
+				console.log('a:'+str3.charCodeAt(0)+'--b:'+str3.charCodeAt(1)+'--c:'+str3.charCodeAt(2)+'--d:'+str3.charCodeAt(3)+'--e:'
+					+str3.charCodeAt(4)+'--f:'+str3.charCodeAt(5)+'--g:'+str3.charCodeAt(6)+'.....--x:'+str3.charCodeAt(23)+'--y:'
+					+str3.charCodeAt(24)+'--z:'+str3.charCodeAt(25));
+					
+				var str2 = "abcdefghigklmnopqistuvwxyz";//a~z	(97~122)
+				console.log('a:'+str2.charCodeAt(0)+'--b:'+str2.charCodeAt(1)+'--c:'+str2.charCodeAt(2)+'--d:'+str2.charCodeAt(3)+'--e:'
+					+str2.charCodeAt(4)+'--f:'+str2.charCodeAt(5)+'--g:'+str2.charCodeAt(6)+'.....--x:'+str2.charCodeAt(23)+'--y:'
+					+str2.charCodeAt(24)+'--z:'+str2.charCodeAt(25));
+				
+				var oInput = document.getElementsByTagName('input')[0];
+				var aInputVal=oInput.value;
+				var oBtn = document.getElementsByTagName('button')[0];
+				oBtn.onclick=function(){
+					if(judgeNum(aInputVal)){
+						alert( '恭喜，'+ aInputVal +'全是数字' );
+					} else {
+						alert('输入有误');
+					}
+				}
+				
+				function judgeNum(str){
+					var n=0;
+					for(var i=0;i<str.length;i++){
+						n=str.charCodeAt(i);
+						if (48 > n || n > 57){
+							return false;
+						};
+					};
+					return true;
+				}
+			};
+		</script>	
+	</head>
+	<body>
+		<p>检测数字</p>
+		<input type='text' value='' name='num'/>
+		<button>检测</button>
+	</body>
+</html>
+

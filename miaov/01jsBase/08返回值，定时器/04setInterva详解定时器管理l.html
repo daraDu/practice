@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04setInterva详解定时器管理</title>
+		<style>
+			body{background:url(images/sina.png) no-repeat center 0;text-align:center; }
+			
+		</style>
+		<div style="display:none;position:relative;">
+			<img src='images/ad.png'/>
+			<p style="font-size:26px;color:#f00;position:absolute;top:-20px;right:41%;cursor:pointer;">x</p>
+		</div>
+		
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				/*
+				 	定时器：时间概念
+					var timer=setInterval(函数,毫秒) 设置时间//重复执行
+					clearInterval(setInterval(函数,毫秒))--->clearInterval(timer)//清除
+					
+					var timer2=setTimeout(函数,毫秒)  设置时间//只执行一次
+					clearTimeout(timer2)//清除
+				*/
+					var oAd=document.getElementsByTagName("div")[0];
+					var oClose=document.getElementsByTagName('p')[0];
+					var timer = setTimeout(function(){
+									oAd.style.display='block';
+								},1000);
+					oClose.onclick=function(){
+						oAd.style.display='none';						
+					}
+				//	clearTimeout(timer)
+			
+			}
+			
+		</script>
+	</body>
+</html>
+

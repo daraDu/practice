@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js作用域妙味课堂</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;margin:10px auto;width:500px;height:auto;}
+			li{width:500px;height:30px;}
+		</style>
+		<script>
+			window.onload=function(){
+			
+				var lis=document.getElementsByTagName("li");
+				var colorArry=["red","blue","yellow"];
+				var colorLength=Number(colorArry.length)
+				var lisLength=lis.length;
+				for(var i=0;i<lisLength;i++){
+					/*if(i%colorLength==0){
+						lis[i].style.background=colorArry[0];
+					}else if(i%colorLength==1){
+						lis[i].style.background=colorArry[1];
+					}else if(i%colorLength==2){
+						lis[i].style.background=colorArry[2];
+					}*/
+					var oldColor;
+					lis[i].style.background=colorArry[i%colorLength];
+					lis[i].onmouseover=function(){
+						oldColor=this.style.background;
+						this.style.background="#888";
+						
+					}
+				
+					lis[i].onmouseout=function(){
+						this.style.background=oldColor;
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>
+

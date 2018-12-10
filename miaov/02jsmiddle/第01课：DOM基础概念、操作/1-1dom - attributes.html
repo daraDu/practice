@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>dom</title>
+		<style>
+			.box{
+				margin:20px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oUl = document.getElementById("oUl");
+				
+				//alert(oUl.attributes[0].name)
+				//.childNodes()
+				/*for(var i = 0; i<oUl.childNodes.length; i++){
+					if(oUl.childNodes[i].nodeType == 1){//判断是否为元素节点，排除文本节点
+						oUl.childNodes[i].style.background="#f00";
+					}
+				}*/
+				//.children()
+				for(var i=0;i<oUl.children.length;i++){//推荐使用 .children()
+					oUl.children[i].style.background = "#f00";
+				};
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class='box'>
+			<input id='oInput' type='text' value=''/>
+			<button>发送</button>
+			<ul id='oUl' class='aa'>
+				<li>1111111111</li>
+				<li>2222222222</li>
+				<li>3333333</li>
+				<li>444444444</li>
+			</ul>
+		</div>
+	</body>
+</html>

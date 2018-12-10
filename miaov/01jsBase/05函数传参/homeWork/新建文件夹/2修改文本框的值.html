@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>03修改文本框里的值</title>
+		<style>
+			body{font-size:18px;}
+			*{padding:0;margin:0;}
+			ul,li{list-style:none;}
+			#list{margin:0 100px;}
+			h4{background:#6BA542;color:#fff;width:300px;height:50px;margin:0 100px;line-height:50px;text-indent:50px;}
+			#list li{width:300px;height:50px;background:#FDF2F3F3;line-height:50px;border-bottom:1px solid #BDDEDE;}
+			#list li:last-child{border:none;}
+			#list li p{float:left;margin-left:65px;}
+			#list li img{cursor:pointer;float:left;margin-top:15px;}
+			.none{display:none;}
+			#list li input{float:left;margin:10px 8px 0 25px;width:120px;height:30px;border:1px solid red;background:#fff;font-size:16px;}
+			#list li button{background:none;border:none;padding:3px 8px;cursor:pointer;float:left;margin-top:12px;}
+			#list li button:hover{background:pink;}
+		</style>
+		<script>
+		/*
+			思路：1、点击图片原有的文本内容和图片隐藏
+				  2、点击取消，文本框和取消，保存按钮隐藏。原有内容不变
+				  3、点击保存，原有内容换成文本框编辑的内容
+		*/
+			window.onload=function(){
+				var oList=document.getElementById("list");
+				var oLi=oList.getElementsByTagName("li");
+				var oLis=oLi.length;
+				for(var i=0;i<oLis;i++){
+					fnTab(oLi[i])
+				}
+				function fnTab(oLi){
+					var oDiv=oLi.getElementsByTagName("div");
+					var oImg=oLi.getElementsByTagName("img")[0];
+					var oP=oLi.getElementsByTagName("p")[0];
+					var oText=oLi.getElementsByTagName("input")[0];
+					var oBtn=oLi.getElementsByTagName("button");
+					function newFn(){
+						oDiv[0].style.display='none';
+						oDiv[1].style.display='block';
+					}
+					function oldFn(){
+						oDiv[0].style.display='block';
+						oDiv[1].style.display='none';
+					}
+					oImg.onclick=function(){
+						newFn()
+					}
+					oBtn[0].onclick=function(){
+						oldFn()
+					}
+					oBtn[1].onclick=function(){
+						oP.innerHTML=oText.value;
+						oldFn()
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<h4>分类名称</h4>
+		<ul id="list">
+			<li>
+				<div>
+					<p>远程课堂111</p>
+					<img src="../../images/change.png"/>
+				</div>
+				<div class="none">
+					<input/>
+					<button>取消</button>
+					<button>保存</button>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>远程课堂111</p>
+					<img src="../../images/change.png"/>
+				</div>
+				<div class="none">
+					<input/>
+					<button>取消</button>
+					<button>保存</button>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>远程课堂111</p>
+					<img src="../../images/change.png"/>
+				</div>
+				<div class="none">
+					<input/>
+					<button>取消</button>
+					<button>保存</button>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>
+

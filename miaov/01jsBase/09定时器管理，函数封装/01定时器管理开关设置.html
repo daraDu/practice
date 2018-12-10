@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器管理开关设置</title>
+		<style>
+			.box{padding:0;margin:0;position:absolute;top:50px;left:50px;background:#f00;width:100px;height:100px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oBtn=document.getElementsByTagName("input");
+				var oBox=document.getElementsByTagName("div")[0];
+				//var timer=null;
+				var step=null;
+				function moveFn(stepAll,stepFn,stepNum){
+					clearInterval(oBox.timer);//null未定义
+					oBox.timer=setInterval(function(){
+						step = parseInt(getStyle(oBox,'left'))+stepAll;
+						stepFn();
+						oBox.style.left=step+'px';
+						if(step==stepNum){
+							clearInterval(oBox.timer)
+						}
+					},50);	
+				}
+				oBtn[0].onclick=function(){//向后
+					moveFn(-13,function(){
+						if(step<=50){
+							step=50;
+						}
+					},50);
+				}
+				oBtn[1].onclick=function(){//向前
+					moveFn(13,function stepFn(){
+						if(step>=400){
+							step=400;
+						}
+					},800);
+				}
+				function getStyle(obj,attr){
+					if(obj.currentStyle){
+						return obj.current[attr];
+					}else{
+						return getComputedStyle(obj)[attr];
+					}
+				};
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type='button' value='向后'/>
+		<input type='button' value='向前'/>
+		<div class='box'></div>
+	</body>
+</html>
+

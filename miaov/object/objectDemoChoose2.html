@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象案例：选项卡22</title>
+		<style>
+			#div1 input{height:30px;line-height:30px;}
+			#div1 div{width:160px;height:200px;border:1px solid #000;display:none;}
+			.on{background:#0f0}
+		</style>
+	</head>
+	<body>
+	<script>
+		//面向方法
+		/*window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			var aBtn=oDiv.getElementsByTagName('input');
+			var aDiv=oDiv.getElementsByTagName('div');
+			for(var i=0;i<aBtn.length;i++){
+				aBtn[i].index=i;//模拟下标
+				aBtn[i].onclick=function(){
+					for(var i=0;i<aBtn.length;i++){
+						aBtn[i].className='';
+						aDiv[i].style.display='none';
+					};
+					this.className='active';
+					aDiv[this.index].style.display='block'
+				}
+			}
+		}*/
+	//②、改写：不要有函数嵌套，可以有全局变量
+		//③、onload（初始化函数）-->构造函数（初始化对象）
+		//	全局变量——》属性
+		//	函数——》方法
+		window.onload=function(){//构造函数
+			var oTab=new TabSwitch('div1');
+		};
+		function TabSwitch(id){//属性
+			var aDiv=document.getElementById(id);
+			this.oBut=aDiv.getElementsByTagName("input");//将全局变量变成属性
+			this.oDiv=aDiv.getElementsByTagName("div");
+			//这个函数里的this代表函数TabSwitch
+			for(var i=0;i<this.oBut.length;i++){
+				this.oBut[i].index=i;
+				var oTabThis=this
+				this.oBut[i].onclick=function(){//这个函数里的this代表那个button按钮
+					oTabThis.tab(this)
+				}
+			}
+		};
+		TabSwitch.prototype.tab=function(aBut){//方法
+			for(var i=0;i<this.oBut.length;i++){
+				this.oBut[i].className='';
+				this.oDiv[i].style.display='none';
+			};	
+	//this.className='on';//这个this本意是要求要那个被点击的按钮，但是这里面的this是一个对象tabSwitch;
+			aBut.className='on';
+			this.oDiv[aBut.index].style.display='block';
+		}
+	</script>
+	<div id="div1">
+		<input type="button" value='1111'/>
+		<input type="button" value='2222' class="on"/>
+		<input type="button" value='3333'/>
+		<div>111111</div>
+		<div style="display:block">222222</div>
+		<div>333333</div>
+	</div>
+	</body>
+</html>

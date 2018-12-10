@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>return</title>
+		<style>
+		</style>
+		<script>
+			window.onload=function(){
+			/*	alert(f1(1,5));//1,2,3,4,5
+				function f1(a,b){
+					var arr=[];
+					for(var i=a;i<=b;i++){
+						arr.push(i)
+						console.log(i)
+					}
+					return arr;
+				}*/
+				
+				document.onclick=f1;//1,2,3,4,5
+				var flag=true;
+				var point=true;
+				function f1(){
+					if(!flag){
+						return ;
+					}
+					if(point){
+						flag=false;
+						//console.log(00);
+						alert(flag)
+						point=false;
+					}else{
+						//console.log(11);
+						alert(1)
+						point=true;
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+

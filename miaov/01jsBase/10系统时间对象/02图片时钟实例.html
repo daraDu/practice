@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片时钟实例</title>
+		<style>
+			#imgBox img{width:60px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				getTime(oBox);
+				setInterval(function(){
+					getTime(oBox);
+				},1000);
+				
+			}		
+			function firNum(fir){
+				return fir<10 ? '0'+fir : ''+fir;
+			}
+			function getTime(obj){
+				var oImgBox=document.getElementById("imgBox");
+				var oImg=oImgBox.getElementsByTagName('img');
+				var myTime=new Date();
+				var myHours=myTime.getHours();
+				var myMin=myTime.getMinutes();
+				var mySec=myTime.getSeconds();
+				var str=firNum(myHours)+'：'+firNum(myMin)+'：'+firNum(mySec);
+				obj.innerHTML=str;
+				for(var i=0;i<str.length;i++){
+					oImg[i].src='img/'+str.charAt(i)+'.jpg';
+					if(str.charAt(i)==='：'){
+						oImg[i].src='img/colon.jpg';
+					};
+				};
+			};
+		</script>	
+	</head>
+	<body>
+		<div id='box' style='background:#f00;font-size:30px;color:#fff;margin:20px;'></div>
+		<div id='imgBox'>
+			<img src='img/0.jpg'/>
+			<img src='img/0.jpg'/>
+			<img src='img/colon.jpg'/>
+			<img src='img/0.jpg'/>
+			<img src='img/0.jpg'/>
+			<img src='img/colon.jpg'/>
+			<img src='img/0.jpg'/>
+			<img src='img/9.jpg'/>
+		</div>
+	</body>
+</html>
+

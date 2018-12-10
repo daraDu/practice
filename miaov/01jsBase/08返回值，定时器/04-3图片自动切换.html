@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04setInterva详解定时器管理</title>
+		<style>
+			#box{width: 360px;height: 420px;margin: 50px 600px;position:relative ;}
+			p{background: rgb(0,0,0,0.5);width: 100%;height: 40px;position:absolute;
+			  color: #fff;text-align: center;line-height: 40px;top: -15px;}
+			.topText{}
+			/*.botText{bottom: -15px;}*/
+			.botPoint{position:absolute;bottom: 15px;right: 36%;}
+			.botPoint li{width: 20px;height: 20px;border-radius: 10px;
+			background: rgb(0,0,0,0.5);list-style: none;float: left;margin-left: 16px;
+			cursor: pointer;}
+			.botPoint .on{background: rgba(255,0,0,0.8);}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p class="topText">加载中，请稍等</p>
+			<img src="" width="360" height="420" style='cursor:pointer;'/>
+			<!--<p class="botText">当前是第一张</p>-->
+			<ul class='botPoint'>
+				
+			</ul>
+		</div>
+		<script>
+			window.onload=function(){
+				var oBox=document.getElementById('box');
+				var oTop=oBox.getElementsByTagName('p')[0];
+				var oBottom=oBox.getElementsByTagName('ul')[0];
+				var aList=oBox.getElementsByTagName('li');
+				var oImg=oBox.getElementsByTagName('img')[0];
+				var imgArray=["../../images/1.jpg","../../images/2.jpg","../../images/3.jpg",
+				"../../images/4.jpg",];
+				var imgLength=imgArray.length;
+				var num=0;
+				for(var i=0;i<imgLength;i++){
+					oBottom.innerHTML += '<li></li>'
+				}
+				function fnTab(){
+					for(var i=0;i<imgLength;i++){
+						aList[i].className='';
+					}
+					oTop.innerHTML=num+1+'/'+imgLength;//上面的1/4
+					aList[num].className='on';
+					oImg.src=imgArray[num];
+				}
+				fnTab();
+				var timer=null;
+				function autoPlay(){
+					timer=setInterval(function(){
+						fnTab();
+						num++;
+						if(num==imgLength){
+							num=0;
+						}
+					},1000);
+				}
+				autoPlay();
+				oBox.onmouseover=function(){
+					clearInterval(timer)
+				};
+				oBox.onmouseout=autoPlay;
+				
+				for(var i=0;i<imgLength;i++){
+					aList[i].index=i;
+					aList[i].onclick=function(){
+						num=this.index;
+						fnTab();
+					}
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>
+

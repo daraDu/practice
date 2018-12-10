@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>回到顶部</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	.box{
+		background:#ff0;
+		height:3200px;
+		width:100%;
+		position:relative;
+	}
+	.box button{
+		position:absolute;
+		bottom:10px;
+		right:10px;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var oBtn = document.getElementsByTagName("button")[0];
+		oBtn.onclick=function(){
+			document.body.scrollTop=document.documentElement.scrollTop =0;
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div class='box'>
+		111111
+		<button>回到顶部</button>
+	</div>
+</body>
+</html>
+

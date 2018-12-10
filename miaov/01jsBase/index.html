@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>js案例</title>
+		<style>
+			*{padding:0;margin:0;}
+			body{background:#fff;color:#000;font-size:14px;font-family:'微软雅黑';font-weight:normal;}
+			ul,li{list-style:none;}
+			a{text-decoration:none;color:#444;}
+			a:hover{color:green;}
+			.box{width:180px;margin:50px auto;}
+			.listBox{border:1px solid #777;text-align:center;}
+			
+			.listBox h4{background:#f00;color:#fff;border-bottom:1px solid #999}
+			.listBox li li{border-bottom:1px dotted #000;overflow:hidden;}
+			.listBox li li,.listBox h4{height:30px;line-height:30px;cursor:pointer;}
+			.listBox ul{display:none}
+			.listBox .active{background:yellow;height:30px;line-height:30px;cursor:pointer;color:#000;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oTit=document.getElementsByTagName("h4");
+				var oCont=document.getElementsByClassName("cont");
+				for(var i=0;i<oTit.length;i++){
+					oTit[i].index=i;
+					oTit[i].onclick=function(){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+						for(var i=0;i<oTit.length;i++){
+							if(this.index!=i){
+								oCont[i].style.display="none";
+								oTit[i].className='';
+							}
+						}
+						
+						if(this.className=='active'){
+							oCont[this.index].style.display="none";
+							this.className=''
+						}else{
+							oCont[this.index].style.display="block";
+							this.className='active'
+						}
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<h3 style="margin:0 0 10px -30px;">js基础</h3>
+			<ul class="listBox">
+				<li>
+					<h4>01js属性操作</h4>
+					<ul class="cont">
+						<li><a href="01attribute/discuz.html" target="_blank">Discuz!.html</li>
+						<li><a href="01attribute/4imgChange.html" target="_blank">点击按钮图片切换</a></li>
+						<li><a href="01attribute/5infoSend.html" target="_blank">模拟短信发送</a></li>
+					</ul>
+					
+				</li>
+				<li>
+					<h4>02for循环</h4>
+					<ul class="cont">
+						<li><a href="02for循环/01for循环V字特效.html" target="_blank">for循环V字型</a></li>
+						<li><a href="02for循环/02自动生成新闻.html" target="_blank">自动生成新闻</a></li>
+						<li><a href="02for循环/03模拟单选.html" target="_blank">模拟单选</a></li>
+					</ul>	
+				</li>
+				<li>
+					<h4>03自定义属性索引值</h4>
+					<ul class="cont">
+						<li><a href="03自定义属性索引值/02自定义属性.html" target="_blank">自定义属性</a></li>
+						<li><a href="03自定义属性索引值/1练习图片切换.html" target="_blank">1练习图片切换</a></li>
+						<li><a href="03自定义属性索引值/2实现折叠和展开.html" target="_blank">2实现折叠和展开</a></li>
+						<li><a href="03自定义属性索引值/3带缩略图的图片切换效果.html" target="_blank">3带缩略图的图片切换效果</a></li>
+						<li><a href="03自定义属性索引值/4控制多组图片切换.html" target="_blank">4控制多组图片切换</a></li>
+					</ul>	
+				</li>
+				<li>
+					<h4>04数据类型数据转换</h4>
+					<ul class="cont">
+						<li><a href="04数据类型数据转换/homeWork/作业1-找到合适的值.html" target="_blank">找到合适的值</a></li>
+						<li><a href="04数据类型数据转换/homeWork/作业2-QQ号码.html" target="_blank">QQ号码</a></li>
+					</ul>	
+				</li>
+				<li>
+					<h4>05函数传参</h4>
+					<ul class="cont">
+						<li><a href="05函数传参/01类型判断及多组图片切换实例.html" target="_blank">类型判断及多组图片切换实例</a></li>
+						<li><a href="05函数传参/02商品价格计算.html" target="_blank">02作业商品价格计算</a></li>
+						<li><a href="05函数传参/homeWork/2修改文本框的值.html" target="_blank">2作业修改文本框的值</a></li>
+						<li><a href="05函数传参/homeWork/3选择卡里套选择卡.html" target="_blank">3作业选择卡里套选择卡</a></li>
+						<li><a href="05函数传参/homeWork/4搜狐视频记录片列表展示.html" target="_blank">4作业搜狐视频记录片列表展示</a></li>
+					</ul>	
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

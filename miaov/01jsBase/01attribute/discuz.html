@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>discuz</title>
+		<script  src="js/jquery-2.1.1.min.js" ></script>
+		<style>
+			body{background:#fff;color:#000;font-size:14px;font-weight:normal;font-family: "Times New Roman", Times, serif,Arial;}
+			*{padding:0;margin:0;}
+			ul,ol{list-style:none;}
+			.user{background:#E5EDF2;width:160px;height:auto;padding-bottom:20px;margin:30px;border:1px solid #cdcdcd;}
+			.user a{text-decoration:none;color:#000;height:35px;line-height:35px;margin-left:20px;display:block;width:100%;}
+			.slImg{height:auto;width:100%;border-top:1px dotted #cdcdcd;}
+			.slImg>img{margin:10px auto;display:block;}
+			.content{width:450px;height:auto;border:1px solid #999;position:absolute;left:30px;top:70px;display:none;background:#fff;}
+			.content .contentLeft{width:140px;padding:10px 20px;}
+			.contentLeft .info{width:160px;height:16px;background: url(images/pmto.gif) no-repeat;padding-left:20px;margin:5px 0;}
+			.contentLeft .friend{width:100%;height:16px;background: url(images/addbuddy.gif) no-repeat;padding-left:20px;}
+			.contentBottom{width:130px;margin:0 auto;}
+			.contentBottom .name{color:#666;width:120px;}
+			.contentBottom .state{margin:5px 0;}
+			.contentBottom .spanLeft{width:60px;display:inline-block;}
+			.contentBottom li{margin-bottom:5px;}
+			.slImg:hover .content{display:block}
+		</style>
+		<script>
+			/*window.onload=function(){
+				var photo=document.getElementById("photo");
+				var cont=document.getElementsByClassName("content");
+				for(var i=0;i<photo.length;i++){
+					photo[i].onclick=function(){
+						cont[this.index].style.display='block';
+					}
+				}
+			}*/
+		/*	$(function(){
+				$("#photo").mouseover(function(){
+					$(".content").eq($(this).index()).css("display",'block');
+				})
+				$(".content").eq(0).mouseout(function(){
+					$(this).css("display",'none');
+				})
+			})*/
+		</script>
+	</head>
+	<body>
+		<div class='user'>
+			<a href='www.baidu.com'>百度一下</a>
+			<div class="slImg">
+				<img src="images/1.jpg" id="photo"/>
+				<div class='content'>
+					<div class="contentLeft">
+						<div class="LeftTop">
+							<img src="images/1.jpg"/>
+						</div>
+						<ul class="LeftBottom">
+							<li class="info">发短消息</li>
+							<li class="friend">加好友</li>
+						</ul>
+					</div>
+					<div class="contentRigth"></div>
+				</div>
+			</div>
+			<div class='contentBottom'>
+				<div class='name'>百度一下</div>
+				<div class='state'>
+					<img src="images/star_level3.gif"/>
+					<img src="images/star_level3.gif"/>
+					<img src="images/star_level3.gif"/>
+				</div>
+				<ul class="list">
+					<li>
+						<span class="spanLeft">积分</span>
+						<span>3850</span>
+					</li>
+					<li>
+						<span class="spanLeft">UID</span>
+						<span>1000012</span>
+					</li>
+					<li>
+						<span class="spanLeft">帖子</span>
+						<span>1025</span>
+					</li>
+					<li>
+						<span class="spanLeft">威望</span>
+						<span>4</span>
+					</li>
+					<li>
+						<span class="spanLeft">金币</span>
+						<span>620个</span>
+					</li>
+					<li>
+						<span class="spanLeft">体力</span>
+						<span>142</span>
+					</li>
+					<li>
+						<span class="spanLeft">注册时间</span>
+						<span>2015-10-2</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

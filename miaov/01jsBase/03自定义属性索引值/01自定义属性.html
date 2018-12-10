@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义属性应用01</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			li{width:115px;height:130px;background:url(images/normal.png) no-repeat; float:left;margin-left:10px;}
+		</style>
+		<script>
+			//js可以为任何一个html元素添加任何自定义属性
+			window.onload=function(){
+				var oLI=document.getElementsByTagName("li");
+				var oLis=oLI.length;
+				//var onoff=true;
+			//	var onoff=true;
+				for(var i=0;i<oLis;i++){
+					oLI[i].onoff=true;
+					oLI[i].onclick=function(){
+						if(this.onoff){
+							this.style.background="url(images/active.png) no-repeat";
+							this.onoff=false;
+						}else{
+							this.style.background="url(images/normal.png) no-repeat";
+							this.onoff=true;
+						}	
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

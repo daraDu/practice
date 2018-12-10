@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js作用域概念-预解析规则、表达式</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+		</style>
+		<script>
+			window.onload=function(){
+			/*
+			作用域（在什么空间对你的代码做些东西）
+			自上而下、自里到外
+			自上（就是把上面的内容存起来了）
+				浏览器
+				  js解析器
+				  1）找一些东西 ：根据 var function 参数（本意是局部变量）
+				  
+					  所有的代码在运行之前，
+					  所有的变量都定义了一个值：未定义，不读取后面的值
+					  所有的函数都是函数块
+					  
+					  js的预解析
+					  
+					  遇到重名就只留下一个
+					  变量与函数留下 函数
+					  a=function a(){alert(4);};
+					  
+					  表达式可以改预解析的值
+					  a=1
+				  
+				  2）逐行解析代码
+				  
+				  能改变值的东西都是表达式： + - * / % ！参数。。。
+				  fn1是函数声明
+				  局部函数不改变全局保存的
+				  
+				  
+			*/
+			/*	alert(a);//function a(){alert(4);};
+				var a=1;
+				alert(a);//1
+				function a(){
+					alert(2);
+				}
+				alert(a);//1
+				var a=3;
+				alert(a);//3
+				function a(){
+					alert(4);
+				};
+				alert(a);//3
+				a()//现在a的值是3,不是一个函数
+				
+				//预解析
+					根据var fn  参数...进行预解析
+					var a=1;  --->预解析出来就是
+					a=undefined
+					function a(){alert(4);};--->预解析出来就是
+					a=function a(){alert(4);};
+					遇到重名就只留下一个
+					如果出现两个，a会留下来函数块
+					
+				
+			*/
+			
+			/*var a=1;
+			function fn1(a){
+				alert(a);//undefined
+				//var a=2;
+			}
+			function fn2(a){//这个子作用域里没有var等 所以就到外面找a   作用域链   
+				alert(a);//1
+				a=3;
+			}
+			//fn1();
+			fn2();//a没有传参，未定义
+			alert(a);//1   3*/
+			/*
+				var a=10;
+				function aaa(){ 
+					alert(a);//10
+				};
+				aaa();
+			
+			
+			function aaa(){
+				var a=10;  
+			};
+			aaa();
+			alert(a);//a is not defined
+			
+			var a=10; 
+			function aaa(){ 
+			 alert(a);//10
+			};            
+			function bbb(){
+			var a=20;
+			aaa();
+			}
+			bbb();
+			
+			function aaa(){
+			   a=10; 
+			}
+			aaa();
+			alert(a);//10
+			
+			*/
+
+		/*	
+			var a = 10;
+			function test(){
+				a = 100;
+				console.log(a);//100
+				console.log(this.a);//undefined
+				var a;
+				console.log(a);//undefined
+			}
+			test();
+			var a = 100;
+			function test(){
+				console.log(a);//undefined
+				var a = 10;
+				console.log(a);//10
+			}
+			test();	
+			var a = 100;
+			function test(){
+				console.log(a);//100
+				a = 10;
+				console.log(a);//10
+			}
+			test();
+			console.log(a)	//10
+			
+			
+			
+			var a = 100;    
+			function testResult(){    
+			   var b = 2 * a; //这里的a是undefined   
+			   var a = 200;    
+			   var c = a / 2;    
+			   alert(b);  //NaN  
+			   alert(c);    //100
+			}    
+			//先 预解析a=undefined 函数块testResult(){}  逐行解析  a=100  解析 testResult()函数  
+			testResult()
+			
+			
+			
+			  var arr = [1, 2, 3];
+			  for (var i = 0, j; j = arr[i++];) {
+				  console.log(j);
+			  }
+			  
+			  
+			  
+			  var a=1;
+			  function fn1(a){//fn1(a)--->a 是局部变量 var a=1;
+				alert(a);//1   这个a是局部
+				a=2;//如果修改了这个a 的值，仍然是修改局部的参数，而不会去修改全局那个变量。
+			  };
+			  fn1(a);
+			  alert(a);//2(错误)   1
+			  
+			
+			var str;
+			function fn1(){
+				var a='keke'
+				str=a;
+			}
+			fn1();
+			alert(str)
+			
+
+
+			alert(fn1)//火狐谷歌不可以对if里面的进行预解析  所以全局变量，函数能不在里面定义就不要定义
+			if(true){
+				
+			}
+			var a=111;
+				function fn1(){
+					alert(222)
+				
+				}*/  
+				
+			var a = 1;
+			function fn1(a){//var a=1
+				arguments[0] = 2;//a=2
+				alert(a);//1?   2
+				var a = arguments[0];//2
+				alert(arguments[0] > a);//false
+			}
+			fn1(a);	
+		}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>01for循环V字特效</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			div{width:50px;height:50px;text-align:center;line-height:50px;position:absolute;}
+			.green{background:green;color:#fff;font-size:20px;}
+			.yellow{background:yellow;}
+		</style>
+		<script>
+		window.onload=function(){
+		
+			oXY();
+		}
+		function oXY(){//V字型
+			var str='';
+			var aDiv=document.getElementsByTagName("div");
+			var num=0;
+			for(var i=0;i<11;i++){
+				str+='<div class="green">'+i+'</div>';
+			}
+			document.body.innerHTML='<button id="btn">点击改变v字方向</button>'+str;
+			var j=parseInt(aDiv.length/2);
+			var oBtn=document.getElementById("btn");
+			
+			oBtn.onclick=function(){
+				if(num==0){//向上
+					for(var i=0;i<aDiv.length;i++){
+						if(i<=j){
+							aDiv[i].style.left=150+i*50+'px';
+							aDiv[i].style.top=i*50+'px';
+						}else{
+							j--;
+							aDiv[i].style.left=150+i*50+'px';
+							aDiv[i].style.top=j*50+'px';	
+						};				
+					}
+				}
+				if(num==1){//向右
+					for(var i=0;i<aDiv.length;i++){
+						if(i<=5){
+							aDiv[i].style.left=j*50+'px';
+							aDiv[i].style.top=i*50+'px';	
+							j--;
+						}else{
+							j++
+							aDiv[i].style.left=j*50+'px';
+							aDiv[i].style.top=i*50+'px';	
+						};				
+					}
+				}
+				num++
+			}
+			
+		}//计算坐标
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

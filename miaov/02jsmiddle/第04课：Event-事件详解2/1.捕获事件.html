@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>事件捕获</title>
+<style>
+	div{padding:50px;}
+	#div1{background:red}
+	#div2{background:blue}
+	#div3{background:green}
+	
+	.div1{width:50px;height:150px;border:5px solid #f00;display:none;}
+</style>
+<script>
+window.onload = function() {
+/*
+	obj.addEventListener(事件名称，事件函数，是否捕获)   false  冒泡事件   true 捕获事件
+
+*/
+	function fn(){
+		alert(this.id)
+	}
+	var oDiv = document.getElementsByTagName('div');
+	
+	//告诉div1有一个出去的事件触发了你，你就执行fn
+	oDiv[0].addEventListener('click',fn,false);
+	oDiv[1].addEventListener('click',fn,false);
+	oDiv[2].addEventListener('click',fn,false);
+	
+	//告诉div2有一个进来的事件触发了你，你就执行fn
+	/*oDiv[0].addEventListener("click",fn,true);
+	oDiv[1].addEventListener("click",fn,true);
+	oDiv[2].addEventListener("click",fn,true);*/
+	
+}
+</script>
+</head>
+
+<body>
+	<div id='div1'>
+		<div id='div2'>
+			<div id='div3'></div>
+		</div>
+	</div>
+	
+	<button>按钮</button>
+	<div class='div1'></div>
+</body>
+</html>
+

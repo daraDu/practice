@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>输入QQ号码</title>
+</head>
+<script>
+	window.onload=function(){
+		var oInput=document.getElementsByTagName('input');
+		var oText=oInput[0];
+		var oBtn=oInput[1];
+		oBtn.onclick=function(){
+			var aValue=oText.value;
+			if(aValue==''){
+				alert('内容不能为空');
+			}else if(isNaN(aValue)){
+				alert('请输入数字');
+			}else if(aValue.charAt(0)==0){
+				alert('第一位不能为0哦^-^');
+			}else if(parseInt(aValue)==parseFloat(aValue)){
+				if(aValue.length<=5||aValue.length>=11){
+					alert('输入的数字必须在5位以上、10位以内');
+				}else{
+					alert('登录成功')
+				}
+			}else{
+				alert('不能是小数')
+			}
+		}
+	}
+</script>
+<body>
+
+请输入QQ号码：<input type="text" />
+<input type="button" value="判断"/>
+
+
+<br />
+1、有没有输入<br />
+2、输入的是不是数字<br />
+3、不能有0在前面<br />
+4、不能是小数<br />
+5、输入的数字必须在5位以上、10位以内<br />
+
+</body>
+</html>

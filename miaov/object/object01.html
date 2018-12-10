@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象</title>
+	</head>
+	<body>
+	<script>
+		/*对象组成
+			var arr=[1,2,3,4,5];
+			//alert(arr.length)//5 
+			var a=8;//变量是自由的  变量和属性的特性是相同的，但是位置不同
+			arr.a=10;//属性是属于对象的
+			//alert(arr.a)
+			function show(){//函数  自由的
+				alert('show');
+			};
+			arr.show=function(){//方法  属于一个对象
+				alert("show2")
+			}
+			show()
+			arr.show()
+		
+		//第一个面向对象的程序  
+		var arr=[12,65,87];
+		arr.show=function(){//谁发生事件this就是谁，当前方法属于谁（.show属于arr，所以this是arr）
+			alert(this.length)
+		}
+		oDiv.onclick=function (){//this是oDiv，当前onclick方法属于oDiv   全局的函数属于window
+			alert(this);
+		};
+		arr.show()	
+		
+		//工厂模式 2（工厂：1、原料 2、加工 3、出厂销售）
+		function createPerson(name,age){//构造函数
+			//1、创建空白对象 
+			var obj={};
+			//加工
+			obj.name=name;
+			obj.age=age;
+			obj.showName=function(){
+				alert('我的名字是'+name);
+			};
+			obj.showAge=function(){
+				alert('我的年龄是'+age);
+			};
+			//出厂
+			return obj;
+		};
+		// 工厂方式的问题：1、没有new   2、每个对象都有自己的一套函数/方法（每次写一个function就创建一个新的函数）
+		var p1=createPerson("小红","20");
+		var p2=createPerson("小明","18");
+		p1.showName();
+		p1.showAge();
+		p2.showName();
+		p2.showAge();	
+		alert(p1.showName==p2.showName)//false p1和p2不是一个对象
+		
+		//构造函数模式
+		function createPerson(name,age){
+			this.name=name;
+			this.age=age;
+			this.showName=function(){
+				alert('我的名字是'+name);
+			};
+			this.showAge=function(){
+				alert('我的年龄是'+age);
+			};
+		};
+		var p1=new createPerson("奥利奥","3");
+		var p2=new createPerson("妙卡","5");
+		p1.showName();
+		p1.showAge();
+		p2.showName();
+		p2.showAge();	
+		
+		//给数组添加方法
+		var arr1=new Array(1,2,3,4);
+		var arr2=new Array(5,6,7,8);
+		arr1.sum=function (){//类似 行内样式（只是改变本身的样式）
+			var result=0;
+			for(var i=0;i<this.length;i++){
+				result+=this[i];
+			};
+			return result;
+		};
+		alert(arr1.sum());
+		alert(arr2.sum());
+		//prototype（原型）（给一类元素添加方法和属性）类似class（类）改变添加这一类元素的样式  构造函数就是类，类就是构造函数
+		
+		//css    class（可以改变一类元素的样式 ）   行内样式（只是改变本身的样式）
+		
+		
+		
+		//混合法
+		function createPerson(name,age){
+			this.name=name;
+			this.age=age;
+		};
+		createPerson.prototype.showName=function(){
+			alert('我的名字是'+this.name);
+		};
+		createPerson.prototype.showAge=function(){
+			alert('我的名字是'+this.age);
+		};	
+		var p1=new createPerson('小明',20);
+		var p2=new createPerson('小红',18);
+		p1.showName();
+		p1.showAge();     
+		p2.showName();
+		p2.showAge();
+		alert(p1.showName()==p2.showName())
+	*/
+	
+	</script>
+	</body>
+</html>

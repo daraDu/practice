@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>3、文档宽高</title>
+<style>
+*{
+	margin:0px;
+}
+.div1{
+	width:1000px;height:100px;background:#ff0;padding:100px;
+}
+.div2{
+	margin:50px;
+	width:200px;
+	height:200px;
+	padding:10px;
+	border:1px solid #f00;
+	overflow:hidden
+}
+.div2 div{
+	width:200px;
+	height:500px;
+	background:blue;
+}
+
+</style>
+<script>
+window.onload = function() {
+	var oDiv = document.getElementsByTagName("div");
+	//alert(oDiv[0].clientWidth)
+	//alert(document.documentElement.clientWidth)//可视区域大小  width+padding
+	
+	
+	/*
+		clientWidth：width+padding
+		scrollTop :  滚动条滚动的距离   谷歌 document.body.scrollTop   其他  document.documentElement.scrollTop
+		scrollHeight: 内容高 (内容实际宽高)
+		
+		
+	*/
+	var oDiv2 = document.getElementsByClassName("div2")[0];
+	var oDiv3 = document.getElementsByClassName("div3")[0];
+	
+	/*document.body.onclick=function(){
+		alert(document.documentElement.scrollTop || document.body.scrollTop)
+	}*/
+	
+	var oBtn = document.getElementsByTagName("button");
+	oBtn[0].onclick=function(){
+	//	alert(oDiv2.scrollHeight) //510  div3的高度+padding-top
+	//	alert(oDiv2.scrollWidth) //220  div3的宽度+padding
+		
+	//	alert(oDiv2.clientHeight)//220 div2宽+padding
+		alert(oDiv3.clientHeight) //500
+	}
+}
+</script>
+</head>  
+
+<body style='height:3000px'>
+	<div class='div1'></div>
+	<button>打印scrollHeigth</button>
+	<div class='div2'>
+		<div class='div3'></div>
+	</div>
+	
+</body>
+</html>
+

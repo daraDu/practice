@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控制多组图片切换</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			.clearfix:after{content:"";clear:both;}
+			body{background:#000;}
+			.box{width:870px;height:550px;background:url(../images/twoBg.png);position:relative;float:box;margin:50px 0 0 300px;position:relative;}
+			.groupBtn{padding:40px 40px;}
+			#left{width:460px;height:290px;position:absolute;left:50px;}
+			#right{width:280px;height:290px;position:absolute;left:545px;}
+			#left img{width:460px;height:260px;}
+			#right img{width:280px;height:260px;}
+			#left h4{text-indent:150px;display:inline-block;}
+			#right h4{text-indent:70px;display:inline-block;}
+			
+			
+			.prve,.next{width:30px;height:30px;background:rgba(0,0,0,0.2);position:absolute;top:40%;text-align:center;line-height:30px;font-size:22px;color:#fff;cursor:pointer;}
+			.next{right:0;}
+			.prve:hover,.next:hover{background:rgba(0,0,0,0.6);}
+		</style>
+		<script>
+			window.onload=function(){
+				//要求：点击上一组，下一组两组图片都切换，点击每一组里的上一张下一张只改变本组的图片（页脚显示）
+				var oGroupBtn=document.getElementsByClassName("groupBtn")[0];
+				var aBtn=oGroupBtn.getElementsByTagName("button");
+				var oLeft=document.getElementById("left");
+				var oRight=document.getElementById("right");
+				var oImgL=oLeft.getElementsByTagName("img")[0];
+				var oImgR=oRight.getElementsByTagName("img")[0];
+				var oYeiMeiL=oLeft.getElementsByClassName("yeMei")[0];
+				var oYeiMeiR=oRight.getElementsByClassName("yeMei")[0];
+				var oImgNumL=oLeft.getElementsByClassName("imgNum")[0];
+				var oImgNumR=oRight.getElementsByClassName("imgNum")[0];
+				//上一张下一张
+				var oPrveL=oLeft.getElementsByClassName("prve")[0];
+				var oPrveR=oRight.getElementsByClassName("prve")[0];
+				var oNextL=oLeft.getElementsByClassName("next")[0];
+				var oNextR=oRight.getElementsByClassName("next")[0];
+				var imgArry01=['../images/two01.jpg','../images/two02.jpg','../images/two03.jpg','../images/two04.jpg'];
+				var imgArry02=['../images/two01.jpg','../images/two02.jpg','../images/two03.jpg'];
+				var listL=imgArry01.length;
+				var listR=imgArry02.length;
+				var numL=0;
+				var numR=0;
+				//初始化
+				
+				function tabFnL(){//第一组
+					oImgL.src=imgArry01[numL];
+					oYeiMeiL.innerHTML=1+numL+'/'+listL;
+					oImgNumL.innerHTML=1+numL;
+				}
+				tabFnL();
+				function tabFnR(){//第二组
+					oImgR.src=imgArry02[numR];
+					oYeiMeiR.innerHTML=1+numR+'/'+listR;
+					oImgNumR.innerHTML=1+numR;
+				}
+				tabFnR();
+				//每一组的上一张下一张
+				//第一组
+				oNextL.onclick=function(){
+					numL++;
+					if(numL==listL){
+						numL=0;
+					}
+					tabFnL()
+				}
+				//第二组
+				oNextR.onclick=function(){
+					numR++;
+					if(numR==listR){
+						numR=0;
+					}
+					tabFnR()
+				}
+				//第一组
+				oPrveL.onclick=function(){
+					if(numL==0){
+						numL=listL;
+					}
+					numL--;
+					tabFnL()
+				}
+				//第二组
+				oPrveR.onclick=function(){
+					if(numR==0){
+						numR=listR;
+					}
+					numR--;
+					tabFnR()
+				}
+				
+				
+				//上一组，下一组
+				aBtn[0].onclick=function(){//上一组
+					if(numL==0){//左边
+						numL=listL;
+					}
+					numL--;
+					tabFnL();
+					if(numR==0){
+						numR=listR;
+					}
+					numR--;
+					tabFnR();
+				}
+				aBtn[1].onclick=function(){//下一组
+					numL++;
+					if(numL==listL){//左边
+						numL=0;
+					}
+					tabFnL();
+					numR++;
+					if(numR==listR){
+						numR=0;
+					}
+					tabFnR();
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+			<ul class="box">
+				<li class="groupBtn">
+					<button>上一组</button>
+					<button>下一组</button>
+				</li>
+				<li id="left">
+					<img/>
+					<div class='prve'><</div>
+					<div class="next">></div>
+					<span class="yeMei"></span>
+					<h4>第一组第<span class="imgNum"></span>张</h4>
+				</li>
+				<li id="right">
+					<img/>
+					<div class='prve'><</div>
+					<div class="next">></div>
+					<span class="yeMei"></span>
+					<h4>第二组第<span class="imgNum"></span>张</h4>
+				</li>
+			</ul>
+	</body>
+</html>

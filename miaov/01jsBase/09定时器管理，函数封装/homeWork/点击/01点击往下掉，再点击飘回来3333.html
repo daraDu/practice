@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>点击往下掉，再点击飘回来</title>
+<style>
+	
+	li{list-style:none}
+	div{width:100px;height:100px;position:absolute;left:50px;top:50px;background:#f00;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oBtn = document.getElementsByTagName("input");
+		var oDiv = document.getElementsByTagName("div")[0];
+		
+		oBtn[0].onclick=function(){
+			doMove(oDiv,"left",8,50,function(){
+					doMove(oDiv,"top",8,500);
+				});
+		};
+		oBtn[1].onclick=function(){
+			doMove(oDiv,"left",10,500,function(){
+					doMove(oDiv,"top",8,50);
+				});
+		};
+		function doMove(obj,attr,dir,endNum,endFn){
+			dir = parseInt(getStyle(obj,attr)) > endNum ? -dir : dir;
+			clearInterval(obj.timer);
+			obj.timer=setInterval(function(){
+				var step = parseInt(getStyle(obj,attr))+dir;
+				if(step > endNum && dir> 0 || step < endNum && dir<0){
+					step=endNum;
+				}
+				obj.style[attr]=step+'px';
+				if(step===endNum){
+					clearInterval(obj.timer);
+					if(endFn){
+						endFn();
+					}
+				}
+			},50)
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr]
+			}
+		}
+	}
+</script>
+<body>
+	<input type='button' value='向后'/>
+	<input type='button' value='向前'/>
+	<div></div>
+</body>
+</html>

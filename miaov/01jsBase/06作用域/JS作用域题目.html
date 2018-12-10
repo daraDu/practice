@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js作用域</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+		</style>
+		<script>
+			window.onload=function(){
+				/*
+					函数里面的内容是看函数定义的地方，并不是函数调用的地方
+				*/
+			
+			
+			
+				/*document.write(a());//4    undefined     document.write(document.write(4))
+				var a=1;
+				document.write(a);//1
+				function a(){
+					document.write(2);
+				};
+				document.write(a);//1
+				var a=3;
+				document.write(a);//3
+				function a(){
+					document.write(4);
+				};
+				document.write(a);//3
+				
+				    var name = 'laruence';     
+					function echo(){         
+					  alert(name);   //eve ?   laruence   函数里面的内容是看函数定义的地方，并不是函数调用的地方
+					}      
+					function env(){
+						var name = 'eve';         
+						echo();   
+					}      
+
+					env();
+					
+					
+				    function fn2 () {
+						var a ='dsdfsdafsa';
+						fn3(a);
+					}
+					fn2();
+					function fn3(a){
+						alert(a);
+					}
+					
+					function func_scope(){//if不是作用域
+						var x=1;
+						if (true) {
+							var x=2;
+							if (true) {
+								var x=3;
+								alert(x);//3
+							}
+							alert(x);//3
+						}
+						alert(x);//3
+					}
+					func_scope();
+					
+					var a;	
+					function aaa(){
+                        var a=b=10;
+					}                               
+					aaa();
+					alert(a);
+					alert(b);
+					function aaa(){
+							var a=b=10;
+					}
+					aaa();
+					alert(a);
+					alert(b);
+						
+					var a=1;
+					function test(){
+						alert(a);//undefined
+						if(!a){//!undefined --->true
+							var a=10;
+						}
+						alert(a);//10
+					}
+					test();				
+				
+				
+				
+				var b = 2;
+				function a() {
+					alert(b);//undefined
+					var b = 1;
+				}
+				a();
+				alert(b);//2
+				
+				function t() {
+					s = "ifscope";
+				}
+				t();
+				console.log(s);
+			
+			function foo(){
+			  console.log(this.a);
+			}
+			var a = 2;
+			var o = {a:3,foo:foo};
+			var p = {a:4};
+			(o.foo)();
+			(p.foo=o.foo)();
+		
+			function b(){
+				 alert(a)//undefined
+			}
+			b()
+			var a=1
+		
+		
+			var a;
+			function b(){
+				 alert(a)//undefined
+			}
+			b()
+			a =1
+			a = 2
+		
+			function box(obj){
+				obj.name='Lee';
+			}
+			var obj=Object();
+			box(obj);
+			alert(obj.name);//Lee
+		*/	
+			
+			function box(obj){
+				obj.name='Lee';
+				var obj=new Object();
+				obj.name='Mr.';
+			}
+			var obj=Object();
+			box(obj);
+			alert(obj.name);
+			
+			function box(obj){
+				obj.name='Lee';
+			}
+			var obj=Object();
+			box(obj);
+			obj.name='Mr.';
+			alert(obj.name);
+			
+		}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+

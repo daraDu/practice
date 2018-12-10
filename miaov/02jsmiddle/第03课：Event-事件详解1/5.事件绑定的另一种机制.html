@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>时间绑定的另一种机制</title>
+<style>
+
+</style>
+<script>
+window.onload = function() {
+	//给一个对象绑定时间处理函数的第一种方式
+	function fn1(){
+		alert(this)
+	}
+	function fn2(){
+		alert(2)
+	}
+/*	document.onclick = fn1;
+	document.onclick = fn2;//会覆盖fn1
+*/	
+	//给一个对象同一个时间绑定不同的事件函数
+	//绑定函数的第二种方式
+	/*
+		标准浏览器：
+		obj.addEventListener(事件名称，事件函数，是否捕获);
+		1.默认捕获  默认是false ：冒泡   true ：捕获
+		2.正序
+		3.事件名称没有on
+		4.this 指向调用该事件的对象
+		
+		IE浏览器
+		obj.attachEvent(事件名称，事件函数);
+		1.反序（IE7,8浏览器）9以上（标准ie）正序
+		2.事件名称有on
+		3.this指向window
+	*/
+	
+	//document.addEventListener("click",fn1)
+	//document.addEventListener("click",fn2)
+	/*document.attachEvent("onclick",fn1)
+	document.attachEvent("onclick",fn2)*/
+	
+	//call 函数下的一个方法，第一个参数是this指向，其他参数是函数原有的参数
+	//如果第一个参数是null的话就是默认指向
+	function fnCall(a,b){
+		alert(this)
+		alert(a+b)
+	}
+//	fnCall.call(document,10,20)
+//	fnCall.call(null,10,20)//window   30
+	
+	function bind(obj,evName,fn){
+		if(obj.addEventListener){
+			obj.addEventListener(evName,fn);
+		}else{
+			obj.attachEvent('on'+evName,function(){fn.call(obj)})
+		}
+	}
+	
+	bind(document,'click',fn1)
+	bind(document,'click',fn2)
+}
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02商品价格计算</title>
+		<style>
+			body{font-size:18px;}
+			button{width:50px;height:30px;font-size:20px;}
+			li{margin-top:10px;}
+			strong{margin:0 4px;}
+		</style>
+		<script>
+			window.onload=function(){
+				/*
+					思路：共计多少件  strong里面的相加
+					共花费  小计相加
+					最贵的 将strong不是0的添加在一个数组里再相加
+				*/
+				var oList=document.getElementById("list");
+				var aLi=oList.getElementsByTagName("li");
+				
+				var allStrong=oList.getElementsByTagName("strong");
+				var allPrice=oList.getElementsByTagName("em");
+				
+				var oBot=document.getElementById("bot");
+				var bAllNum=oBot.getElementsByTagName("span")[0];
+				var bAllPrice=oBot.getElementsByTagName("i")[0];
+				var bMaxPrice=oBot.getElementsByTagName("em")[0];
+			
+				
+				
+			}
+
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<button>-</button>
+				<strong> 0 </strong>
+				<button>+</button>
+				单价：<em>10元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong> 0 </strong>
+				<button>+</button>
+				单价：<em>8.2元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong> 0 </strong>
+				<button>+</button>
+				单价：<em>14.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong> 0 </strong>
+				<button>+</button>
+				单价：<em>18.82元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<button>-</button>
+				<strong> 0 </strong>
+				<button>+</button>
+				单价：<em>10.5元</em>
+				小计：<span>0元</span>
+			</li>
+		</ul>
+		<div id="bot">
+			商品合计共：<span>0件</span>，共花费了：<i>0元</i><br/>
+			其中最贵的商品单价是：<em>0元</em>
+		</div>
+		
+	</body>
+</html>
+

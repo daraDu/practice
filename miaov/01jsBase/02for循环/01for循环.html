@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>01for循环</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			div{width:50px;height:50px;text-align:center;line-height:50px;background:green;}
+			.green{background:green;}
+			.yellow{background:yellow;}
+			li{border:1px solid #f00;margin-bottom:10px;}
+		</style>
+		<script>
+		window.onload=function(){
+			/*document.body.innerHTML='<div class="box"><input type="button" value="按钮1"/><input type="button" value="按钮2"/><input type="button" value="按钮3"/></div>'
+			var oBtn=document.getElementsByTagName("input");
+			//性能问题
+			//oBtn.length 每循环一次就查找一次按钮的长度
+			//可以先把长度赋值给一个变量
+			var obtnl=oBtn.length
+			for(var i=0;i<obtnl
+			
+			
+			;i++){
+				oBtn[i].index=i;
+				oBtn[i].onclick=function(){
+					alert(this.index+1);
+				}
+			}*/
+			//循环解决的问题（重复执行某些代码，每次执行有个数字变化）
+			
+			// 
+			//divProduct();//自动生成一百个div
+			//oXY();
+			
+			//styChange()
+			bqArr()
+		}
+			function divProduct(){//自动生成一百个div
+				var str='';//字符串
+				for(var i=0;i<500;i++){
+					if(i%2==0){
+						str +='<div class="green">'+(i+1)+'</div>';
+					}else{
+						str +='<div class="yellow">'+(i+1)+'</div>';
+					}
+					
+					
+				}
+				document.body.innerHTML=str;
+			}
+			
+			function oXY(){//逢10换行
+				var str='';
+				var oBox=document.getElementById("box");
+				var aDiv=document.getElementsByTagName("div");
+				var a=-1;
+				var j=-1;
+				for(var i=0;i<20;i++){
+					str+='<div class="yellow">'+i+'</div>';
+				}
+				document.body.innerHTML=str;
+				for(var i=0;i<aDiv.length;i++){
+					if(i%10==0){
+						a++;
+						
+						j++;
+					}
+					aDiv[i].style.left=i*60-a*600+'px';
+					aDiv[i].style.top=j*60+'px';					
+				}
+			}//计算坐标
+			
+			function styChange(){//设置样式cssText
+				var oDiv=document.getElementsByTagName("div")[0];
+				var oIput=document.getElementsByTagName("input")[0];
+				oDiv.onclick=function(){
+					oDiv.style.cssText="width:300px;height:300px";
+				}
+				oIput.onclick=function(){
+					oDiv.style.cssText="";
+				}
+			}
+			
+			function bqArr(){
+				var oUl=document.getElementsByTagName("ul");
+				var oULegth=oUl.length;
+				for(var i=0;i<oULegth;i++){
+					var oLI=oUl[i].getElementsByTagName("li");
+					var oLIlength=oLI.length;
+						for(var j=0;j<oLIlength;j++){
+							oLI[j].style.cssText="background:yellow"
+						}
+				}
+			
+			}
+		</script>
+	</head>
+	<body>
+	<!-- 	<div></div>
+		<input type="button" value="点击"/> -->
+		<ul>
+			<li><h3>ttt11</h3></li>
+			<li>1111</li>
+			<li>1222</li>
+			<li>1333</li>
+		</ul>
+		<ol>
+			<li>21111</li>
+			<li>22222</li>
+			<li>23333</li>
+		</ol>
+		<ul>
+			<li><h3>ttt11</h3></li>
+			<li>3111</li>
+			<li>3222</li>
+			<li>3333</li>
+		</ul>
+		<ol>
+			<li>4111</li>
+			<li>4222</li>
+			<li>4333</li>
+		</ol>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>event</title>
+<style>
+	#div1{width:100px;height:100px;background:#f00;position:absolute;}
+</style>
+<script>
+window.onload = function() {
+	/*
+		event：事件对象，当一个事件发生时候，会保存和这个事件发生时有关的信息。
+		兼容
+			标准浏览器，传入的第一个参数
+			ie/谷歌: event是一个全局变量
+			clientX：距离页面左侧的距离//可视页面
+			clientY：距离页面右侧的距离
+	*/
+	document.onclick=function(e){
+		/*console.log(e)
+		//alert(event)
+		for(attr in e){
+			console.log(attr+'：'+ e[attr])
+		}*/
+	}
+	
+	//div随着鼠标移动
+	var oDiv = document.getElementById("div1");
+	document.onmousemove=function(e){
+		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		oDiv.style.left = e.clientX +'px';
+		oDiv.style.top = e.clientY + scrollTop +'px';
+	}
+}
+</script>
+</head>
+
+<body style='height:2000px;'>
+	<div id='div1'></div>
+</body>
+</html>
+

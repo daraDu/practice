@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>图片自动切换</title>
+
+<style>
+	*{margin:0;padding:0;}
+	#box{width:600px;height:400px;border:5px solid #aaa;margin:50px auto;position:relative;}
+	#box div{height:auto;padding:10px;background-color:rgba(0,0,0,0.5);color:#fff;position:absolute;bottom:-110px;}
+	#box img{width:600px;height:400px;border:none;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oBox=document.getElementById('box');
+		var oIntro=document.getElementById('intro');
+		var oImg=oBox.getElementsByTagName('img')[0];
+		var oTitle=oIntro.getElementsByTagName('h2')[0];
+		var oText=oIntro.getElementsByTagName('p')[0];
+		
+		var imgArray=['../images/1.jpg','../images/2.jpg','../images/3.jpg','../images/4.jpg'];
+		var titleArray=['111','222','333','444'];
+		var textArray=['1、云袅袅，天淡淡。熠熠阳光，柔柔语境，明媚了萧瑟的窗外。取一纸系着粉色丝带的薛涛笺，持一支情意渐满的瘦笔',
+					   '2、云袅袅，天淡淡。熠熠阳光，柔柔语境，明媚了萧瑟的窗外。取一纸系着粉色丝带的薛涛笺，持一支情意渐满的瘦笔',
+					   '3、云袅袅，天淡淡。熠熠阳光，柔柔语境，明媚了萧瑟的窗外。取一纸系着粉色丝带的薛涛笺，持一支情意渐满的瘦笔',
+					   '4、云袅袅，天淡淡。熠熠阳光，柔柔语境，明媚了萧瑟的窗外。取一纸系着粉色丝带的薛涛笺，持一支情意渐满的瘦笔'
+		]
+		var num=0;
+		origin();
+		function origin(){
+			oImg.src=imgArray[num];
+			oTitle.innerHTML=titleArray[num];
+			oText.innerHTML=textArray[num]
+		};
+		setInterval(function(){
+			origin();
+			num++;
+			if(num==imgArray.length){
+				num=0;
+			}
+			doMove(oIntro,'bottom',50,0,20)
+		},1000);
+		
+		function doMove(obj,attr,step,target,intervalTime){
+			clearInterval(obj.doMove)
+			var origin = parseInt(getStyle(obj,attr));
+			step = origin < target ? step : -step;
+			obj.doMove=setInterval(function(){
+				var nowAttr= origin + step;
+				if(nowAttr >=target && step>0 || nowAttr<=target & step<0){
+					nowAttr=target;
+				}
+				if(nowAttr==target){
+					clearInterval(obj.doMove);
+				}
+				obj.style[attr] = nowAttr +'px';
+				console.log(obj.style[attr])
+			
+			},intervalTime)
+		}
+	};
+	function getStyle(obj,attr){
+		return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+	}
+</script>
+<body>
+	<div id='box'>
+		<img src=''/>
+		<div id='intro'>
+			<h2></h2>
+			<p></p>
+		</div>
+	</div>
+</body>
+</html>

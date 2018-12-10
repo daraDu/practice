@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒计时抢购商品</title>
+		<style>
+			*{padding:0;margin:0;}
+			li{list-style:none;}
+			body{font-size:14px;}
+			.box{border-top:1px solid #a0a0a4;width:574px;}
+			.box li{width:170px;padding:10px;float:left;}
+			.box li:not(:last-child){border-right:2px solid #efefef;}
+			.box li p:not(:first-child){margin:10px 0;}
+			.tip{color:#A0A0A4;}
+			.sureBtn{cursor:pointer;margin-left:5px;}
+			.dateBox{width:130px;background:#ded6e7;color:#522121;border:none;height:24px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var dateBox = document.getElementsByClassName('dateBox')[0];
+				var tip = document.getElementsByClassName('tip')[0];
+				
+				function tCounts(){
+					var	tNow = new Date(),
+						tFix = dateBox.value,//年，月，日，时，分，秒
+						t = Math.floor((tFix -tNow)/1000),//毫秒----秒
+						tDay=0,tHours=0,tMin=0,tSec=0;
+					if(t > 0){
+						tDay = Math.floor(t/86400)
+						tHours = Math.floor(t%86400/3600)
+						tMin = Math.floor(t%86400%3600/60)
+						tSec = t%60
+					}else{
+						console.log('已超过所设时间')
+					}
+					var tCount = '剩余'+tDay+'天'+tHours+'小时'+tMin+'分'+tSec+'秒';
+					tip.innerHTML=tCount;
+				};
+				tCounts();
+				setInterval(tCounts,1000)
+			}		
+		
+		</script>	
+	</head>
+	<body>
+		<div style='padding:10px;'>
+			<h3>限购时间</h3>
+			<ul class='box'>   
+				<li>
+					<p><input class='dateBox' value='2018-06-18 16:46:15'/><button class='sureBtn'>确定</button></p>
+					<p class='tip'>剩余10天12时12分12秒</p>
+					<div style='margin-left:20px'><img src='images/1.png' width='100'/></div>
+					<p>天猫618连衣裙6.8折</p>
+					<p style='color:#BDADBD;font-weight:bold;'>抢购价：<span style='color:#BD214A;font-weight:bold;'>￥599.00</span></p>
+				</li>
+				
+				<li>
+					<p><input class='dateBox' value='2018-06-18 16:46:15'/><span class='sureBtn'>确定</span></p>
+					<p class='tip'>剩余10天12时12分12秒</p>
+					<div style='margin-left:20px'><img src='images/2.png' width='100'/></div>
+					<p>天猫618连衣裙6.8折</p>
+					<p style='color:#BDADBD;font-weight:bold;'>抢购价：<span style='color:#BD214A;font-weight:bold;'>￥315.00</span></p>
+				</li>
+				
+				<li>
+					<p><input class='dateBox' value='2018-06-18 16:46:15'/><span class='sureBtn'>确定</span></p>
+					<p class='tip'>剩余10天12时12分12秒</p>
+					<div style='margin-left:20px'><img src='images/3.png' width='100'/></div>
+					<p>天猫618连衣裙6.8折</p>
+					<p style='color:#BDADBD;font-weight:bold;'>抢购价：<span style='color:#BD214A;font-weight:bold;'>￥618.00</span></p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+

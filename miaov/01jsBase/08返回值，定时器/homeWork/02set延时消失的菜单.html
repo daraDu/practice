@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>延时消失的菜单</title>
+<style>
+	*{margin:0;padding:0;}
+	li{list-style:none;float:left;}
+	a{text-decoration:none;color:#215A94}
+	#box{margin:50px auto;width:600px;position:relative;}
+	#nav{width:600px;height:50px;background:#396BA5;line-height:50px;}
+	#nav li{margin-left:26px;color:#fff;cursor:pointer;width:120px;text-align:center;}
+	
+	#list ul{border:1px solid #999;height:50px;line-height:50px;border-radius:5px;position:absolute;top:60px;display:none;}
+	.home{width:402px;}
+	.aboutUs{width:302px;left:95px}
+	.productions{width:202px;left:280px;}
+	.boKe{width:602px;}
+	#list ul li{width:100px;text-align:center;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oNav=document.getElementById("nav");
+		var oList=document.getElementById("list");
+		var aNavList=oNav.getElementsByTagName("li");
+		var aList=oList.getElementsByTagName("ul");
+		var timer=null;
+		function old(){//清除样式
+			for(var i=0;i<aNavList.length;i++){
+				if(i!=this.index){
+					aNavList[i].style.background='';
+					aList[i].style.display='none';
+				};
+			};
+		};
+		function hide(){//隐藏
+			timer=setTimeout(function(){
+				old();
+			},200);
+		};
+		function show(){//显现
+			old();
+			clearTimeout(timer);
+			aNavList[this.index].style.background='#f00';
+			aList[this.index].style.display='block';
+		};
+		for(var i=0;i<aNavList.length;i++){
+			aNavList[i].index=i;
+			aList[i].index=i;
+			aNavList[i].onmouseover=show;//移入
+			aList[i].onmouseover=show;//移入
+			aNavList[i].onmouseout=hide;//离开
+			aList[i].onmouseout=hide;
+		};
+	}
+</script>
+<body>
+	<div id='box'>
+		<ul id='nav'>
+			<li>首页</li>
+			<li>关于我们</li>
+			<li>作品</li>
+			<li>博客</li>
+		</ul>
+		<div id='list'>
+			<ul class='home'>
+				<li><a href='javascript:;'>首页111</a></li>
+				<li><a href='javascript:;'>首页222</a></li>
+				<li><a href='javascript:;'>首页333</a></li>
+				<li><a href='javascript:;'>首页444</a></li>
+			</ul>
+			<ul class='aboutUs'>
+				<li><a href='javascript:;'>关于我们11</a></li>
+				<li><a href='javascript:;'>关于我们22</a></li>
+				<li><a href='javascript:;'>关于我们33</a></li>
+			</ul>
+			<ul class='productions'>
+				<li><a href='javascript:;'>作品11</a></li>
+				<li><a href='javascript:;'>作品22</a></li>
+			</ul>
+			<ul class='boKe'>
+				<li><a href='javascript:;'>博客11</a></li>
+				<li><a href='javascript:;'>博客22</a></li>
+				<li><a href='javascript:;'>博客33</a></li>
+				<li><a href='javascript:;'>博客44</a></li>
+				<li><a href='javascript:;'>博客55</a></li>
+				<li><a href='javascript:;'>博客66</a></li>
+			</ul>	
+		</div>
+	</div>
+</body>
+</html>

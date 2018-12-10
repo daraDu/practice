@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>  3-indexOf、lastIndexOf</title>
+		<script>
+			window.onload=function(){
+				//str.charAt(index)某个字符串取得具体的字符
+				//str.charCodeAt(index)可返回指定位置的字符的 Unicode 编码
+				//String.fromCharCode(numX,numX,...,numX)可接受一个指定的 Unicode 值，然后返回一个字符串
+				var str =' 人的一种常处于抉择之中，如：念哪一种？'+
+				'选哪一种职业？娶哪一种女子？……等等伤脑筋的事情。一个人抉择力的有无一种，可以显示其人格成熟与否。'
+				var s = '一种';
+				var i=0;
+				while ( str.indexOf( s, i ) != -1 ){
+					alert( str.indexOf( s, i ) );
+					i = str.indexOf( s, i ) + s.length;
+				}
+			};
+		</script>	
+	</head>
+	<body>
+	</body>
+</html>
+

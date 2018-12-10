@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>封装函数-获取表单控件radio、checkbox的选中值</title>
+<style>
+	#form1{
+		width:800px;
+		margin:0 auto;
+	}
+	.box{
+		width:500px;
+		padding:0 20px 20px 20px;
+		border:1px solid #ddd;
+		border-radius:5px;
+		margin:50px;
+		position:relative;
+	}
+	.box input{
+		margin-bottom:10px;
+		cursor:pointer;
+	}
+	.btn{
+		position:absolute;
+		bottom: 10px;
+		right: 20px;
+	}
+	.cont{
+		padding:10px;
+		background:#DEFEF3;
+		position:absolute;
+		top:20px;
+		right:20px;
+		display:none;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var oForm = document.getElementById("form1");
+		var incomeCont = document.getElementById("incomeCont");
+		var characterCont = document.getElementById("characterCont");
+		var oCont = document.getElementsByClassName("cont");
+		for(var i=0;i<oForm.income.length;i++){
+			oForm.income[i].onclick=function(){
+				oCont[0].style.display='block';
+				incomeCont.innerHTML = this.value
+			}
+		}
+		oForm.incomeBtn.onclick=function(){
+			var re = confirm('你确定要重置吗？');
+			if(re){
+				oCont[0].style.display = 'none';
+				return true;
+			} else {
+				return false;
+			}
+		}
+		for(var i=0;i<oForm.character.length;i++){
+			oForm.character[i].onclick=function(){
+				oCont[1].style.display='block';
+				characterCont.innerHTML += this.value+' '
+			}
+		}
+		oForm.characterBtn.onclick=function(){
+			var re = confirm("你确定要重置吗？");
+			if(re){
+				characterCont.innerHTML="";
+				oCont[1].style.display = 'none';
+				return true;
+			}else{
+				return false;
+			}
+			
+		}
+		
+	}
+</script>
+</head>
+
+<body>
+	<form id='form1'>
+		<div class='box'>
+			<h3>您的月收入水平是：</h3>
+			<input type='radio' name='income' value='1000'/>1000 <br/>
+			<input type='radio' name='income' value='2000'/>2000<br/>
+			<input type='radio' name='income' value='3000'/>3000<br/>
+			<input type='radio' name='income' value='4000'/>4000<br/>
+			<input type="reset" name="incomeBtn" value="重置" class='btn'/>
+			<div class='cont'>您的月收入是：<span id='incomeCont'></span></div>
+		</div>
+		<div class='box'>
+			<h3>您的性格是：</h3>
+			<input type='checkbox' name='character' value='开朗'/>开朗<br/>
+			<input type='checkbox' name='character' value='活泼'/>活泼<br/>
+			<input type='checkbox' name='character' value='内向'/>内向<br/>
+			<input type='checkbox' name='character' value='随性'/>随性<br/>
+			<input type='checkbox' name='character' value='冷静'/>冷静 <br/>
+			<input type='checkbox' name='character' value='稳重'/>稳重 <br/>
+			<input type="reset" name="characterBtn" value="重置" class='btn'/>
+			<div class='cont'>您的性格是：<span id='characterCont'></span></div>
+		</div>
+	</form>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02arguments实参集合与局部变量，参数关系</title>
+		<style>
+		</style>
+
+	</head>
+	<body>
+		a=<input type='text'/>
+		b=<input type='text'/>
+		c=<input type='text'/>
+		icon=<input type='text'/>
+		
+		<input type="button" value="提交" />
+				<script>
+			window.onload=function(){
+				//arguments 是实参的集合
+				//fn1(1,2,3)//实参---实际传递的参数
+				//function fn1(a,b,c){//形参----形式上，a,b,c代表1,2,3
+				/*function fn1(){
+					//arguments=>[1,2,3]是实参的集合
+					//当函数的参数个数无法确定的时候用arguments
+				}*/
+				//alert(sum(1,2,3))//6
+				//alert(sum(1,2,3,4,5))//15
+				//alert(sum(5,2,3,'*'))//30
+			//	alert(sum(10,4,6,'-'))//0
+			
+					var num=document.getElementsByTagName('input');
+					num[4].onclick=function (){
+					alert(sum(num[0].value,num[1].value,num[2].value,num[3].value))	
+					function sum(){
+					//	var n=0;
+						var n=arguments[0];//第一项
+						var icon =arguments[arguments.length-1];
+						for(var i=1;i<arguments.length-1;i++){
+							if(icon == '+'){
+								n=Number(arguments[0])+Number(arguments[1])+Number(arguments[2]);
+							}else if(icon == '-'){
+								n -=arguments[i];
+							}else if(icon == '*'){
+								n *=arguments[i];
+							}else if(icon == '/'){
+								n /=arguments[i];
+							}
+						}
+						return Number(n);
+					}
+				}
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>
+

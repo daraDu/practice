@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>自动轮换选项卡</title>
+<style>
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	a{text-decoration:none;color:#215A94}
+	#box{margin:50px auto;width:306px;height:215px;border:1px solid #FF6300;}
+	.clearFloat:after{content:" ";display:block;clear:both}
+	#box img{width:180px;height:206px;margin-top:4px;}
+	#box ul{padding:6px 2px;}
+	.left{float:left;}
+	.right{float:right;}
+	#box li{width:51px;height:27px;line-height:27px;text-align:center;border:1px solid #FFADAD;margin:0 3px;cursor:pointer;}
+	.on{background:#FF4A6B;color:#fff;}
+</style>
+</head>
+<script>
+	window.onload=function(){
+		var oBox=document.getElementById("box");
+		var aUl=oBox.getElementsByTagName("ul");
+		var aImg=oBox.getElementsByTagName("img")[0];//图片
+		var aList=oBox.getElementsByTagName("li");
+		var imgArray=['../images/1.png','../images/2.png','../images/3.png','../images/4.png','../images/5.png','../images/6.png',
+					'../images/7.png','../images/8.png','../images/9.png','../images/10.png','../images/11.png','../images/12.png',
+					'../images/13.png','../images/14.png'
+		];
+		var textArray=[
+			'凉鞋1','连衣裙','高跟鞋','T恤衫','衬衣','帽子','牛仔裤','外套','牛仔褂','运动鞋','皮鞋','球鞋','拖鞋','耳环'
+		];
+		var num=0;
+		var timer=null;
+		var lists=imgArray.length;
+		for(var i =0;i<lists;i++){
+			if(i<lists/2){
+				aUl[0].innerHTML += '<li>'+textArray[i]+'</li>';
+			}else{
+				aUl[1].innerHTML += '<li>'+textArray[i]+'</li>';
+			}
+		};
+		for(var j=0;j<lists;j++){
+			aList[j].index=j;
+			aList[j].onmouseover=function(){
+				clearInterval(timer);
+				clearAll();
+				newStyle(this.index)
+			}
+			aList[j].onmouseout=function(){
+				newStyle(this.index);
+				timer=setInterval(autoPlay,1000);
+			}
+		}
+		function clearAll(){
+			for(var i =0;i<lists;i++){
+				aList[i].className='';
+			};
+		};
+		function newStyle(num){
+			aList[num].className='on';
+			aImg.src=imgArray[num];
+		}
+		newStyle(num);
+		function autoPlay(){
+			clearAll();
+			newStyle(num);
+			if(num<lists/2){
+				num++;
+				if(num==lists/2){
+					num=lists - 1;
+				};
+			}else{
+				num--;
+				if(num==lists/2 - 1){
+					num=0;
+				};
+			};
+		};
+		timer=setInterval(autoPlay,1000);
+	}
+	
+</script>
+<body>
+	<div id='box'>
+		<ul class='left'></ul>
+		<img src='../images/1.png'/>
+		<ul class='right'></ul>
+	</div>
+</body>
+</html>

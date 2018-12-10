@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> 4-比较类、截取类、substring应用实例</title>
+		<style>
+			div{width:340px;height:auto;padding:10px;margin:200px auto;border:8px solid #ccc;background:#ffffcc;}
+			a{text-decoration:none;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oText = document.getElementsByTagName("span");
+				var oBtn = document.getElementsByTagName("a")[0];
+				var str = oText[0].innerHTML
+				var off = false;
+				oBtn.onclick = function(){
+					if(off){
+						oBtn.innerHTML='<<收缩';
+						oText[0].innerHTML=str;
+						oText[1].style.display='none';
+					}else{
+						oBtn.innerHTML='>>展开';
+						oText[0].innerHTML=str.substring(0,14);
+						oText[1].style.display='inline-block';
+					}
+					off = !off
+				}
+			}; 
+		</script>	
+	</head>
+	<body>
+		<div>
+			<span>乡愁，是心灵深处最美的花朵。它是一朵散发着淡淡清香的茉莉，承载着温柔的母爱；
+				它是一朵金黄的向日葵，承诺着沉甸甸的父爱；它是一朵阳光下的郁金香，承载着对女儿浓烈的思念；
+				它是一朵春天里的野菊花，虽然普通，但却承载着游子对故土浓浓的思念</span>
+			<span style='display:none;'>......</span>
+			<a href='javascript:;'> >>收缩 </a>
+		</div>
+	</body>
+</html>
+

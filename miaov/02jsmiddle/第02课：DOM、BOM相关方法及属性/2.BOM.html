@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BOM</title>
+<script>
+window.onload = function() {
+	/*
+		BOM ---> Browser Object Model 浏览器对象模型
+		
+	
+	
+	*/
+	
+	var oBtn = document.getElementsByTagName("button");
+	oBtn[0].onclick=function(){
+		window.open('https://www.baidu.com')
+	}
+	oBtn[1].onclick=function(){
+		alert(window.navigator.userAgent)
+	};
+	oBtn[2].onclick=function(){
+		// alert(window.location)//浏览器地址栏信息
+		
+		//window.location.href='https://www.baidu.com'
+		alert(window.location.search);//获取？及其后面的内容
+		
+	}
+	oBtn[3].onclick=function(){
+		alert(window.location.hash);//获取#及其后面的内容
+	}
+}
+</script>
+</head>
+
+<body>
+	<button>打开一个新的网页</button>
+	<button>查看浏览器信息</button>
+	<button>window.location.search</button>
+	<button>window.location.hash</button>
+</body>
+</html>
+

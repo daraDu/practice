@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数据类型</title>
+		<style>
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			#box{width:500px;height:auto;}
+			li{width:115px;height:130px;background:url(images/normal.png) no-repeat; float:left;margin-left:10px;}
+		</style>
+		<script>
+			window.onload=function(){
+				//f1();
+				f2();
+			}
+			function f1(){//Number
+				var str='0100';
+				//alert(+str+100);//隐式转换
+				//alert(Number(str)+100);//Number()转换
+				var str2='';
+			//	alert(Number(str2))//0
+				var str3='     ';
+				//alert(Number(str3))//0
+				var a2={}
+				//alert(Number(a2))
+				var a3=[];
+				//alert(Number(a3))//0
+				var a4=[1,2,3];
+				//alert(Number(a4))//NaN
+				var a5;
+				alert(Number(a5))//NaN
+			}
+			
+			function f2(){//parseInt  parseFloat(从左到右依次往后)
+				var b1='100px';
+			//	alert(Number(b1));//NaN
+				alert(parseInt(b1));//100
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+
