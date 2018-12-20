@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>表单</title>
+<script>
+window.onload = function() {
+	var oForm = document.getElementById('oForm');
+	oForm.text1.onchange=function(){
+		alert(this.value)
+	}
+	/*oForm.sex[0].onchange=function(){
+		alert(this.value)
+	}
+	oForm.project[0].onchange=function(){
+		alert(this.value)
+	}*/
+	oForm.btn.onclick=function(){
+		for(var i=0; i < oForm.sex.length;i++){
+			if(oForm.sex[i].checked){
+				alert(oForm.sex[i].value+'选中了')
+			}else{
+				alert(oForm.sex[i].value+'没选中')
+			}
+		}
+		for(var i=0;i<oForm.project.length;i++){
+			if(oForm.project[i].checked){
+				alert(oForm.project[i].value+'选中了')
+			}else{
+				alert(oForm.project[i].value+'没选中')
+			}
+		}
+	}
+	
+	
+		
+}
+</script>
+</head>
+
+<body>
+	<form id='oForm'>
+		<input type='text' name='text1'/>
+		<input type='radio' name='sex' value='男'/>男
+		<input type='radio' name='sex' value='女'/>女
+		
+		<input type='checkbox' name='project' value='html'/>html
+		<input type='checkbox' name='project' value='css' checked/>css
+		<input type='checkbox' name='project' value='javascript'/>javascript
+		
+		<select name='city'>
+			<option value='北京'>北京</option>
+			<option value='上海' selected>上海</option>
+			<option value='广州'>广州</option>
+		</select>
+		
+		<input type='button' name='btn' value='按钮'/>
+	</form>
+</body>
+</html>
+

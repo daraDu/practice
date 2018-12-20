@@ -103,5 +103,49 @@ DOM把文档看做是一棵树，同时定义了很多方法来操作这棵树�
 		2、元素.clientWidth：width+padding（可视区域的宽，如果内容过多，自身有滚动条或者overflow：hide都不算在内）
 		   元素.offsetWidth ：width+padding+border（可视区域的宽+border）
 		
-
-
+	五、操作元素行间属性的多种方式
+		1、元素.getAttribute('属性名') 获取指定元素的属性
+		2、元素.setAttribute('属性名','属性值') 给指定元素的指定属性设置值  // oText.setAttribute( 'value', 'hello' );
+		3、元素.removeAttribute('属性名') 删除指定元素的指定属性
+	
+	六、动态创建元素
+		1、var obj = document.createElement('标签名')
+			将创建的标签添加到页面中(你要添加在哪个父级下)
+			①、父级.appendChild(obj)
+			②、被插入的元素父级.insertBefore(obj,被插入的元素)
+				ie(所有版本)下如果被插入的元素不存在，会报错
+				标准下（火狐，谷歌）如果被插入的元素不存在，则会以appendChild形式添加元素
+				
+		2、要删除的子节点父元素.removeChild(要删除的子节点)  删除子节点	
+		
+		3、被替换的节点父级.replaceChild(新的节点，被替换的节点)  替换子节点
+		
+			
+表单操作：
+	一、获取表单: formId.name
+		<input type='radio' name='sex' value='男'/>男
+		<input type='radio' name='sex' value='女'/>女
+		radio、CheckBox ：name相同为一组   checked 选中状态	
+		formId.sex  是一个数组  formId.sex[0] 获取到第一个男
+		<select name='city'>
+			<option value='北京'>北京</option>
+			<option value='上海' selected>上海</option>
+			<option value='广州'>广州</option>
+		</select>
+		select  selected选中   默认上海
+	二、change事件：
+			type = 'text'  当光标离开input的时候执行onchange事件
+			type='radio'/'checkbox'  标准浏览器值改变之后就执行，ie7/8 光标离开之后才执行
+		
+	三、表单事件
+		<form id='oForm' action='http://www.baidu.com'></form>
+		oForm.onsubmit = function(){
+			if(this.text1.value==" "){
+				alert("请输入内容");
+				return false;
+			}
+		}
+		onsubmit：表单提交事件
+		onreset：表单重置事件  
+		return false 阻止事件的发生 
+		

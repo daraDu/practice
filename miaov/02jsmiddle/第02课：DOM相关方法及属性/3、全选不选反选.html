@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>全选不选反选</title>
+<style>
+	input{
+		margin:10px 2px;
+	}
+</style>
+<script>
+window.onload = function() {
+	var oForm = document.getElementById('oForm');
+	var allChecked = oForm.check[0]; //全选
+	var notChecked = oForm.check[1]; //不选
+	var reverseChecked = oForm.check[2]; //反选
+		allChecked.onclick=function(){
+			for(var i=0;i<oForm.city.length;i++){
+				//allChecked.checked ? oForm.city[i].checked=true : oForm.city[i].checked=false;	
+				oForm.city[i].checked=true
+			}
+		}
+		notChecked.onclick=function(){
+			for(var i=0;i<oForm.city.length;i++){
+				//notChecked.checked ? oForm.city[i].checked=false : oForm.city[i].checked=true;		
+				oForm.city[i].checked=false
+			}
+		}
+		reverseChecked.onclick=function(){
+			for(var i=0;i<oForm.city.length;i++){
+				/*if(reverseChecked.checked){
+					oForm.city[i].checked = !oForm.city[i].checked 
+				}*/
+				
+					oForm.city[i].checked = !oForm.city[i].checked 
+			}
+		}
+	
+}
+</script>
+</head>
+
+<body>
+	<form id='oForm'>
+		<input type='button' value='全选' name='check'/>
+		<input type='button' value='不选' name='check'/>
+		<input type='button' value='反选' name='check'/> 
+		
+		<!-- <input type='checkBox' value='全选' name='check'/>全选
+		<input type='checkBox' value='不选' name='check'/>不选
+		<input type='checkBox' value='反选' name='check'/> 反选 -->
+		<br/>
+		<input type='checkBox' value='北京' name='city'/>北京
+		<input type='checkBox' value='上海' name='city'/>上海
+		<input type='checkBox' value='天津' name='city'/>天津
+		<input type='checkBox' value='广东' name='city'/>广东
+		<input type='checkBox' value='深圳' name='city'/>深圳
+		<input type='checkBox' value='武汉' name='city'/>武汉
+		<input type='checkBox' value='重庆' name='city'/>重庆
+	</form>
+</body>
+</html>
+

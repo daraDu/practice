@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>getElementsByClass</title>
+<script>
+window.onload = function() {
+	/*  ie7/8不支持这一方法
+		var oLi = document.getElementsByClass('list')
+		alert(oLi.length)
+	*/
+	
+	/*
+		将class名拆分 split  为数组
+		把所要找的class 与数组中的每一项比较
+	*/
+	
+	var oBox = document.getElementById("box");
+	var aList = getElementsByClass(document,'li','list');
+	for(var i=0;i<aList.length; i++){
+		aList[i].style.background="#f00";
+	}
+	function getElementsByClass(parent,label,className){
+		var aEle = parent.getElementsByTagName(label);
+		var arr = [];
+		for(var i=0;i<aEle.length;i++){
+			/*if(aEle[i].className == className){
+				arr.push(aEle[i])
+			}*/
+			var aClassName = aEle[i].className.split(" ");
+			for(var j = 0; j<aClassName.length; j++){
+				console.log(aClassName[j])
+				if(aClassName[j] == className){
+					arr.push(aEle[i]);
+				}  
+				break;
+			}
+		}
+		return arr
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+	<ul id='box'>
+		<li class='list list1'>1111</li>
+		<li>2222</li>
+		<li>3333</li>
+		<li class='list list'>4444</li>
+	</ul>
+	<ul>
+		<li class='list list1'>1111</li>
+		<li>2222</li>
+		<li>3333</li>
+		<li class='list list'>4444</li>
+	</ul>
+	<div>
+		<p class='list'>pppppppp</p>
+	</div>
+</body>
+</html>
+

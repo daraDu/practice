@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>添加移除class</title>
+<style>
+	.box1{background:#f00}
+</style>
+<script>
+window.onload = function() {
+	var oDiv = document.getElementsByTagName("div")[0];
+	var oDiv1 = document.getElementsByTagName("div")[1];
+	
+	addClass(oDiv,'box1')
+	removeClass(oDiv1,'box1')
+	function addClass(obj,className){
+		if(obj.className!=" "){
+		//如果本身有class
+			var classArr = obj.className.split(" ");
+			var _index = arrIndex(classArr,className);
+			console.log(arrIndex(classArr,className))
+			//如果本身已经没有名称为className的class，添加
+			if(_index=='-1'){				
+				obj.className+=' '+className;
+			}
+		}else{
+			obj.className = className;
+		}
+	}
+	
+	function removeClass(obj,className){
+		//如果自身有class，删除
+		if(obj.className!=" "){
+			//如果有名称为className的class，删除
+			var classArr = obj.className.split(" ");
+			var _index = arrIndex(classArr,className);
+			if(_index != '-1'){
+				classArr.splice(_index,1);
+				obj.className=classArr.join(" ")
+			}
+		}
+	}
+	
+/*	function arrIndex(arr,objClass){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==objClass){
+				return i;
+			}
+		}
+		return -1;
+	}
+*/	
+	  var array = ['上海','北京','广州','杭州']
+  console.log(arrIndex(array,'杭州'))
+  console.log(arrIndex(array,'深圳'))//-1
+   function arrIndex(arr,item){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==item){
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+</script>
+</head>
+
+<body>
+	<div class='box box2 box3'>11111111111</div>
+	<div class='box box1 box2 box3'>22222</div>
+	
+</body>
+</html>
+
