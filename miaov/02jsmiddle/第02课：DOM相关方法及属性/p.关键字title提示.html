@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>关键字title提示</title>
+<style>
+	p{width:400px;height:auto;padding:5px;border:1px solid #888;}
+	p span{color:green;cursor:pointer;position:relative;}
+	.titBox{padding:5px;border:1px solid #888;background:#FFFFCA;display:none;white-space: nowrap;position:absolute;top:20px;left:0px;z-index:11}
+</style>
+<script>
+window.onload = function() {
+	var oP = document.getElementsByTagName("p")[0];
+	var oSpan = oP.getElementsByTagName("span");
+	for(var i=0;i<oSpan.length;i++){
+		if(oSpan[i].getAttribute('dataTitle')){
+			var oTit = document.createElement("span");
+			oTit.className = 'titBox';
+			oTit.innerHTML = oSpan[i].getAttribute('dataTitle');
+			oSpan[i].appendChild(oTit)
+			oSpan[i].onmouseover=function(){
+				this.children[0].style.display="block";
+			}
+			oSpan[i].onmouseout=function(){
+				this.children[0].style.display="none";
+			}
+		}
+	}
+		
+}
+</script>
+</head>
+
+<body>
+	<p> 
+		<span dataTitle='JavaScript面向Web的编程语言'>JavaScript</span>是面向Web的编程语言，绝大多数现代网站都使用了 
+		<span dataTitle='JavaScript222'>JavaScript</span>，
+		并且所有的现代Web浏览器——基于桌面系统、游戏机、平板电脑和智能手机的浏览器——均包含了 
+		<span dataTitle='JavaScript333'>JavaScript</span>解释器。
+		这使得 <span dataTitle='JavaScript444'>JavaScript</span>能够称得上史上最广泛的编程语言。 
+		<span dataTitle='JavaScript555'>JavaScript</span>也是前端开发工程师必须掌握的三种技能之一，
+		描述网页内容的HTML、描述网页样式的CSS以及描述网页行为的 <span dataTitle='JavaScript666'>JavaScript</span>。
+	</p>
+</body>
+</html>
+

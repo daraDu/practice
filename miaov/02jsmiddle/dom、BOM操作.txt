@@ -148,4 +148,28 @@ DOM把文档看做是一棵树，同时定义了很多方法来操作这棵树�
 		onsubmit：表单提交事件
 		onreset：表单重置事件  
 		return false 阻止事件的发生 
-		
+
+BOM操作：Browser Object Model 浏览器对象模型
+	方法：window.open(地址默认是空白页面，窗口打开方式默认新窗口)  打开一个新窗口  window可以省略
+	
+	属性：1、window.navigator.userAgent  浏览器信息
+			检查是否为ie浏览器
+			if ( window.navigator.userAgent.indexOf('MSIE') != -1 ) {
+				alert('我是ie');
+			} else {
+				alert('我不是ie');
+			}
+		 2、window.location  地址栏的信息
+			window.location.href    地址栏的信息
+			window.location.hash    #后面的信息
+			window.location.search  ?后面的信息
+	
+	窗口尺寸大小：
+		浏览器窗口可视区的大小：document.documentElement.clientWidth / document.documentElement.clientHeight
+		滚动条滚动距离：document.documentElement.scrollTop/.scrollLeft 
+		div内容里的高度（滚动高）：document.body.scrollHeight (全部的高度，包括里面子元素的高度)  子元素高+padding  除开border外盒子里的高度 
+		文档高度：document.body.offsetHeight  
+
+		window对象常用事件：
+			window.onscroll：滚动条滚动时触发
+			window.onresize：浏览器窗口大小改变时触发

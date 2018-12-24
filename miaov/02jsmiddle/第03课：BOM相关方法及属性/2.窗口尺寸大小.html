@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>2.窗口尺寸大小</title>
+<style>
+	*{margin:0;padding:0;}
+</style>
+<script>
+window.onload = function() {
+	//alert(document.documentElement.clientWidth)
+	
+	//浏览器窗口可视区域大小
+	document.onclick=function(){alert(document.documentElement.scrollTop)}
+	var oDiv = document.getElementsByTagName('div');
+//	alert(oDiv[0].scrollHeight)
+	alert(document.body.offsetHeight)//122
+}
+</script>
+</head>
+
+<body style="">
+	<div style='width:100px;height:100px;padding:10px;border:1px solid #000;'>
+		<div style='width:100px;height:200px;background:#f00;'></div>
+	</div>
+</body>
+</html>
+

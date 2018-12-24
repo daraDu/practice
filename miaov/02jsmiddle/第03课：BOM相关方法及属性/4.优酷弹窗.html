@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>优酷弹窗</title>
+<style>
+	body{margin:0;padding:0;}
+	button{position:fixed;left:0;width:50px}
+	.box{width:300px;height:200px;border:5px solid #f00;display:block;position:absolute;z-index:22;background:#fff;display:none;}
+	.close{margin-bottom:20px;cursor:pointer;}
+	.mask{background:rgba(0,0,0,0.5);width:100px;height:500px;margin:0;padding:0;position:relative;z-index:11;display:none;}
+</style>
+<script>
+	window.onload=function(){
+		var btn = document.getElementsByTagName("button")[0];
+		var oBox = document.getElementsByClassName("box")[0];
+		var mask = document.getElementsByClassName("mask")[0]
+		var closeBtn = document.getElementsByClassName("close")[0]
+		
+		btn.onclick=function(){
+			showBox()
+			document.body.style.overflow='hidden'
+		}
+		closeBtn.onclick=function(){
+			oBox.style.display='none';
+			mask.style.display='none';
+            document.body.style.overflow='auto'
+		}
+		window.onresize=function(){
+			showBox()
+		}
+		
+		function showBox(){
+			var bodyHeight = document.documentElement.clientHeight;
+			var bodyWidth = document.documentElement.clientWidth;
+			oBox.style.display='block';
+			
+			var oBoxTop = (bodyHeight-oBox.offsetHeight)/2+document.documentElement.scrollTop +'px';
+			var oBoxLeft = (bodyWidth-oBox.offsetWidth)/2 + document.documentElement.scrollLeft +'px';
+			oBox.style.top=oBoxTop;
+			oBox.style.left=oBoxLeft;
+			
+			mask.style.display='block';
+			mask.style.width=document.documentElement.clientWidth + document.documentElement.scrollLeft +'px';
+			mask.style.height=document.documentElement.clientHeight+document.documentElement.scrollTop +'px';
+		}
+		
+	}
+</script>
+</head>
+
+<body style="height:2000px;width:3000px;">
+	<button>登录</button>
+	
+	<div class='mask'></div>
+	<div class='box'>
+		<div class='close'>关闭</div>
+		这里是登陆的表单等内容 
+	</div>
+</body>
+</html>
+
