@@ -1,0 +1,50 @@
+event事件：
+	一、焦点事件
+		1、焦点：是浏览器能够区分用户输入的对象，当一个元素有焦点的时候，就可以接收用户输入
+		可以通过一些方式给元素设置焦点：点击、tab、js
+		不是所有元素都能接收焦点的，只有响应用户输入的元素才有焦点
+		2、事件：
+			obj.onfocus：当元素获取到焦点时触发
+			obj.onblur：当元素失去焦点时触发
+		3、方法：
+			obj.focus() 给指定的元素设置焦点
+			obj.blur() 取消指定元素的焦点
+			obj.select() 选择指定元素里的内容
+			
+	二、event：事件对象，当一个事件被调用的时候，和当前这个对象发生的这个事件相关的详细信息会被临时保存到一个指定的地方---event对象，供我们在需要的时候使用
+				类型飞机的黑匣子（行车记录仪）
+				
+				事件对象只有在一个事件调用的函数中才会有内容
+				事件函数：事件调用的函数（onclick、onfocus等调用的函数），一个函数是不是事件函数，不取决于函数声明的时候，而取决与函数调用的时候
+		兼容：ie/chrome ：event是一个内置全局对象
+			  标准浏览器：事件对象是事件函数的第一个参数传入的
+			如果一个函数被事件调用，那么这个函数的第一个参数就是事件对象
+			
+				event.cancelBubble = true  ---> 阻止事件冒泡 （默认为false，不阻止事件冒泡）
+				event.screenX / event.screenY--->  鼠标到屏幕左上角的水平距离/垂直距离
+				event.clientX / event.clientY --->  鼠标到浏览器左上角的水平距离/垂直距离
+	
+		事件冒泡：当一个元素接收到事件的时候，会把他接收到的所有传给父级，一直到顶层window
+			给某个元素添加事件：就是给这个元素添加事件函数
+			我在马路边捡到一分钱，交给警察叔叔   ---》我不交给警察叔叔不代表我没捡到一分钱
+				我.on马路边捡到一分钱 = function(){
+					交给警察叔叔
+				}
+				
+ajax：
+	数据传输
+	var xhr = new XMLHttpRequest();
+	xhr.open('get','1.txt'，true);
+	xhr.send();
+	
+	//
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				alert(xhr.responseText)
+			}
+		}
+	}	
+	
+	JSON.stringify()//将json数组解析为字符串
+	JSON.parse()//将json字符串转换为数组

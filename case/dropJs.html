@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS css模仿select</title>
+		<style>
+		.zselect{width:500px;height:50px;line-height:50px;border:1px solid #ccc;position: relative;}
+		.zselect ul{width:100%;list-style: none;margin: 0px;padding: 0px;position: absolute;z-index: 999;border: 1px solid #ccc;background: #fff;}
+		.zselect ul li{width:100%;height:50px;line-height:50px;text-align:center;margin: 2px 0px;background: #CCC; display: none; cursor: pointer;}
+		.zselect ul li:hover{background: #FFFF00;}
+		.zselect ul li.on{display: block; }
+		</style>
+	</head>
+	<body>
+	<div class="zselect">
+		<ul>
+			<li class="on">请选择编程语言</li>
+			<li>Visual C#</li>
+			<li>Visual Basic</li>
+			<li>PHP</li>
+			<li>Foxpro</li>
+			<li>易语言</li>
+		</ul>
+	</div>
+	<script>
+		var lis = document.getElementsByClassName('zselect')[0].getElementsByTagName('li');
+		for(var i = 0; i < lis.length; i++){
+			lis[i].onclick = function(){
+				if(this.parentNode.getAttribute('_zxs') == 'show'){
+					//for(var j = 0; j < lis.length; j++){ lis[j].className = '';}
+					for(var j = 0; j < lis.length; j++){ lis[j].style.display = 'none';}
+					this.className = 'on';
+					this.style.display = 'block';
+					this.parentNode.setAttribute('_zxs','hide');
+				}else{
+					//for(var j = 0; j < lis.length; j++){ lis[j].className = 'on';}
+					for(var j = 0; j < lis.length; j++){ lis[j].style.display = 'block';}
+					this.parentNode.setAttribute('_zxs','show');
+				}
+			};
+		}
+	</script>
+	</body>
+</html>

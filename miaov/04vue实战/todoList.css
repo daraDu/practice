@@ -1,0 +1,133 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	font-size: 14px;
+	background: #efefef;
+	font-family: '微软雅黑';
+}
+ul,ol{
+	list-style: none;
+}
+.clearFloat:after{
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+.clearFloat{
+	zoom: 1;
+}
+.tit{
+	width: 100%;
+	height: 44px;
+	background: #db4c3f;
+	line-height: 44px;
+	color: #fff;
+}
+.tit h2{
+	padding-left: 18%;
+	font-size: 18px;
+}
+.box{
+	margin: 0 18%;
+	width: 60%;
+	height: 100px;
+}
+.box h3{
+	padding: 14px 0;
+}
+.box .addTask{
+	width: 98%;
+	height: 36px;
+	padding: 0 5px;
+}
+.noTask{
+	display: none;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	background: #fff;
+	padding: 0 10px;
+	margin-top: 20px;
+}
+.cont .taskTit  li{
+	margin: 10px 0.2%;
+	width: 17%;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #ddd;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+.cont .taskTit .on{
+	color: #DD4B39;
+	border-color: #DD4B39;
+}
+.cont .taskTit  li:nth-of-type(1){
+	margin-left: 0;
+}
+.cont .taskTit .unfinshedNum{
+	width: 40%;
+	height: 40px;
+	line-height: 40px;
+	margin: 10px 0;
+	border: none;
+	color: #dd4b39;
+	float: right;
+	text-align: right;
+}
+
+.cont .taskList{
+	width: 100%;
+	height: auto;
+	background: #fff;
+	font-size: 16px;
+}	
+
+.cont .taskList li{
+	border-bottom: 1px solid #ededed;
+}
+.cont .taskList .contBox{
+	padding: 2%;
+	position: relative;
+}
+.cont .taskList .edit{
+	padding: 8px 2%;
+	display: none;
+}
+.cont .taskList .editing .contBox{
+	display: none;
+}
+.cont .taskList .editing .edit{
+	display: block;
+}
+.cont .taskList .edit input{
+	height: 40px;
+	padding: 0 5px;
+}
+.cont .taskList .taskCont{
+	padding-left: 26px;
+}
+.cont .taskList .removeTask{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-size: 24px;
+	cursor: pointer;
+	display: none;
+	color: #999;
+}
+.cont .taskList li:hover .removeTask{
+	display: block;
+}
+.cont .taskList .removeTask:hover{
+	color: #DB4C3F;
+}
+.cont .taskList .finshedTask{
+	text-decoration: line-through;
+	color: #aaa;
+}

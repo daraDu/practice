@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>数据操作与弹出层提示</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	ul,li{
+		list-style:none;
+	}
+	.box{
+		margin:50px auto;
+		width:500px;
+		display:flex;
+		position:relative;
+	}
+	.box .listBox{
+		width:70px;
+	}
+	.box .listBox h3{
+		width:50px;
+		padding:5px;
+		text-align:center;
+		cursor:pointer;
+		font-weight:normal;
+	}
+	.box .listBox .active{
+		background:#ee7510;
+		color:#fff;
+		font-weight:bold;
+	}
+	.box ul{
+		width:500px;
+		border-top:2px solid #ee7510;
+		padding:5px;
+		display:none;
+		position:absolute;
+		left:0;
+	}
+	.box li{
+		height:50px;
+		line-height:50px;
+		cursor:pointer;
+		color:blue;
+		width:100px;
+		text-decoration:underline;
+		position:relative;
+	}
+	.box .on{
+		display:block;
+	}
+	.tipBox{
+		background:#fff;
+		border:2px solid #ee7510;
+		padding:10px;
+		position:absolute;
+		left:50px;
+		top:-84px;
+		z-index:999;
+		margin-bottom:20px;
+		width:200px;
+		border-radius:5px;
+		height:200px;
+		display:none;
+	}
+
+.tipBox:after, .tipBox:before {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  left: -26px;
+  position: absolute;
+  width: 0;
+}
+
+.tipBox:after {
+  border-width: 16px;
+  border-right-color: #fff;
+  top: 90px;
+}
+
+.tipBox:before {
+  border-width: 13px;
+  border-right-color: #ee7510;
+  top: 93px;
+}
+</style>
+<script>
+window.onload = function() {
+	var oTit = document.getElementsByTagName("h3");
+	for(var i=0; i<oTit.length; i++){
+		oTit[i].onclick=function(){
+			if(this.className == ''){
+				for(var j=0;j<oTit.length; j++){
+					this.parentNode.parentNode.children[j].children[0].className = '';
+					this.parentNode.parentNode.children[j].children[1].className = '';
+				}
+				this.className='active';
+				var sibling = this.nextElementSibling || this.nextSibling;
+				sibling.className='on';
+			}
+		}
+	}
+	var oUl = document.getElementsByTagName("ul");
+
+	for(var i=0;i<oUl.length;i++){
+		var oList = oUl[i].getElementsByTagName("li");
+		for(var j = 0; j<oList.length;j++){
+			var oTipBox = document.createElement("div");
+			oTipBox.className='tipBox';
+			oTipBox.innerHTML = '2222'
+			oList[j].appendChild(oTipBox);
+			
+			oList[j].onmouseover=function(){
+				this.children[0].style.display='block';
+				var top = this.offsetTop+this.children[0].clientHeight;
+				if(top>document.documentElement.clientHeight){
+					this.style.paddingBottom = this.children[0].clientHeight +'px';
+					console.log(this.children[0].clientHeight)
+				}
+			}
+			oList[j].onmouseout=function(){
+				if(this.children[0]){
+					this.children[0].style.display='none';
+					this.style.paddingBottom = '0px';
+				}
+			}
+		}
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+	<div class='box'>
+		<div class='listBox'>
+			<h3 class='active'>前端</h3>
+			<ul class='on'>
+				<li>1111</li>
+				<li>2222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+				<li>1111</li>
+				<li>2222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+				<li>1111</li>
+				<li>222222222222222222222222222222222222222222222222222222222222</li>
+				<li>3333</li>
+				<li>4444</li>
+				<li>5555</li>
+			</ul>
+		</div>
+		<div class='listBox'>
+			<h3>后端</h3>
+			<ul>
+				<li>php</li>
+				<li>python</li>
+				<li>java</li>
+				<li>c++</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class='tipBox'><span>222222</span></div>
+</body>
+</html>
+

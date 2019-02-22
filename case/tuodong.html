@@ -1,0 +1,44 @@
+    <!DOCTYPE HTML>  
+    <html>  
+    <head>  
+    <style type="text/css">  
+    #div1, #div2  
+    {float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}  
+    </style>  
+	 <script type="text/javascript">
+		function allowDrop(ev) {
+			ev.preventDefault();
+		}
+		var srcdiv = null;
+	
+		function drag(ev, divdom) {
+			srcdiv = divdom;
+			ev.dataTransfer.setData("text/html", divdom.innerHTML);
+		}
+	
+		function drop(ev, divdom) {//拖到目的地放下之后要做的处理
+			ev.preventDefault();
+			if (srcdiv != divdom) {
+				srcdiv.innerHTML = divdom.innerHTML;
+				divdom.innerHTML = ev.dataTransfer.getData("text/html");
+			}
+		}
+		
+		//ondrop: 拖到目的地放下之后要做的处理，这里自定义drop(event,this)函数,互换两个的innerHTML
+		//ondragover:当拖动链接等有默认事件的元素时，要在ondragover事件中用ev.preventDefault()阻止默认事件。否则drop事件不会触发。
+		//draggable:允许拖动
+		//ondragstart:选取拖动目标要做的处理，这里保存拖动目标的innerHTML.
+	</script>
+	
+    </head>  
+    <body>  
+      
+    <div id="div1" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">  
+      	<p>ni hao!</p>  
+    </div>  
+    <div id="div2" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">  
+   		<p>Hello world!</p>  
+    </div>  
+      
+   </body>  
+ </html>  

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基于数组级联列表</title>
+	</head>
+	<script type="text/javascript">
+		var arr=new Array();
+		arr['北京']=['朝阳区','海定区','丰台区'];
+		arr['安徽']=['合肥','阜阳','淮北'];
+		arr['浙江']=['杭州','富阳','桐庐'];
+		window.onload=function(){
+			var province=document.getElementById("province");
+			for(num in arr){
+				province.add(new Option(num,num));
+			};
+		};
+		function setCity(){
+			var pro=document.getElementById("province").value;
+			if(pro==""){return};
+			var city=document.getElementById("city");
+			city.options.length=1;
+			for(var i=0;i<arr[pro].length;i++){
+				city.add(new Option(arr[pro][i],arr[pro][i]));
+			}
+		}
+	</script>
+	
+	<body>
+		<select id="province" onchange="setCity()">
+			<option value="">--请选择省份--</option>
+		</select>
+		<select id="city">
+			<option value="">--请选择城市--</option>
+		</select>
+	</body>
+</html>

@@ -13,28 +13,25 @@
 </style>
 <script>
 window.onload = function() {
-/*
-	事件冒泡：当一个元素接收到事件的时候，会把他接收到的事件传送给父级直到顶层window
-
-*/
-	function fn(){
-		alert(this.id)
-	}
-	var oDiv = document.getElementsByTagName("div");
-	oDiv[0].onclick=fn;
-	oDiv[1].onclick=fn;
-	oDiv[2].onclick=fn;
-	
+	var oDiv1 = document.getElementById("div1");
+	var oDiv2 = document.getElementById("div2");
+	var oDiv3 = document.getElementById("div3");
 	var oBtn = document.getElementsByTagName("button")[0];
-	var oDiv1 = document.getElementsByClassName("div1")[0];
-	oBtn.onclick=function(e){
-		oDiv1.style.display='block';
-		var e = e || event ; 
-		//阻止事件冒泡
-		e.cancelBubble = true;
+	var oBox = document.getElementsByClassName("div1")[0];
+	function fn1(){
+		alert(this.id)
+	};
+	oDiv1.onclick = fn1;
+	oDiv2.onclick = fn1;
+	oDiv3.onclick = fn1;
+	
+	oBtn.onclick = function(ev){
+		oBox.style.display = 'block';
+		var ev = ev || event;
+		ev.cancelBubble = true; //阻止事件冒泡
 	}
-	document.onclick=function(){
-		oDiv1.style.display='none';
+	document.onclick = function(){
+		oBox.style.display = 'none';
 	}
 }
 </script>

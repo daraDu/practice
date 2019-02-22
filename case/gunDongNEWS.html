@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>无标题文档</title>
+		<style type="text/css">
+			.inform {
+				border: 1px solid #E5E5E5;
+				padding: 1px;
+			}
+			
+			.inform h2 {
+				background: none repeat scroll 0 0 #015198;
+				font-weight: normal;
+				line-height: 30px;
+			}
+			
+			.inform h2 span {
+				color: #FFFFFF;
+				font-size: 16px;
+				padding-left: 10px;
+			}
+			
+			.inform h2 a {
+				color: #FFFFFF;
+				float: right;
+				font-size: 14px;
+				padding-right: 3px;
+			}
+			
+			.inform ul {
+				height: 170px;
+				margin-top: 7px;
+				overflow: hidden;
+			}
+			
+			.inform ul li {
+				line-height: 26px;
+				padding-left: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="inform">
+			<div style="height:170px; overflow:hidden">
+				<div id='marquee' style="height:285px;width: 200px;overflow: hidden;margin-top: 7px;">
+					<div >
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+						这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动
+					</div>
+				</div>
+				<!-- <ul id="marquee" style="height:285px">
+					<li>
+						<a title="添加时间：2014-06-05 点击次数：139" href="/index.php?r=archives/default/new&id=6044&t=1401953184" target="_blank">
+							华医学会临床医学科研专项资金...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-06-05 点击次数：192" href="/index.php?r=archives/default/new&id=6043&t=1401953184" target="_blank">
+							第四届职工文化艺术节活动方案</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-06-04 点击次数：154" href="/index.php?r=archives/default/new&id=6040&t=1401953184" target="_blank">
+							关于开展国家技术标准资源服务...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-06-04 点击次数：145" href="/index.php?r=archives/default/new&id=6038&t=1401953184" target="_blank">
+							科技部关于组织申报科技基础性...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-06-03 点击次数：203" href="/index.php?r=archives/default/new&id=6032&t=1401953184" target="_blank">
+							关于印发《国家自然科学基金优...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-06-03 点击次数：89" href="/index.php?r=archives/default/new&id=6031&t=1401953184" target="_blank">
+							UpToDate数据库培训讲座</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-05-29 点击次数：288" href="/index.php?r=archives/default/new&id=6015&t=1401953184" target="_blank">
+							手卫生工作简讯</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-05-26 点击次数：675" href="/index.php?r=archives/default/new&id=5831&t=1401953184" target="_blank">
+							2014年“端午节”门急诊医...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-05-21 点击次数：736" href="/index.php?r=archives/default/new&id=5671&t=1401953184" target="_blank">
+							国家自然科学基金委员会关于受...</a>
+					</li>
+					<li>
+						<a title="添加时间：2014-05-21 点击次数：622" href="/index.php?r=archives/default/new&id=5669&t=1401953184" target="_blank">
+							UpToDate数据库试用通知</a>
+					</li>
+
+					<li>&nbsp;</li>
+				</ul> -->
+			</div>
+			<script type="text/javascript">
+				window.onload = function() {
+					setTimeout("startmarquee(34, 50, 0, 'marquee')", 1000);
+				}
+
+				function startmarquee(lh, speed, delay, id) {
+
+					var t;
+					var p = false;
+					var o = document.getElementById(id);
+					// o.innerHTML += o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML + o.innerHTML;
+					o.onmouseover = function() {
+						p = true;
+					}
+					o.onmouseout = function() {
+						p = false;
+					}
+					o.scrollTop = 0;
+
+					function start() {
+						t = setInterval(scrolling, speed);
+						if(!p) o.scrollTop += 2;
+					}
+
+					function scrolling() {
+						if(o.scrollTop % lh != 0) {
+							o.scrollTop += 2;
+							if(o.scrollTop >= o.scrollHeight / 2) o.scrollTop = 0;
+						} else {
+							clearInterval(t);
+							setTimeout(start, delay);
+						}
+					}
+					setTimeout(start, delay);
+				}
+			</script>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue介绍</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id='text01'>
+			<p v-on:click='clk'>{{ message }}</p>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#text01', //挂载点
+				data: {
+					message: 'hello vue',
+				},
+				template: '<div>哈哈哈</div>',//只能有一个根节点
+				methods: {
+					clk: function(){
+						alert(this.message)
+					}
+				},
+				/* render(createElement){
+					return createElement(
+						'ul',//标签名
+						//第二个标签,属性
+						[createElement('li','哈哈哈'),//第三个标签：子元素,数组
+						createElement('li','呵呵呵'),
+						createElement('li','滚滚滚')]
+					)
+				} */
+				 render(createElement){
+				  return createElement(
+					'ul',
+					{ 
+						attrs : {
+						  id: 'foo',
+						  vDate:'aa'
+						},
+						'class': {
+							list: true,
+							bar: false
+						},
+						 // 组件 props
+						props: {
+						myProp: 'bar'
+						},
+						style: {
+							color: '#f00',
+							fontSize: '18px'
+						}
+					},
+					[
+					  createElement('li','哈哈哈'),
+					  createElement('li','呵呵呵'),
+					  createElement('li','滚滚滚')
+					]
+				  )
+				}
+			})
+		</script>
+	</body>
+</html>

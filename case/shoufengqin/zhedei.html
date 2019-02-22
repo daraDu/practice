@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>菜单垂直展开折叠</title>
+		<style type="text/css">
+			.wrap-menu {
+				width: 778px;
+				margin: 0 auto;
+				overflow: auto;
+				width: 300px;
+				background: #F6F6F6;
+				font: 12px/1.5 Tahoma, Arial, sans-serif
+			}
+			
+			.wrap-menu ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrap-menu ul li {
+				text-indent: 3em;
+				white-space: nowrap;
+			}
+			
+			.wrap-menu ul li h2 {
+				cursor: pointer;
+				height: 100%;
+				width: 100%;
+				margin: 0 0 1px 0;
+				font: 12px/31px '宋体';
+				color: #fff;
+				background: red;
+			}
+			
+			.wrap-menu ul li a {
+				display: block;
+				outline: none;
+				height: 25px;
+				line-height: 25px;
+				margin: 1px 0;
+				color: #1A385C;
+				text-decoration: none;
+			}
+			
+			.wrap-menu ul li img {
+				margin-right: 10px;
+				margin-left: -17px;
+				margin-top: 9px;
+				width: 7px;
+				height: 7px;
+				background: url(/jscss/demoimg/201402/arrow.gif) no-repeat;
+				border: none;
+			}
+			
+			.wrap-menu ul li img.unfold {
+				background-position: 0 -9px;
+			}
+			
+			.wrap-menu ul li a:hover {
+				background-color: #ccc;
+				background-image: none;
+			}
+		</style>
+		<script src="shoufengqin/js/jquery-2.1.1.min.js"></script>
+		<script>
+			function AccordionMenu(options) {
+				this.config = {
+					containerCls: '.wrap-menu', // 外层容器
+					menuArrs: '', //  JSON传进来的数据
+					type: 'click', // 默认为click 也可以mouseover
+					renderCallBack: null, // 渲染html结构后回调
+					clickItemCallBack: null // 每点击某一项时候回调
+				};
+				this.cache = {};
+				this.init(options);
+			}
+			AccordionMenu.prototype = {
+				constructor: AccordionMenu,
+				init: function(options) {
+					this.config = $.extend(this.config, options || {});
+					var self = this,
+						_config = self.config,
+						_cache = self.cache;
+					// 渲染html结构
+					$(_config.containerCls).each(function(index, item) {
+						self._renderHTML(item);
+						// 处理点击事件
+						self._bindEnv(item);
+					});
+				},
+				_renderHTML: function(container) {
+					var self = this,
+						_config = self.config,
+						_cache = self.cache;
+					var ulhtml = $('<ul></ul>');
+					$(_config.menuArrs).each(function(index, item) {
+						var lihtml = $('<li><h2>' + item.name + '</h2></li>');
+						if(item.submenu && item.submenu.length > 0) {
+							self._createSubMenu(item.submenu, lihtml);
+						}
+						$(ulhtml).append(lihtml);
+					});
+					$(container).append(ulhtml);
+					_config.renderCallBack && $.isFunction(_config.renderCallBack) && _config.renderCallBack();
+					// 处理层级缩进
+					self._levelIndent(ulhtml);
+				},
+				/**
+				 * 创建子菜单
+				 * @param {array} 子菜单
+				 * @param {lihtml} li项
+				 */
+				_createSubMenu: function(submenu, lihtml) {
+					var self = this,
+						_config = self.config,
+						_cache = self.cache;
+					var subUl = $('<ul></ul>'),
+						callee = arguments.callee,
+						subLi;
+					$(submenu).each(function(index, item) {
+						var url = item.url || 'javascript:void(0)';
+						subLi = $('<li><a href="' + url + '">' + item.name + '</a></li>');
+						if(item.submenu && item.submenu.length > 0) {
+							$(subLi).children('a').prepend('<img src="/jscss/demoimg/201402/blank.gif" alt=""/>');
+							callee(item.submenu, subLi);
+						}
+						$(subUl).append(subLi);
+					});
+					$(lihtml).append(subUl);
+				},
+				/**
+				 * 处理层级缩进
+				 */
+				_levelIndent: function(ulList) {
+					var self = this,
+						_config = self.config,
+						_cache = self.cache,
+						callee = arguments.callee;
+					var initTextIndent = 2,
+						lev = 1,
+						$oUl = $(ulList);
+					while($oUl.find('ul').length > 0) {
+						initTextIndent = parseInt(initTextIndent, 10) + 2 + 'em';
+						$oUl.children().children('ul').addClass('lev-' + lev)
+							.children('li').css('text-indent', initTextIndent);
+						$oUl = $oUl.children().children('ul');
+						lev++;
+					}
+					$(ulList).find('ul').hide();
+					$(ulList).find('ul:first').show();
+				},
+				/**
+				 * 绑定事件
+				 */
+				_bindEnv: function(container) {
+					var self = this,
+						_config = self.config;
+					$('h2,a', container).unbind(_config.type);
+					$('h2,a', container).bind(_config.type, function(e) {
+						if($(this).siblings('ul').length > 0) {
+							$(this).siblings('ul').slideToggle('slow').end().children('img').toggleClass('unfold');
+						}
+						$(this).parent('li').siblings().find('ul').hide()
+							.end().find('img.unfold').removeClass('unfold');
+						_config.clickItemCallBack && $.isFunction(_config.clickItemCallBack) && _config.clickItemCallBack($(this));
+					});
+				}
+			};
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap-menu">
+		</div>
+		<script>
+			var testMenu = [{
+				"name": "一级菜单",
+				"submenu": [{
+					"name": "二级菜单",
+					"url": ""
+				}, {
+					"name": "二级菜单",
+					"url": ""
+				}]
+			}, {
+				"name": "一级菜单",
+				"submenu": [{
+					"name": "二级菜单",
+					"url": ""
+				}, {
+					"name": "二级菜单",
+					"submenu": [{
+						"name": "三级菜单",
+						"submenu": [{
+							"name": "四级菜单",
+							"url": ""
+						}]
+					}, {
+						"name": "三级菜单",
+						"url": ""
+					}]
+				}, {
+					"name": "二级菜单",
+					"url": ""
+				}, {
+					"name": "二级菜单",
+					"submenu": [{
+						"name": "三级菜单",
+						"submenu": [{
+							"name": "四级菜单",
+							"url": ""
+						}, {
+							"name": "四级菜单",
+							"submenu": [{
+								"name": "五级菜单",
+								"url": ""
+							}, {
+								"name": "五级菜单",
+								"url": ""
+							}]
+						}]
+					}, {
+						"name": "三级菜单",
+						"url": ""
+					}]
+				}, {
+					"name": "二级菜单",
+					"url": ""
+				}]
+			}, {
+				"name": "一级菜单",
+				"submenu": [{
+					"name": "二级菜单",
+					"url": ""
+				}, {
+					"name": "二级菜单",
+					"url": ""
+				}, {
+					"name": "二级菜单",
+					"url": ""
+				}]
+			}];
+			$(function() {
+				new AccordionMenu({
+					menuArrs: testMenu
+				});
+			});
+		</script>
+		<div style="text-align:center;clear:both">
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>todoList</title>
+		<link rel="stylesheet" type="text/css" href="todoList.css"/>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div class='tit' id='tit'>
+			<h2>任务计划列表1</h2>
+		</div>
+		<div class='box'>
+			<h3>添加任务：</h3>
+			<input type="text" placeholder="添加待办事项, 提示:回车即可添加任务" required="required"
+			 autocomplete="off" class="addTask" name='addText' v-model="taskVal" @keyup.enter="addTask"/>
+			<div class='noTask'>还没有添加任何任务</div>
+			 
+			<div class="cont">
+				<div class='taskTit clearFloat'>
+					<ul class='taskType'>
+						<li :class="{'on':tabId == 0}" @click='tabId=0'>所有任务</li>
+						<li :class="{'on':tabId == 1}" @click='tabId=1'>未完成任务</li>
+						<li :class="{'on':tabId == 2}" @click='tabId=2'>已完成任务</li>
+					</ul>
+					<div class='unfinshedNum'>{{unfinshedNum}}个任务未完成</div>
+				</div>
+				<div>
+					<h3 @click="addTask">任务列表</h3>
+					<div class="taskList" v-if='tabId == 0'>
+						<ul>
+							<li v-for="(item,index) in list" :class='{editing : editVal === item}'>
+								<div class='contBox'>
+									<input type="checkbox" v-model="item.todo" @change="todoTab(index)"/>
+									<span class="taskCont" @dblclick="edit(item)" :class='{"finshedTask": item.todo}'>{{item.cont}}</span>
+									<span class="removeTask" @click="removeTask(index)">x</span>
+								</div>
+								<div class="edit">
+									<input type="text" v-model="item.cont"/>
+									<input type="button" value="取消" @click="cancelEdit(index)"/>
+									<input type="button" value="确定" @click="sureEdit(index)"/>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="taskList" v-else-if='tabId == 1'>
+						<ul>
+							<li v-for="(item,index) in list" v-if="!item.todo" :class='{editing : editVal === item}'>
+								<div class='contBox'>
+									<input type="checkbox" @change="todoTab(index)"/>
+									<span class="taskCont" @dblclick="edit(item)">{{item.cont}}</span>
+									<span class="removeTask" @click="removeTask(index)">x</span>
+								</div>
+								<div class="edit">
+									<input type="text" v-model="item.cont"/>
+									<input type="button" value="取消" @click="cancelEdit(index)"/>
+									<input type="button" value="确定" @click="sureEdit(index)"/>
+								</div>
+							</li>
+						</ul>
+						<!-- <div style="height: 50px;line-height: 50px;padding-left: 10px;" >暂无未完成的任务</div> -->
+					</div>
+					
+					
+					<div class="taskList" v-else-if='tabId == 2'>
+						<ul>
+							<li v-for="(item,index) in list" v-if="item.todo" :class='{editing : editVal === item}'>
+								<div class='contBox'>
+									<input type="checkbox" checked="checked" @change="todoTab(index)"/>
+									<span class="taskCont finshedTask" @dblclick="edit(item)">{{item.cont}}</span>
+									<span class="removeTask" @click="removeTask(index)">x</span>
+								</div>	
+								<div class="edit">
+									<input type="text" v-model="item.cont"/>
+									<input type="button" value="取消" @click="cancelEdit(index)"/>
+									<input type="button" value="确定" @click="sureEdit(index)"/>
+								</div>
+							</li>
+						</ul>
+						<!-- <div style="height: 50px;line-height: 50px;padding-left: 10px;">暂无已完成的任务</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="todoList.js"></script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>网页左侧浮动jquery在线QQ客服代码</title>
+		<style>
+		*{margin:0px;padding:0px;outline:none;list-style-type:none;border:none;}
+		/* QQbox */
+		.QQbox{z-index:1000;width:410px;left:-276px;top:0;margin:149px 0 0 0;position:fixed;}
+		*html, *html body{background-image:url(about:blank);background-attachment:fixed;}
+		*html .QQbox{position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+		.QQbox .Qlist{float:left;width:410px;background:url(img/bj01.png) no-repeat;background-position:1px 0px;height:436px;display:block;overflow:hidden;zoom:1;}
+		.QQbox .Qlist .con{margin-top:266px;margin-left:50px;color:#32567e;font-size:14px;}
+		.QQbox .Qlist .con ul li{height:31px;list-style:none;margin-left:35px;}
+		.QQbox .Qlist .con ul li a{font-size:13px;margin-left:18px;text-decoration:none;}
+		.OnlineLeft{float:left;display:inline;width:262px;height:439px;overflow:hidden;zoom:1;}
+		.OnlineBtn{float:right;display:inline;width:127px;height:36px;background:url(img/bj02.png) no-repeat;margin-top:-45px;margin-left:220px;}
+		.content{width: 500px;height: 700px;background: #f00;}
+		.vv{width: 500px;height: 700px;background: #ff0;}
+		</style>
+		<script type="text/javascript" src="login/cssLogin/js/jquery-1.11.0.min.js""></script>
+		</head>
+		<body>
+		<div id="divQQbox" class="QQbox">
+			<div id="divOnline" class="Qlist">
+				<div class="OnlineLeft">
+					<div class="con">
+						<ul>
+							<li>售前咨询<a target="_blank" href="tencent://message/?uin=12345678&&Site=www.cdn.net&&Menu=yes">
+								<img border="0" src="http://wpa.qq.com/pa?p=1:12345678:42"></a>
+							</li>
+							<li>网站建设<a target="_blank" href="tencent://message/?uin=12345678&&Site=www.cdn.net&&Menu=yes">
+								<img border="0" src="http://wpa.qq.com/pa?p=1:12345678:42"></a>
+							</li>
+							<li>网站优化<a target="_blank" href="tencent://message/?uin=12345678&&Site=www.cdn.net&&Menu=yes">
+								<img border="0" src="http://wpa.qq.com/pa?p=1:12345678:42"></a>
+							</li>
+							<li>整合营销<a target="_blank" href="tencent://message/?uin=12345678&&Site=www.cdn.net&&Menu=yes">
+								<img border="0" src="http://wpa.qq.com/pa?p=1:12345678:42"></a>
+							</li>
+							<li>售后服务<a target="_blank" href="tencent://message/?uin=12345678&&Site=www.cdn.net&&Menu=yes">
+								<img border="0" src="http://wpa.qq.com/pa?p=1:12345678:42"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="OnlineBtn">
+				</div>
+			</div>
+		</div>
+		<div class="content"></div>
+		<div class="vv"></div>
+		<script type="text/javascript">
+		$(function(){
+			//建站热线展开效果
+			$("#divQQbox").hover(
+				function(){
+					$(this).stop(true,false);
+					$(this).animate({left:0},300);	
+				},
+				function(){
+					$(this).animate({left:-276},149);	
+				}
+			)
+		});
+		</script>
+		</body>
+		</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>声明与表达式</title>
+
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				/*
+				var add = function(a,b){
+					if(typeof a !== 'number' || typeof b !== 'number'){
+						throw{
+							name: 'TypeError',
+							message: 'add needs number'
+						};
+					}
+					return a + b;
+				}
+				console.log(add('a',2))
+				*/
+				var fade = function(node){
+					var level = 1;
+					var step = function(){
+						var hex = level.toString(16);
+						node.style.background = '#ffff' + hex +hex;
+						console.log('#ffff' + hex +hex)
+						if(level < 15){
+							level += 1;
+							setTimeout(step,100);
+						}
+					};
+					setTimeout(step,100);
+				};
+				
+				fade(document.body)
+			}
+		</script>
+	</body>
+</html>

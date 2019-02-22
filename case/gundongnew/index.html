@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>简单的jQuery无缝向上滚动效果演示1_dowebok</title>
+<style>
+* { margin: 0; padding: 0;}
+.myscroll { width: 300px; height: 260px; margin: 0 auto; border: 1px solid #ccc; line-height: 26px; font-size: 12px; overflow: hidden;}
+.myscroll li { max-height: 260px; margin-left: 25px;}
+.myscroll a { color: #333; text-decoration: none;}
+.myscroll a:hover { color: #ED5565; text-decoration: underline;}
+</style>
+<script src="http://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.myscroll').myScroll({
+		speed: 40, //数值越大，速度越慢
+		rowHeight: 260 //li的高度
+	});
+});
+</script>
+</head>
+
+<body>
+<h1 style="margin: 40px; font: 32px Microsoft Yahei; text-align: center;">简单的jQuery无缝向上滚动效果演示1</h1>
+
+<div class="menu">
+	<a class="cur" href="index.html">演示1（文字滚动）</a>
+	<a href="index2.html">演示2（图片滚动）</a>
+</div>
+
+<div class="myscroll">
+	<ul>
+		<li>
+			1这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			2这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			3这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			4这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			5这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			6这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			7这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			8这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			9这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			10这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			11这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			12这里的高度 style="height: 26px如果不确定的话，需要自定义输入，要不然如果定义高了而ul里的li没达到此高度会造成无法滚动<br/>
+			
+		</li>
+		<li>
+			
+		</li>
+	</ul>
+	
+	<!-- <ul>
+		<li><a href="http://www.dowebok.com/68.html">用FlexSlider制作支付宝2013版幻灯片</a></li>
+		<li><a href="http://www.dowebok.com/67.html">扁平化UI/Flat UI Kit(PSD)</a></li>
+		<li><a href="http://www.dowebok.com/66.html">童趣卡通圣诞老人矢量素材(EPS)</a></li>
+		<li><a href="http://www.dowebok.com/65.html">63个线性图标素材(PSD)</a></li>
+		<li><a href="http://www.dowebok.com/64.html">15个音乐类图标素材(AI)</a></li>
+		<li><a href="http://www.dowebok.com/63.html">jQuery侧边导航插件SidebarJS</a></li>
+		<li><a href="http://www.dowebok.com/62.html">jQuery计时器插件TimeCircles</a></li>
+		<li><a href="http://www.dowebok.com/61.html">jQuery仿Google Play幻灯片效果插件plusview</a></li>
+		<li><a href="http://www.dowebok.com/60.html">100个圣诞节矢量图标(PSD/SVG)</a></li>
+		<li><a href="http://www.dowebok.com/59.html">用FlexSlider制作《枪神纪》幻灯片效果</a></li>
+		<li><a href="http://www.dowebok.com/68.html">用FlexSlider制作支付宝2013版幻灯片</a></li>
+		<li><a href="http://www.dowebok.com/67.html">扁平化UI/Flat UI Kit(PSD)</a></li>
+		<li><a href="http://www.dowebok.com/66.html">童趣卡通圣诞老人矢量素材(EPS)</a></li>
+		<li><a href="http://www.dowebok.com/65.html">63个线性图标素材(PSD)</a></li>
+		<li><a href="http://www.dowebok.com/64.html">15个音乐类图标素材(AI)</a></li>
+		<li><a href="http://www.dowebok.com/63.html">jQuery侧边导航插件SidebarJS</a></li>
+		<li><a href="http://www.dowebok.com/62.html">jQuery计时器插件TimeCircles</a></li>
+		<li><a href="http://www.dowebok.com/61.html">jQuery仿Google Play幻灯片效果插件plusview</a></li>
+		<li><a href="http://www.dowebok.com/60.html">100个圣诞节矢量图标(PSD/SVG)</a></li>
+		<li><a href="http://www.dowebok.com/59.html">用FlexSlider制作《枪神纪》幻灯片效果</a></li>
+	</ul> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 以下信息与演示无关，可不必理会 -->
+<p class="vad">
+	<a href="http://www.dowebok.com/" target="_blank">dowebok.com</a>
+	<a href="http://www.dowebok.com/69.html" target="_blank">说 明</a>
+	<a href="http://www.dowebok.com/69.html" target="_blank">下 载</a>
+</p>
+<style>
+body { margin: 0;}
+
+h1 { margin: 40px auto; font: 32px "Microsoft Yahei"; text-align: center;}
+
+.menu { position: fixed; left: 0; top: 0; bottom: 0; width: 200px; padding-top: 100px; font-family: Consolas,arial,"宋体"; background-color: #ccc; overflow-y: auto;}
+.menu a { display: block; height: 40px; margin: 0 0 1px 2px; padding-left: 10px; line-height: 40px; font-size: 14px; color: #333; text-decoration: none;}
+.menu a:hover { background-color: #eee;}
+.menu .cur { color: #000; background-color: #fff !important;}
+
+.explain, .dowebok-explain { text-align: center; color: #f50;}
+
+.vad { margin: 50px 0 10px; font-family: Consolas,arial,宋体,sans-serif; text-align:center;}
+.vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+.vad a:hover { color: #fff; background-color: #000;}
+.thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 40px solid transparent;}
+
+.code { position: relative; margin-top: 100px; padding-top: 41px;}
+.code h3 { position: absolute; top: 0; z-index: 10; width: 100px; height: 40px; font: 16px/40px "Microsoft Yahei"; text-align: center; cursor: pointer;}
+.code .cur { border: 1px solid #f0f0f0; border-bottom: 1px solid #f8f8f8; background-color: #f8f8f8;}
+.code .h31 { left: 0;}
+.code .h32 { left: 102px;}
+.code .h33 { left: 204px;}
+.code .h34 { left: 306px;}
+.code ol { padding: 0;}
+.code { width: 800px; margin-left: auto; margin-right: auto;}
+pre { padding: 15px 0; border: 1px solid #f0f0f0; background-color: #f8f8f8;}
+.f-dn { display: none;}
+</style>
+
+</body>
+</html>

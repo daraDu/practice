@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>待办事项</title>
+		<link href="todoList.css" rel="stylesheet" />
+		<script src="todoList.js"></script>
+	</head>
+	<body>
+		<div class='tit' id='tit'>
+			<h2>任务计划列表1</h2>
+		</div>
+		<div class='box'>
+			<h3>添加任务：</h3>
+			<form id='oForm' action="javascript:postAction()">
+				<input type="text" placeholder="添加待办事项, 提示:回车即可添加任务" required="required"
+				 autocomplete="off" class="addTask" name='addText'/>
+				<input type="button" value="添加" name='addBtn' class='addBtn'/>
+			</form>
+		
+			<div class='noTask'>还没有添加任何任务</div>
+			
+			<div class="cont">
+				<div class='taskTit clearFloat'>
+					<ul class='taskType'>
+						<li class="on">所有任务</li>
+						<li>未完成任务</li>
+						<li>已完成任务</li>
+					</ul>
+					<div class='unfinshedNum'></div>
+				</div>
+				<div>
+					<h3>任务列表</h3>
+					<div class="taskList show">
+						<ul id='allList'>
+							<!-- <li>
+								<input type="checkbox" />
+								<span class="taskCont">哈哈哈哈哈哈哈11111</span>
+								<span class="removeTask">x</span>
+							</li>
+							<li>
+								<input type="checkbox" />
+								<span class="taskCont finshedTask">哈哈哈哈哈哈哈111</span>
+								<span class="removeTask">x</span>
+							</li> -->
+						</ul>
+					</div>
+					
+					<div class="taskList">
+						<ul id='todoList'>
+							<!-- <li>
+								<input type="checkbox" />
+								<span class="taskCont">哈哈哈哈哈哈哈22222222</span>
+								<span class="removeTask">x</span>
+							</li> -->
+						</ul>
+						<div style="display: none;height: 50px;line-height: 50px;padding-left: 10px;">暂无未完成的任务</div>
+					</div>
+					
+					<div class="taskList">
+						<ul id='finishedList'>
+							<!-- <li>
+								<input type="checkbox" />
+								<span class="taskCont finshedTask">哈哈哈哈哈哈哈333</span>
+								<span class="removeTask">x</span>
+							</li> -->
+						</ul>
+						<div style="display: none;height: 50px;line-height: 50px;padding-left: 10px;">暂无已完成的任务</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

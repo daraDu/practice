@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基于json的级联列表</title>
+	</head>
+	<script type="text/javascript">
+		var proJSON={"1":"北京","2":"安徽"}
+		var cityJSON={"1":{"01":"朝阳区","02":"海定区","03":"丰台区"},"2":{"001":"合肥","002":"蚌埠","003":"淮北"}};
+		window.onload=function(){
+			var province=document.getElementById("province");
+			for(num in proJSON){
+				province.add(new Option(proJSON[num],num))
+			};
+		};
+		function setCity(){
+			var city=document.getElementById("city");
+			city.options.length=1;
+			var val=document.getElementById("province").value;
+			if(!proJSON[val]){return};
+			for(num in cityJSON[val]){
+				city.add(new Option(cityJSON[val][num],num));
+			}
+		}
+	</script>
+	<body>
+		<select id="province" onchange="setCity()">
+			<option>--请选择省份--</option>
+		</select>
+		<select id="city">
+			<option>--请选择城市--</option>
+		</select>
+	</body>
+</html>

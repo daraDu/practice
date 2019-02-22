@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>EasyUI</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   <link rel="stylesheet" type="text/css" href="EasyUI/easyui.css" />
+    <script type="text/javascript" src="EasyUI/jquery.min.js"></script>
+    <script type="text/javascript" src="EasyUI/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#ddlLine').combotree({
+                valueField: "id", //Value字段
+                textField: "text", //Text字段
+                multiple: true,
+                data: [{ "id": 1, "text": "All", "children": [{ "id": 13, "text": "C1" }, { "id": 14, "text": "C2" }, { "id": 15, "text": "C3"}]}]
+,
+                //                url: "tree_data2.json", //数据源
+                onCheck: function (node, checked) {
+                    //让全选不显示
+                    $("#ddlLine").combotree("setText", $("#ddlLine").combobox("getText").toString().replace("全选,", ""));
+                },
+                onClick: function (node, checked) {
+                    //让全选不显示ʾ
+                    $("#ddlLine").combotree("setText", $("#ddlLine").combobox("getText").toString().replace("全选,", ""));
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+   多选 <select id="ddlLine" class="easyui-combotree" style="width: 205px; height: 24px;"></select>
+<span class="textbox-addon textbox-addon-right" style="right: 0px; top: 0px;">
+	<a href="javascript:;" class="textbox-icon combo-arrow" icon-index="0" tabindex="-1" style="/*! width: 18px; */ /*! height: 22px; */"></a>
+</span>
+</body>
+</html>
